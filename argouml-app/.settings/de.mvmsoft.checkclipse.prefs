@@ -1,0 +1,5 @@
+eclipse.preferences.version=1
+enabled=true
+file_filter=in\:\\.java$\nin\:\\.properties$\nex\:Java(Lexer|Recognizer|TokenTypes)\\.java$\n
+filenames.config=/argouml-core-tools/checkstyle/checkstyle_argouml.xml
+filenames.properties=/argouml-core-tools/checkstyle/checkstyle.properties
