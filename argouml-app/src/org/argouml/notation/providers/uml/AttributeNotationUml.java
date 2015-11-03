@@ -447,7 +447,10 @@ public class AttributeNotationUml extends AttributeNotation {
         }
 
         dealWithDerived(attribute, derived);
-        dealWithVisibility(attribute, visibility);
+        if (visibility != null) {
+            Model.getCoreHelper().setVisibility(attribute,
+                    NotationUtilityUml.getVisibility(visibility.trim()));
+        }
         dealWithName(attribute, name);
         dealWithType(attribute, type);
         dealWithValue(attribute, value);
@@ -513,13 +516,6 @@ public class AttributeNotationUml extends AttributeNotation {
         } else if (Model.getFacade().getName(attribute) == null
                 || "".equals(Model.getFacade().getName(attribute))) {
             Model.getCoreHelper().setName(attribute, "anonymous");
-        }
-    }
-
-    private void dealWithVisibility(Object attribute, String visibility) {
-        if (visibility != null) {
-            Model.getCoreHelper().setVisibility(attribute,
-                    NotationUtilityUml.getVisibility(visibility.trim()));
         }
     }
 

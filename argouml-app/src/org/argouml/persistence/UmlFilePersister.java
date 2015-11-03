@@ -328,9 +328,31 @@ public class UmlFilePersister extends AbstractFilePersister {
         try {
             Project p = ProjectFactory.getInstance()
                     .createProject(file.toURI());
+            
+            Integer fileVersion = null; 
+            InputStream stream = null;
+            try {
+                stream = new BufferedInputStream(file.toURI().toURL().openStream());
+                fileVersion = getPersistenceVersion(stream);
+                stream.close();
+            } catch (MalformedURLException e) {
+                throw new OpenException(e);
+            } catch (IOException e) {
+                throw new OpenException(e);
+            } finally {
+                if (stream != null) {
+                    try {
+                        stream.close();
+                    } catch (IOException e) {
+                        // ignore
+                    }
+                }
+            }
 
             // Run through any stylesheet upgrades
-            int fileVersion = getPersistenceVersionFromFile(file);
+            if (fileVersion==null) {
+                throw new RuntimeException();
+            }
 
             LOG.log(Level.INFO, "Loading uml file of version {0}", fileVersion);
             if (!checkVersion(fileVersion, getReleaseVersionFromFile(file))) {
@@ -486,36 +508,6 @@ public class UmlFilePersister extends AbstractFilePersister {
             throw new OpenException(e);
         } catch (TransformerException e) {
             throw new OpenException(e);
-        }
-    }
-
-    /**
-     * Read stream in .argo format and extracts the persistence version number
-     * from the root tag.
-     *
-     * @param file the XML file
-     * @return The version number
-     * @throws OpenException on any error
-     */
-    private int getPersistenceVersionFromFile(File file) throws OpenException {
-        InputStream stream = null;
-        try {
-            stream = new BufferedInputStream(file.toURI().toURL().openStream());
-            int version = getPersistenceVersion(stream);
-            stream.close();
-            return version;
-        } catch (MalformedURLException e) {
-            throw new OpenException(e);
-        } catch (IOException e) {
-            throw new OpenException(e);
-        } finally {
-            if (stream != null) {
-                try {
-                    stream.close();
-                } catch (IOException e) {
-                    // ignore
-                }
-            }
         }
     }
 

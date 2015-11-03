@@ -96,20 +96,6 @@ public abstract class AbstractFigNode extends FigNodeModelElement {
         return cpfr;
     }
 
-    private void initFigs() {
-        cover = new FigCube(DEFAULT_X, DEFAULT_Y, DEFAULT_WIDTH,
-                DEFAULT_HEIGHT, LINE_COLOR, FILL_COLOR);
-
-        getNameFig().setLineWidth(0);
-        getNameFig().setFilled(false);
-        getNameFig().setJustification(0);
-
-        addFig(getBigPort());
-        addFig(cover);
-        addFig(getStereotypeFig());
-        addFig(getNameFig());
-    }
-
     /**
      * Construct a new AbstractFigNode.
      * 
@@ -120,7 +106,17 @@ public abstract class AbstractFigNode extends FigNodeModelElement {
     public AbstractFigNode(Object owner, Rectangle bounds,
             DiagramSettings settings) {
         super(owner, bounds, settings);
-        initFigs();
+        cover = new FigCube(DEFAULT_X, DEFAULT_Y, DEFAULT_WIDTH,
+                DEFAULT_HEIGHT, LINE_COLOR, FILL_COLOR);
+        
+        getNameFig().setLineWidth(0);
+        getNameFig().setFilled(false);
+        getNameFig().setJustification(0);
+        
+        addFig(getBigPort());
+        addFig(cover);
+        addFig(getStereotypeFig());
+        addFig(getNameFig());
     }
     
     @Override

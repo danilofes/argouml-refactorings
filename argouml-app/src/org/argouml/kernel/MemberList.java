@@ -114,7 +114,9 @@ class MemberList implements List<ProjectMember> {
             return true;
         } else if (member instanceof ProjectMemberTodoList) {
             // otherwise add the diagram at the start
-            setTodoList((AbstractProjectMember) member);
+            AbstractProjectMember member1 = (AbstractProjectMember) member;
+            LOG.log(Level.INFO, "Setting todoList to {0}", member1);
+            todoList = member1;
             return true;
         } else if (member instanceof ProfileConfiguration) {
             profileConfiguration = (AbstractProjectMember) member;
@@ -137,7 +139,8 @@ class MemberList implements List<ProjectMember> {
             return true;
         } else if (todoList == member) {
             LOG.log(Level.INFO, "Removing todo list");
-            setTodoList(null);
+            LOG.log(Level.INFO, "Setting todoList to {0}");
+            todoList = null;
             return true;
         } else if (profileConfiguration == member) {
             LOG.log(Level.INFO, "Removing profile configuration");
@@ -285,11 +288,6 @@ class MemberList implements List<ProjectMember> {
             temp[pos++] = profileConfiguration;
         }
         return temp;
-    }
-
-    private void setTodoList(AbstractProjectMember member) {
-        LOG.log(Level.INFO, "Setting todoList to {0}", member);
-        todoList = member;
     }
 
     public <T> T[] toArray(T[] a) {

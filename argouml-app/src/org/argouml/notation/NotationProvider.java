@@ -325,23 +325,20 @@ public abstract class NotationProvider implements PropertyChangeListener {
         removeElementListener(this, element);
     }
 
-    /*
+    /**
      * Utility function to unregister all listeners
      * registered through addElementListener.
-     *
-     * @see #addElementListener(Object, String)
      */
-    protected final void removeAllElementListeners(
-            PropertyChangeListener listener) {
+    public final void removeAllElementListeners() {
         for (Object[] lis : listeners) {
             Object property = lis[1];
             if (property == null) {
-                Model.getPump().removeModelEventListener(listener, lis[0]);
+                Model.getPump().removeModelEventListener(this, lis[0]);
             } else if (property instanceof String[]) {
-                Model.getPump().removeModelEventListener(listener, lis[0],
+                Model.getPump().removeModelEventListener(this, lis[0],
                         (String[]) property);
             } else if (property instanceof String) {
-                Model.getPump().removeModelEventListener(listener, lis[0],
+                Model.getPump().removeModelEventListener(this, lis[0],
                         (String) property);
             } else {
                 throw new RuntimeException(
@@ -349,14 +346,6 @@ public abstract class NotationProvider implements PropertyChangeListener {
             }
         }
         listeners.clear();
-    }
-
-    /**
-     * Utility function to unregister all listeners
-     * registered through addElementListener.
-     */
-    public final void removeAllElementListeners() {
-        removeAllElementListeners(this);
     }
 
     /**

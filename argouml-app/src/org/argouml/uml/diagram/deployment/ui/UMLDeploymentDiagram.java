@@ -187,6 +187,14 @@ public class UMLDeploymentDiagram extends UMLDiagram implements DeploymentDiagra
      * @see org.argouml.uml.diagram.ui.UMLDiagram#getUmlActions()
      */
     protected Object[] getUmlActions() {
+        
+        Object[][] actions2 = {
+                {getActionAssociation(), getActionUniAssociation() },
+                {getActionAggregation(), getActionUniAggregation() },
+                {getActionComposition(), getActionUniComposition() },
+            };
+            ToolBarUtility.manageDefault(actions2, "diagram.deployment.association");
+        
         final Object[] actions = {
             getActionMNode(),
             getActionMNodeInstance(),
@@ -195,20 +203,10 @@ public class UMLDeploymentDiagram extends UMLDiagram implements DeploymentDiagra
             getActionMGeneralization(),
             getActionMAbstraction(),
             getActionMDependency(),
-            getAssociationActions(),
+            actions2,
             getActionMObject(),
             getActionMLink(),
         };
-        return actions;
-    }
-
-    private Object[] getAssociationActions() {
-        Object[][] actions = {
-	    {getActionAssociation(), getActionUniAssociation() },
-	    {getActionAggregation(), getActionUniAggregation() },
-	    {getActionComposition(), getActionUniComposition() },
-        };
-        ToolBarUtility.manageDefault(actions, "diagram.deployment.association");
         return actions;
     }
 

@@ -108,93 +108,6 @@ public class SettingsTabNotation
         scope = settingsScope;
     }
 
-    private void buildPanel() {
-        setLayout(new BorderLayout());
-
-        topPanel = new JPanel();
-        topPanel.setLayout(new BorderLayout());
-
-        if (scope == Argo.SCOPE_APPLICATION) {
-            JPanel warning = new JPanel();
-            warning.setLayout(new BoxLayout(warning, BoxLayout.PAGE_AXIS));
-            JLabel warningLabel = new JLabel(Translator
-                    .localize("label.warning"));
-            warningLabel.setAlignmentX(Component.RIGHT_ALIGNMENT);
-            warning.add(warningLabel);
-
-            JLinkButton projectSettings = new JLinkButton();
-            projectSettings.setAction(new ActionProjectSettings());
-            projectSettings.setText(Translator
-                    .localize("button.project-settings"));
-            projectSettings.setIcon(null);
-            projectSettings.setAlignmentX(Component.RIGHT_ALIGNMENT);
-            warning.add(projectSettings);
-
-            topPanel.add(warning, BorderLayout.NORTH);
-        }
-
-        JPanel settings = new JPanel();
-        settings.setLayout(new GridBagLayout());
-
-        GridBagConstraints constraints = new GridBagConstraints();
-        constraints.anchor = GridBagConstraints.WEST;
-        constraints.fill = GridBagConstraints.HORIZONTAL;
-        constraints.gridy = 0;
-        constraints.gridx = 0;
-        constraints.gridwidth = 1;
-        constraints.gridheight = 1;
-        constraints.weightx = 1.0;
-        constraints.insets = new Insets(0, 30, 0, 4);
-
-        constraints.gridy = GridBagConstraints.RELATIVE;
-
-        JPanel notationLanguagePanel =
-            new JPanel(new FlowLayout(FlowLayout.LEFT, 5, 0));
-        JLabel notationLanguageLabel =
-            createLabel("label.notation-language");
-        notationLanguage = new NotationComboBox();
-        notationLanguageLabel.setLabelFor(notationLanguage);
-        notationLanguagePanel.add(notationLanguageLabel);
-        notationLanguagePanel.add(notationLanguage);
-        settings.add(notationLanguagePanel, constraints);
-
-        useGuillemots = createCheckBox("label.use-guillemots");
-        settings.add(useGuillemots, constraints);
-
-        // 2002-07-31
-        // Jaap Branderhorst
-        // from here made visibility etc. configurable
-
-        showAssociationNames = createCheckBox("label.show-associationnames");
-        settings.add(showAssociationNames, constraints);
-
-        showVisibility = createCheckBox("label.show-visibility");
-        settings.add(showVisibility, constraints);
-
-        showMultiplicity = createCheckBox("label.show-multiplicity");
-        settings.add(showMultiplicity, constraints);
-
-        showInitialValue = createCheckBox("label.show-initialvalue");
-        settings.add(showInitialValue, constraints);
-
-        showProperties = createCheckBox("label.show-properties");
-        settings.add(showProperties, constraints);
-
-        showTypes = createCheckBox("label.show-types");
-        settings.add(showTypes, constraints);
-
-        showStereotypes = createCheckBox("label.show-stereotypes");
-        settings.add(showStereotypes, constraints);
-
-        showSingularMultiplicities = 
-            createCheckBox("label.show-singular-multiplicities");
-        settings.add(showSingularMultiplicities, constraints);
-
-        topPanel.add(settings, BorderLayout.CENTER);
-
-        add(topPanel, BorderLayout.NORTH);
-    }
-
     /*
      * @see org.argouml.ui.GUISettingsTabInterface#handleSettingsTabRefresh()
      */
@@ -353,7 +266,90 @@ public class SettingsTabNotation
      */
     public JPanel getTabPanel() {
         if (topPanel == null) {
-            buildPanel();
+            setLayout(new BorderLayout());
+            
+            topPanel = new JPanel();
+            topPanel.setLayout(new BorderLayout());
+            
+            if (scope == Argo.SCOPE_APPLICATION) {
+                JPanel warning = new JPanel();
+                warning.setLayout(new BoxLayout(warning, BoxLayout.PAGE_AXIS));
+                JLabel warningLabel = new JLabel(Translator
+                        .localize("label.warning"));
+                warningLabel.setAlignmentX(Component.RIGHT_ALIGNMENT);
+                warning.add(warningLabel);
+            
+                JLinkButton projectSettings = new JLinkButton();
+                projectSettings.setAction(new ActionProjectSettings());
+                projectSettings.setText(Translator
+                        .localize("button.project-settings"));
+                projectSettings.setIcon(null);
+                projectSettings.setAlignmentX(Component.RIGHT_ALIGNMENT);
+                warning.add(projectSettings);
+            
+                topPanel.add(warning, BorderLayout.NORTH);
+            }
+            
+            JPanel settings = new JPanel();
+            settings.setLayout(new GridBagLayout());
+            
+            GridBagConstraints constraints = new GridBagConstraints();
+            constraints.anchor = GridBagConstraints.WEST;
+            constraints.fill = GridBagConstraints.HORIZONTAL;
+            constraints.gridy = 0;
+            constraints.gridx = 0;
+            constraints.gridwidth = 1;
+            constraints.gridheight = 1;
+            constraints.weightx = 1.0;
+            constraints.insets = new Insets(0, 30, 0, 4);
+            
+            constraints.gridy = GridBagConstraints.RELATIVE;
+            
+            JPanel notationLanguagePanel =
+                new JPanel(new FlowLayout(FlowLayout.LEFT, 5, 0));
+            JLabel notationLanguageLabel =
+                createLabel("label.notation-language");
+            notationLanguage = new NotationComboBox();
+            notationLanguageLabel.setLabelFor(notationLanguage);
+            notationLanguagePanel.add(notationLanguageLabel);
+            notationLanguagePanel.add(notationLanguage);
+            settings.add(notationLanguagePanel, constraints);
+            
+            useGuillemots = createCheckBox("label.use-guillemots");
+            settings.add(useGuillemots, constraints);
+            
+            // 2002-07-31
+            // Jaap Branderhorst
+            // from here made visibility etc. configurable
+            
+            showAssociationNames = createCheckBox("label.show-associationnames");
+            settings.add(showAssociationNames, constraints);
+            
+            showVisibility = createCheckBox("label.show-visibility");
+            settings.add(showVisibility, constraints);
+            
+            showMultiplicity = createCheckBox("label.show-multiplicity");
+            settings.add(showMultiplicity, constraints);
+            
+            showInitialValue = createCheckBox("label.show-initialvalue");
+            settings.add(showInitialValue, constraints);
+            
+            showProperties = createCheckBox("label.show-properties");
+            settings.add(showProperties, constraints);
+            
+            showTypes = createCheckBox("label.show-types");
+            settings.add(showTypes, constraints);
+            
+            showStereotypes = createCheckBox("label.show-stereotypes");
+            settings.add(showStereotypes, constraints);
+            
+            showSingularMultiplicities = 
+                createCheckBox("label.show-singular-multiplicities");
+            settings.add(showSingularMultiplicities, constraints);
+            
+            topPanel.add(settings, BorderLayout.CENTER);
+            
+            add(topPanel, BorderLayout.NORTH);
         }
         return this;
     }

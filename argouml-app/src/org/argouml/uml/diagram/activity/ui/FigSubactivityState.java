@@ -119,30 +119,23 @@ public class FigSubactivityState extends FigStateVertex {
         addFig(getBigPort());
         addFig(cover);
         addFig(getNameFig());
+        int x = X + W;
 
-        makeSubStatesIcon(X + W, Y);
-
-        setBounds(getBounds());
-    }
-
-    /**
-     * @param x the x-coordinate of the right corner
-     * @param y the y coordinate of the bottom corner
-     */
-    private void makeSubStatesIcon(int x, int y) {
-        s1 = new FigRRect(x - 22, y + 3, 8, 6, LINE_COLOR, FILL_COLOR);
-        s2 = new FigRRect(x - 11, y + 9, 8, 6, LINE_COLOR, FILL_COLOR);
+        s1 = new FigRRect(x - 22, Y + 3, 8, 6, LINE_COLOR, FILL_COLOR);
+        s2 = new FigRRect(x - 11, Y + 9, 8, 6, LINE_COLOR, FILL_COLOR);
         s1.setFilled(true);
         s2.setFilled(true);
         s1.setLineWidth(LINE_WIDTH);
         s2.setLineWidth(LINE_WIDTH);
         s1.setCornerRadius(SH);
         s2.setCornerRadius(SH);
-        s3 = new FigLine(x - 18, y + 6, x - 7, y + 12, LINE_COLOR);
-
+        s3 = new FigLine(x - 18, Y + 6, x - 7, Y + 12, LINE_COLOR);
+        
         addFig(s3); // add them back to front
         addFig(s1);
         addFig(s2);
+
+        setBounds(getBounds());
     }
 
     /*

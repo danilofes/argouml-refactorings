@@ -609,24 +609,22 @@ public final class PerspectiveManager {
         };
 
         if (Model.getFacade().getUmlVersion().charAt(0) == '1') {
-            ruleNamesArray = appendArrays(ruleNamesArray, ruleNamesArray14);
+            if (ruleNamesArray.length == 0) {
+                ruleNamesArray = ruleNamesArray14;
+            }
+            PerspectiveRule[]  result = Arrays.copyOf(ruleNamesArray, ruleNamesArray.length + ruleNamesArray14.length);
+            System.arraycopy(ruleNamesArray14, 0, result, ruleNamesArray.length, ruleNamesArray14.length);
+            ruleNamesArray = result;
         } else {
-            ruleNamesArray = appendArrays(ruleNamesArray, ruleNamesArray2);
+            if (ruleNamesArray.length == 0) {
+                ruleNamesArray = ruleNamesArray2;
+            }
+            PerspectiveRule[]  result = Arrays.copyOf(ruleNamesArray, ruleNamesArray.length + ruleNamesArray2.length);
+            System.arraycopy(ruleNamesArray2, 0, result, ruleNamesArray.length, ruleNamesArray2.length);
+            ruleNamesArray = result;
         }
 
         rules = Arrays.asList(ruleNamesArray);
-    }
-
-    private <T> T[] appendArrays(T[] first, T[] second) {
-        if (first.length == 0) {
-            return second;
-        }
-        if (second.length == 0) {
-            return first;
-        }
-        T[] result = Arrays.copyOf(first, first.length + second.length);
-        System.arraycopy(second, 0, result, first.length, second.length);
-        return result;
     }
 
     /**

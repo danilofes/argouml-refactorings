@@ -125,26 +125,6 @@ public class TabChecklist extends AbstractArgoJPanel
     }
 
 
-    /**
-     * Converts a selected element to a target that is appropriate for a
-     * checklist.<p>
-     *
-     * The argument can be either
-     * a Fig, if a Figure when something is selected from a diagram
-     * or a model element when an object is selected from the explorer.<p>
-     *
-     * @param t that is an object.
-     * @return target that is always model element.
-     */
-    private Object findTarget(Object t) {
-        if (t instanceof Fig) {
-            Fig f = (Fig) t;
-            t = f.getOwner();
-        }
-        return t;
-    }
-
-
     ////////////////////////////////////////////////////////////////
     // accessors
     /**
@@ -153,7 +133,11 @@ public class TabChecklist extends AbstractArgoJPanel
      * @param t is the target to show the list for.
      */
     public void setTarget(Object t) {
-        target = findTarget(t);
+        if (t instanceof Fig) {
+            Fig f = (Fig) t;
+            t = f.getOwner();
+        }
+        target = t;
 
         if (target == null) {
             shouldBeEnabled = false;
@@ -199,7 +183,12 @@ public class TabChecklist extends AbstractArgoJPanel
      * @see org.argouml.ui.TabTarget#shouldBeEnabled(java.lang.Object)
      */
     public boolean shouldBeEnabled(Object t) {
-        t = findTarget(t);
+        Object t1 = t;
+        if (t1 instanceof Fig) {
+            Fig f = (Fig) t1;
+            t1 = f.getOwner();
+        }
+        t = t1;
 
         if (t == null) {
             shouldBeEnabled = false;
