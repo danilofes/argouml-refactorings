@@ -407,20 +407,6 @@ public class DetailsPane
     }
 
     /**
-     * Selects a tab by given name.
-     * @param tabName the given name
-     * @return true if the named tab has been found
-     */
-    public boolean selectTabNamed(String tabName) {
-        int index = getIndexOfNamedTab(tabName);
-        if (index != -1) {
-            topLevelTabbedPane.setSelectedIndex(index);
-            return true;
-        }
-        return false;
-    }
-
-    /**
      * Helper method to add a Property panel for a given class.
      *
      * @param c the given class
@@ -721,6 +707,10 @@ public class DetailsPane
                 ((TargetListener) listeners[i + 1]).targetRemoved(targetEvent);
             }
         }
+    }
+    
+    public JTabbedPane getTopLevelTabbedPane(){
+        return topLevelTabbedPane;
     }
 
 }

@@ -111,13 +111,6 @@ public class SelectionObject extends SelectionNodeClarifiers2 {
         return Model.getMetaTypes().getObject();
     }
 
-    @Override
-    protected boolean isReverseEdge(int index) {
-        if (index == BOTTOM || index == LEFT) {
-            return true;
-        }
-        return false;
-    }
 
 } 
 

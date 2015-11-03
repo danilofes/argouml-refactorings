@@ -50,6 +50,7 @@ import javax.swing.JToolBar;
 
 import org.argouml.i18n.Translator;
 import org.argouml.taskmgmt.ProgressMonitor;
+import org.argouml.ui.explorer.ActionDeployProfile;
 import org.argouml.ui.explorer.ActionPerspectiveConfig;
 import org.argouml.ui.explorer.DnDExplorerTree;
 import org.argouml.ui.explorer.ExplorerTree;
@@ -154,7 +155,7 @@ class NavigatorPane
 
         perspectiveCombo.addItemListener((ExplorerTreeModel) tree.getModel());
         orderByCombo.addItemListener((ExplorerTreeModel) tree.getModel());
-        PerspectiveManager.getInstance().loadUserPerspectives();
+        new ActionDeployProfile(null).loadUserPerspectives(PerspectiveManager.getInstance());
     }
 
     /*

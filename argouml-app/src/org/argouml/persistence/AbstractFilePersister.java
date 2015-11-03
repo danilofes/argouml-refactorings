@@ -110,29 +110,6 @@ public abstract class AbstractFilePersister extends FileFilter
     }
 
     /**
-     * Create a temporary copy of the existing file.
-     *
-     * @param file the file to copy.
-     * @return the temp file or null if none copied.
-     * @throws FileNotFoundException if file not found
-     * @throws IOException if error reading or writing
-     */
-    protected File createTempFile(File file)
-        throws FileNotFoundException, IOException {
-        File tempFile = new File(file.getAbsolutePath() + "#");
-
-        if (tempFile.exists()) {
-            tempFile.delete();
-        }
-
-        if (file.exists()) {
-            copyFile(file, tempFile);
-        }
-
-        return tempFile;
-    }
-
-    /**
      * Saving in a safe way means: Retain the previous project
      * file even when the save operation causes an
      * exception in the middle.

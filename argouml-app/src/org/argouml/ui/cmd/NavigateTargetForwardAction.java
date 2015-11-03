@@ -42,10 +42,13 @@ import java.awt.event.ActionEvent;
 
 import javax.swing.AbstractAction;
 import javax.swing.Action;
+import javax.swing.JMenu;
+import javax.swing.JMenuItem;
 
 import org.argouml.application.helpers.ResourceLoaderWrapper;
 import org.argouml.i18n.Translator;
 import org.argouml.ui.targetmanager.TargetManager;
+import org.tigris.gef.base.DistributeAction;
 
 /**
  * Navigates the target one target forward in history.
@@ -81,6 +84,56 @@ class NavigateTargetForwardAction extends AbstractAction {
      */
     public boolean isEnabled() {
         return TargetManager.getInstance().navigateForwardPossible();
+    }
+
+    /**
+     * Initialize submenus of the Distribute menu.
+     *
+     * @param distribute
+     *            the Distribute menu
+     */
+    static void initDistributeMenu(JMenu distribute) {
+        DistributeAction a = new DistributeAction(
+                DistributeAction.H_SPACING);
+        a.putValue(Action.SMALL_ICON,
+                ResourceLoaderWrapper.lookupIcon(
+                        "DistributeHorizontalSpacing"));
+        JMenuItem distributeHSpacing = distribute.add(a);
+        GenericArgoMenuBar.setMnemonic(distributeHSpacing,
+                "distribute horizontal spacing");
+        ShortcutMgr.assignAccelerator(distributeHSpacing,
+                ShortcutMgr.ACTION_DISTRIBUTE_H_SPACING);
+    
+        a = new DistributeAction(
+                DistributeAction.H_CENTERS);
+        a.putValue(Action.SMALL_ICON,
+                ResourceLoaderWrapper.lookupIcon(
+                        "DistributeHorizontalCenters"));
+        JMenuItem distributeHCenters = distribute.add(a);
+        GenericArgoMenuBar.setMnemonic(distributeHCenters,
+                "distribute horizontal centers");
+        ShortcutMgr.assignAccelerator(distributeHCenters,
+                ShortcutMgr.ACTION_DISTRIBUTE_H_CENTERS);
+    
+        a = new DistributeAction(
+                DistributeAction.V_SPACING);
+        a.putValue(Action.SMALL_ICON,
+                ResourceLoaderWrapper.lookupIcon("DistributeVerticalSpacing"));
+        JMenuItem distributeVSpacing = distribute.add(a);
+        GenericArgoMenuBar.setMnemonic(distributeVSpacing,
+                "distribute vertical spacing");
+        ShortcutMgr.assignAccelerator(distributeVSpacing,
+                ShortcutMgr.ACTION_DISTRIBUTE_V_SPACING);
+    
+        a = new DistributeAction(
+                DistributeAction.V_CENTERS);
+        a.putValue(Action.SMALL_ICON,
+                ResourceLoaderWrapper.lookupIcon("DistributeVerticalCenters"));
+        JMenuItem distributeVCenters = distribute.add(a);
+        GenericArgoMenuBar.setMnemonic(distributeVCenters,
+                "distribute vertical centers");
+        ShortcutMgr.assignAccelerator(distributeVCenters,
+                ShortcutMgr.ACTION_DISTRIBUTE_V_CENTERS);
     }
 
     /**

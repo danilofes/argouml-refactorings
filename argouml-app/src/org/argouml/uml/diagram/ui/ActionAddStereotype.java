@@ -43,12 +43,9 @@ import java.awt.event.ActionEvent;
 import javax.swing.Action;
 
 import org.argouml.i18n.Translator;
-import org.argouml.kernel.Project;
 import org.argouml.kernel.ProjectManager;
-import org.argouml.kernel.ProjectSettings;
 import org.argouml.kernel.UmlModelMutator;
 import org.argouml.model.Model;
-import org.argouml.notation.providers.uml.NotationUtilityUml;
 import org.argouml.ui.UndoableAction;
 
 
@@ -74,21 +71,15 @@ class ActionAddStereotype extends UndoableAction {
      * @param st The stereotype.
      */
     public ActionAddStereotype(Object me, Object st) {
-        super(Translator.localize(buildString(st)),
+        super(Translator.localize(new SelectionEdgeClarifiers(null).buildString(st)),
                 null);
         // Set the tooltip string:
         putValue(Action.SHORT_DESCRIPTION, 
-                Translator.localize(buildString(st)));
+                Translator.localize(new SelectionEdgeClarifiers(null).buildString(st)));
         modelElement = me;
         stereotype = st;
     }
-    
-    private static String buildString(Object st) {
-        Project p = ProjectManager.getManager().getCurrentProject();
-        ProjectSettings ps = p.getProjectSettings();
-        return NotationUtilityUml.generateStereotype(st, 
-                ps.getNotationSettings().isUseGuillemets());
-    }
+ 
 
     /*
      * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)

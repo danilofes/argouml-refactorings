@@ -39,6 +39,8 @@
 
 package org.argouml.uml.diagram.state.ui;
 
+import java.awt.Rectangle;
+
 import javax.swing.Icon;
 
 import org.argouml.application.helpers.ResourceLoaderWrapper;
@@ -145,4 +147,25 @@ public class SelectionState extends SelectionNodeClarifiers2 {
         return false;
     }
 
+    /**
+     * Override setBounds to keep shapes looking right.
+     * {@inheritDoc}
+     */
+    protected void setStandardBounds(int x, int y, 
+            int width, int height, FigHistoryState state) {        
+        if (state.getNameFig() == null) {
+            return;
+        }
+        Rectangle oldBounds = getBounds();
+
+        state.getBigPort().setBounds(x, y, FigHistoryState.WIDTH, FigHistoryState.HEIGHT);
+        state. getHead().setBounds(x, y, FigHistoryState.WIDTH, FigHistoryState.HEIGHT);
+        state.getH2().setBounds(x, y, FigHistoryState.WIDTH - 10, FigHistoryState.HEIGHT - 10);
+        state.getH2().calcBounds();
+
+        state.calcBounds(); //_x = x; _y = y; _w = w; _h = h;
+        state.updateEdges();
+        state.firePropChange("bounds", oldBounds, getBounds());
+    }
+    
 }

@@ -123,19 +123,6 @@ public class FigInclude extends FigEdgeModelElement {
         setDashed(true);
     }
 
-    /**
-     * <p>Define whether the given fig can be edited (it can't).</p>
-     *
-     * @param f  The fig about which the enquiry is being made. Ignored in this
-     *           implementation.
-     *
-     * @return   <code>false</code> under all circumstances.
-     */
-    @Override
-    protected boolean canEdit(Fig f) {
-        return false;
-    }
-
     /*
      * @see org.tigris.gef.presentation.Fig#paint(java.awt.Graphics)
      */

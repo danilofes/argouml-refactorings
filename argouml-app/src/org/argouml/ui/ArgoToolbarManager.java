@@ -347,4 +347,18 @@ public class ArgoToolbarManager {
 
         return (visibilityAsString.equals("false")) ? false : true;
     }
+    
+    /**
+     * Selects a tab by given name.
+     * @param tabName the given name
+     * @return true if the named tab has been found
+     */
+    public boolean selectTabNamed(String tabName, DetailsPane pane) {
+        int index = pane.getIndexOfNamedTab(tabName);
+        if (index != -1) {
+            pane.getTopLevelTabbedPane().setSelectedIndex(index);
+            return true;
+        }
+        return false;
+    }
 }

@@ -43,6 +43,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import org.argouml.cognitive.Designer;
+import org.argouml.kernel.ProjectManager;
 import org.argouml.model.Model;
 import org.argouml.uml.cognitive.UMLDecision;
 
@@ -93,6 +94,19 @@ public class CrTooManyStates extends AbstractCrTooMany {
         ret.add(Model.getMetaTypes().getCompositeState());
         return ret;
     }
+    
+    /**
+     * Finds the create stereotype for an object.
+     * 
+     * @param obj is the object the stereotype should be applicable to.
+     * @return a suitable stereotype, or null.
+     */
+    Object getCreateStereotype(Object obj) {
+        return ProjectManager.getManager().getCurrentProject()
+                .getProfileConfiguration().findStereotypeForObject("create",
+                        obj);
+    }
+
     
     /**
      * The UID.

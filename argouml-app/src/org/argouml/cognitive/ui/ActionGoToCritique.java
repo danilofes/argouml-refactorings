@@ -45,6 +45,8 @@ import java.awt.event.ActionEvent;
 import javax.swing.Action;
 
 import org.argouml.cognitive.ToDoItem;
+import org.argouml.configuration.ConfigurationKey;
+import org.argouml.configuration.ConfigurationKeyImpl;
 import org.argouml.i18n.Translator;
 import org.argouml.ui.ProjectBrowser;
 import org.argouml.ui.UndoableAction;
@@ -79,6 +81,22 @@ public class ActionGoToCritique extends UndoableAction {
         // Use an event listener in the ToDoPane to communicate instead. - tfm
         ((ToDoPane) ProjectBrowser.getInstance().getTodoPane())
                 .selectItem(item);
+    }
+
+    /**
+     * Create a five-component configuration key.
+     *
+     * @param k1 key component 1.
+     * @param k2 key component 2.
+     * @param k3 key component 3.
+     * @param k4 key component 4.
+     * @param k5 key component 5.
+     * @return the new {@link ConfigurationKey}.
+     */
+    public static ConfigurationKey makeKey(String k1, String k2,
+        				   String k3, String k4,
+        				   String k5) {
+        return new ConfigurationKeyImpl(k1, k2, k3, k4, k5);
     }
 
 } /* end class ActionGoToCritique */

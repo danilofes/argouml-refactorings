@@ -143,7 +143,7 @@ class ZargoFilePersister extends UmlFilePersister {
 
         if (doSafeSaves) {
             try {
-                tempFile = createTempFile(file);
+                tempFile = new ModelMemberFilePersister().createTempFile(file, this);
             } catch (FileNotFoundException e) {
                 throw new SaveException(Translator.localize(
                         "optionpane.save-project-exception-cause1"), e);

@@ -84,9 +84,9 @@ public abstract class SelectionNodeClarifiers2 extends SelectionButtons {
     /** Top Handle */
     protected static final int TOP = 10;
     /** Bottom Handle */
-    protected static final int BOTTOM = 11;
+    public static final int BOTTOM = 11;
     /** Left Handle */
-    protected static final int LEFT = 12;
+    public static final int LEFT = 12;
     /** Right Handle */
     protected static final int RIGHT = 13;
     /** Lower left corner Handle */

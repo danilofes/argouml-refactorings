@@ -39,6 +39,8 @@
 
 package org.argouml.persistence;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -428,5 +430,29 @@ class ModelMemberFilePersister extends MemberFilePersister
      */
     public void setElementsRead(Collection elements) {
         this.elementsRead = elements;
+    }
+    
+    /**
+     * Create a temporary copy of the existing file.
+     *
+     * @param file the file to copy.
+     * @param abstractFilePersister 
+     * @return the temp file or null if none copied.
+     * @throws FileNotFoundException if file not found
+     * @throws IOException if error reading or writing
+     */
+    protected File createTempFile(File file, AbstractFilePersister abstractFilePersister)
+        throws FileNotFoundException, IOException {
+        File tempFile = new File(file.getAbsolutePath() + "#");
+
+        if (tempFile.exists()) {
+            tempFile.delete();
+        }
+
+        if (file.exists()) {
+            abstractFilePersister.copyFile(file, tempFile);
+        }
+
+        return tempFile;
     }
 }

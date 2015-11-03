@@ -558,7 +558,7 @@ public abstract class FigNodeModelElement
      *
      * @return the name Fig
      */
-    protected FigText getNameFig() {
+    public FigText getNameFig() {
         return nameFig;
     }
 

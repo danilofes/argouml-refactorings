@@ -40,6 +40,10 @@ package org.argouml.uml.diagram.ui;
 
 import java.awt.Graphics;
 
+import org.argouml.kernel.Project;
+import org.argouml.kernel.ProjectManager;
+import org.argouml.kernel.ProjectSettings;
+import org.argouml.notation.providers.uml.NotationUtilityUml;
 import org.tigris.gef.base.Globals;
 import org.tigris.gef.base.PathItemPlacementStrategy;
 import org.tigris.gef.base.SelectionReshape;
@@ -85,6 +89,13 @@ public class SelectionEdgeClarifiers extends SelectionReshape {
 	        strategy.paint(g);
 	    }
 	}
+    }
+    
+    static String buildString(Object st) {
+        Project p = ProjectManager.getManager().getCurrentProject();
+        ProjectSettings ps = p.getProjectSettings();
+        return NotationUtilityUml.generateStereotype(st, 
+                ps.getNotationSettings().isUseGuillemets());
     }
 
 }

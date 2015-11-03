@@ -142,5 +142,17 @@ public class SelectionActor extends SelectionNodeClarifiers2 {
         return false;
     }
 
+    /**
+     * <p>Define whether the given fig can be edited (it can't).</p>
+     *
+     * @param f  The fig about which the enquiry is being made. Ignored in this
+     *           implementation.
+     *
+     * @return   <code>false</code> under all circumstances.
+     */
+    protected boolean canEdit(Fig f) {
+        return false;
+    }
+    
 }
 

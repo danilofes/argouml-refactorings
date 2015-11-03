@@ -59,8 +59,8 @@ public abstract class FigHistoryState extends FigStateVertex {
 
     private static final int X = X0;
     private static final int Y = Y0;
-    private static final int WIDTH = 24;
-    private static final int HEIGHT = 24;
+    static final int WIDTH = 24;
+    static final int HEIGHT = 24;
 
     /**
      * The main label on this icon.
@@ -106,27 +106,6 @@ public abstract class FigHistoryState extends FigStateVertex {
         setBlinkPorts(false); //make port invisible unless mouse enters
     }
 
-    /**
-     * Override setBounds to keep shapes looking right.
-     * {@inheritDoc}
-     */
-    @Override
-    protected void setStandardBounds(int x, int y, 
-            int width, int height) {        
-    	if (getNameFig() == null) {
-            return;
-        }
-        Rectangle oldBounds = getBounds();
-
-        getBigPort().setBounds(x, y, WIDTH, HEIGHT);
-        head.setBounds(x, y, WIDTH, HEIGHT);
-        this.h.setBounds(x, y, WIDTH - 10, HEIGHT - 10);
-        this.h.calcBounds();
-
-        calcBounds(); //_x = x; _y = y; _w = w; _h = h;
-        updateEdges();
-        firePropChange("bounds", oldBounds, getBounds());
-    }
     
     /**
      * This should return the text shown at the center of the history state.
@@ -236,6 +215,14 @@ public abstract class FigHistoryState extends FigStateVertex {
     @Override
     public void mouseClicked(MouseEvent me) {
         // ignored
+    }
+    
+    public FigText getH2(){
+        return h;
+    }
+    
+    public FigCircle getHead(){
+        return head;
     }
 
     /**

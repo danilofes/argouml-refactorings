@@ -57,6 +57,7 @@ import org.argouml.model.Model;
 import org.argouml.uml.diagram.DiagramSettings;
 import org.argouml.uml.diagram.ui.FigEdgeModelElement;
 import org.argouml.uml.diagram.ui.FigNodeModelElement;
+import org.argouml.uml.diagram.ui.SelectionNodeClarifiers2;
 import org.tigris.gef.base.Geometry;
 import org.tigris.gef.base.Selection;
 import org.tigris.gef.presentation.Fig;
@@ -285,4 +286,10 @@ public abstract class AbstractFigNode extends FigNodeModelElement {
         return p;
     }
 
+    protected boolean isReverseEdge(int index) {
+        if (index == SelectionNodeClarifiers2.BOTTOM || index == SelectionNodeClarifiers2.LEFT) {
+            return true;
+        }
+        return false;
+    }
 }

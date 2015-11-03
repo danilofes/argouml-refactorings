@@ -89,23 +89,11 @@ public class WizAddConstructor extends UMLWizard {
 	    oper =
 	        Model.getCoreFactory().buildOperation2(me, returnType, newName);
 	    Model.getCoreHelper()
-	        .addStereotype(oper, getCreateStereotype(oper));
+	        .addStereotype(oper, new CrTooManyStates().getCreateStereotype(oper));
             ProjectManager.getManager().updateRoots();
 	    TargetManager.getInstance().setTargets(savedTargets);
             break;
 	}
-    }
-
-    /**
-     * Finds the create stereotype for an object.
-     * 
-     * @param obj is the object the stereotype should be applicable to.
-     * @return a suitable stereotype, or null.
-     */
-    private Object getCreateStereotype(Object obj) {
-        return ProjectManager.getManager().getCurrentProject()
-                .getProfileConfiguration().findStereotypeForObject("create",
-                        obj);
     }
 
     /**

@@ -97,7 +97,6 @@ import org.argouml.uml.ui.ActionUseCaseDiagram;
 import org.argouml.util.osdep.OSXAdapter;
 import org.argouml.util.osdep.OsUtil;
 import org.tigris.gef.base.AlignAction;
-import org.tigris.gef.base.DistributeAction;
 import org.tigris.gef.base.ReorderAction;
 import org.tigris.toolbar.ToolBarFactory;
 
@@ -695,7 +694,7 @@ public class GenericArgoMenuBar extends JMenuBar implements
 
         // This used to be deferred, but it's only 30-40 msec of work.
         initAlignMenu(align);
-        initDistributeMenu(distribute);
+        NavigateTargetForwardAction.initDistributeMenu(distribute);
         initReorderMenu(reorder);
     }
 
@@ -767,56 +766,6 @@ public class GenericArgoMenuBar extends JMenuBar implements
         setMnemonic(alignToGrid, "align to grid");
         ShortcutMgr.assignAccelerator(alignToGrid,
                 ShortcutMgr.ACTION_ALIGN_TO_GRID);
-    }
-
-    /**
-     * Initialize submenus of the Distribute menu.
-     *
-     * @param distribute
-     *            the Distribute menu
-     */
-    private static void initDistributeMenu(JMenu distribute) {
-        DistributeAction a = new DistributeAction(
-                DistributeAction.H_SPACING);
-        a.putValue(Action.SMALL_ICON,
-                ResourceLoaderWrapper.lookupIcon(
-                        "DistributeHorizontalSpacing"));
-        JMenuItem distributeHSpacing = distribute.add(a);
-        setMnemonic(distributeHSpacing,
-                "distribute horizontal spacing");
-        ShortcutMgr.assignAccelerator(distributeHSpacing,
-                ShortcutMgr.ACTION_DISTRIBUTE_H_SPACING);
-
-        a = new DistributeAction(
-                DistributeAction.H_CENTERS);
-        a.putValue(Action.SMALL_ICON,
-                ResourceLoaderWrapper.lookupIcon(
-                        "DistributeHorizontalCenters"));
-        JMenuItem distributeHCenters = distribute.add(a);
-        setMnemonic(distributeHCenters,
-                "distribute horizontal centers");
-        ShortcutMgr.assignAccelerator(distributeHCenters,
-                ShortcutMgr.ACTION_DISTRIBUTE_H_CENTERS);
-
-        a = new DistributeAction(
-                DistributeAction.V_SPACING);
-        a.putValue(Action.SMALL_ICON,
-                ResourceLoaderWrapper.lookupIcon("DistributeVerticalSpacing"));
-        JMenuItem distributeVSpacing = distribute.add(a);
-        setMnemonic(distributeVSpacing,
-                "distribute vertical spacing");
-        ShortcutMgr.assignAccelerator(distributeVSpacing,
-                ShortcutMgr.ACTION_DISTRIBUTE_V_SPACING);
-
-        a = new DistributeAction(
-                DistributeAction.V_CENTERS);
-        a.putValue(Action.SMALL_ICON,
-                ResourceLoaderWrapper.lookupIcon("DistributeVerticalCenters"));
-        JMenuItem distributeVCenters = distribute.add(a);
-        setMnemonic(distributeVCenters,
-                "distribute vertical centers");
-        ShortcutMgr.assignAccelerator(distributeVCenters,
-                ShortcutMgr.ACTION_DISTRIBUTE_V_CENTERS);
     }
 
     /**

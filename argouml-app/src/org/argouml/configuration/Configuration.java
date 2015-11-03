@@ -42,6 +42,8 @@ import java.beans.PropertyChangeListener;
 import java.io.File;
 import java.net.URL;
 
+import org.argouml.cognitive.ui.ActionGoToCritique;
+
 
 /**
  * This class provides the core user configuration implementation
@@ -430,20 +432,5 @@ public final class Configuration {
 	return new ConfigurationKeyImpl(k1, k2, k3, k4);
     }
 
-    /**
-     * Create a five-component configuration key.
-     *
-     * @param k1 key component 1.
-     * @param k2 key component 2.
-     * @param k3 key component 3.
-     * @param k4 key component 4.
-     * @param k5 key component 5.
-     * @return the new {@link ConfigurationKey}.
-     */
-    public static ConfigurationKey makeKey(String k1, String k2,
-					   String k3, String k4,
-					   String k5) {
-	return new ConfigurationKeyImpl(k1, k2, k3, k4, k5);
-    }
 }
 

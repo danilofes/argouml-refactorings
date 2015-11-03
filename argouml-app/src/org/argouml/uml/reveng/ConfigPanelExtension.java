@@ -49,6 +49,7 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
+import org.argouml.cognitive.ui.ActionGoToCritique;
 import org.argouml.configuration.Configuration;
 import org.argouml.configuration.ConfigurationKey;
 import org.argouml.i18n.Translator;
@@ -64,7 +65,7 @@ public class ConfigPanelExtension extends JPanel {
      * 1: associations
      */
     public static final ConfigurationKey KEY_IMPORT_EXTENDED_MODEL_ATTR =
-        Configuration
+        ActionGoToCritique
             .makeKey("import", "extended", "java", "model", "attributes");
 
     /**
@@ -73,14 +74,14 @@ public class ConfigPanelExtension extends JPanel {
      * 1: associations
      */
     public static final ConfigurationKey KEY_IMPORT_EXTENDED_MODEL_ARRAYS =
-        Configuration.makeKey("import", "extended", "java", "model", "arrays");
+        ActionGoToCritique.makeKey("import", "extended", "java", "model", "arrays");
 
     /**
      * Key for RE extended settings: flag for modelling of listed collections,
      * if to model them as associations with multiplicity *.
      */
     public static final ConfigurationKey KEY_IMPORT_EXTENDED_COLLECTIONS_FLAG =
-        Configuration
+        ActionGoToCritique
             .makeKey("import", "extended", "java", "collections", "flag");
 
     /**
@@ -88,7 +89,7 @@ public class ConfigPanelExtension extends JPanel {
      * as associations with multiplicity *.
      */
     public static final ConfigurationKey KEY_IMPORT_EXTENDED_COLLECTIONS_LIST =
-        Configuration
+        ActionGoToCritique
             .makeKey("import", "extended", "java", "collections", "list");
 
     /**
@@ -96,7 +97,7 @@ public class ConfigPanelExtension extends JPanel {
      * if to model them as ordered associations with multiplicity *.
      */
     public static final ConfigurationKey KEY_IMPORT_EXTENDED_ORDEREDCOLLS_FLAG =
-        Configuration
+        ActionGoToCritique
             .makeKey("import", "extended", "java", "orderedcolls", "flag");
 
     /**
@@ -104,7 +105,7 @@ public class ConfigPanelExtension extends JPanel {
      * as ordered associations with multiplicity *.
      */
     public static final ConfigurationKey KEY_IMPORT_EXTENDED_ORDEREDCOLLS_LIST =
-        Configuration
+        ActionGoToCritique
             .makeKey("import", "extended", "java", "orderedcolls", "list");
 
     private JPanel configPanel;
