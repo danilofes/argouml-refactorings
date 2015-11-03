@@ -120,16 +120,7 @@ class ClassdiagramNode implements LayoutedNode, Comparable {
      */
     private List<ClassdiagramNode> uplinks = new ArrayList<ClassdiagramNode>();
 
-    /**
-     * The 'weight' of this node. This is a computed
-     * attribute that is used during the horizontal placement process. It's
-     * based on the position of the 'uplinked' objects. The actual purpose is to
-     * minimize the number of link crossings in the diagram. Since we don't
-     * compute the actual number of link crossings, we look where our uplinked
-     * objects are, and then try to place our object in a way, that we can
-     * expect to have a minimal number of crossings.
-     */
-    private float weight = NOWEIGHT;
+    ClassdiagramModelElementFactory factory =ClassdiagramModelElementFactory.SINGLETON;
 
     private static final float UPLINK_FACTOR = 5;
 
@@ -184,15 +175,15 @@ class ClassdiagramNode implements LayoutedNode, Comparable {
      * @return The weight of this node.
      */
     public float calculateWeight() {
-        weight = 0;
+        setWeight(0);
         for (ClassdiagramNode node : uplinks) {
-            weight = Math.max(weight, node.getWeight()
+            setWeight(Math.max(getWeight(), node.getWeight()
                     * UPLINK_FACTOR
-                    * (1 + 1 / Math.max(1, node.getColumn() + UPLINK_FACTOR)));
+                    * (1 + 1 / Math.max(1, node.getColumn() + UPLINK_FACTOR))));
         }
-        weight += getSubtreeWeight()
-                + (1 / Math.max(1, getColumn() + UPLINK_FACTOR));
-        return weight;
+        setWeight(getWeight() + (getSubtreeWeight()
+                + (1 / Math.max(1, getColumn() + UPLINK_FACTOR))));
+        return getWeight();
     }
 
     /**
@@ -358,14 +349,6 @@ class ClassdiagramNode implements LayoutedNode, Comparable {
         return uplinks;
     }
     
-    /**
-     * Return the weight of this node, which is used for positioning in a row.
-     * 
-     * @return The weight of this node.
-     */
-    public float getWeight() {
-        return weight;
-    }
 
     /**
      * Check if this node is associated with a note.
@@ -469,13 +452,24 @@ class ClassdiagramNode implements LayoutedNode, Comparable {
     }
 
     /**
+     * Return the weight of this node, which is used for positioning in a row.
+     * 
+     * @return The weight of this node.
+     */
+    public float getWeight() {
+        return factory.getWeight();
+    }
+        
+        
+    /**
      * Set the weight for this node.
      * 
      * @param w
      *            The new weight of this node.
      */
     public void setWeight(float w) {
-        weight = w;
+        factory.setWeight(w);
     }
+
 
 }

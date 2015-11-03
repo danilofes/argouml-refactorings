@@ -39,6 +39,8 @@
 package org.argouml.cognitive.ui;
 
 import java.awt.event.ActionEvent;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.Action;
 
@@ -54,6 +56,8 @@ import org.argouml.ui.UndoableAction;
  * the priorities for a certain decision.
  */
 public class ActionOpenDecisions extends UndoableAction {
+    
+    private List<String> choices = new ArrayList<String>();
 
     /**
      * The constructor.
@@ -72,6 +76,14 @@ public class ActionOpenDecisions extends UndoableAction {
     	super.actionPerformed(ae);
 	DesignIssuesDialog d = new DesignIssuesDialog();
 	d.setVisible(true);
+    }
+
+    public List<String> getChoices() {
+        return choices;
+    }
+
+    public void setChoices(List<String> choices) {
+        this.choices = choices;
     }
 } /* end class ActionOpenDecisions */
 

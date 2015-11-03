@@ -70,6 +70,7 @@ import org.tigris.gef.base.LayerPerspectiveMutable;
 import org.tigris.gef.base.ModeCreatePolyEdge;
 import org.tigris.gef.graph.GraphModel;
 import org.tigris.gef.presentation.FigNode;
+import org.tigris.gef.presentation.FigRect;
 
 /**
  * The base class of the deployment diagram.<p>
@@ -109,6 +110,7 @@ public class UMLDeploymentDiagram extends UMLDiagram implements DeploymentDiagra
     private Action actionMGeneralization;
     private Action actionMAbstraction;
 
+    private FigRect upperRect;
 
     /**
      * Constructor.
@@ -619,5 +621,13 @@ public class UMLDeploymentDiagram extends UMLDiagram implements DeploymentDiagra
             LOG.log(Level.FINE, "Dropped object NOT added {0}", figNode);
         }
         return figNode;
+    }
+
+    public FigRect getUpperRect() {
+        return upperRect;
+    }
+
+    public void setUpperRect(FigRect upperRect) {
+        this.upperRect = upperRect;
     }
 }

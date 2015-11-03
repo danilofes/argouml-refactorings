@@ -41,6 +41,8 @@ package org.argouml.notation;
 import java.util.Collections;
 import java.util.List;
 
+import javax.swing.Icon;
+
 import org.argouml.application.api.AbstractArgoJPanel;
 import org.argouml.application.api.GUISettingsTabInterface;
 import org.argouml.application.api.InitSubsystem;
@@ -51,6 +53,8 @@ import org.argouml.application.api.InitSubsystem;
  * @author Michiel
  */
 public class InitNotation implements InitSubsystem {
+    
+    private Icon icon;
 
     public void init() {
         NotationProviderFactory2.getInstance();
@@ -68,4 +72,16 @@ public class InitNotation implements InitSubsystem {
         return Collections.emptyList();
     }
 
+    /**
+     * Returns an icon for the notation, or null if no icon is available.
+     *
+     * @see org.argouml.notation.NotationName#getIcon()
+     */
+    public Icon getIcon() {
+        return icon;
+    }
+
+    public void setIcon(Icon icon) {
+        this.icon = icon;
+    }
 }

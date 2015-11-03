@@ -63,6 +63,8 @@ import org.argouml.application.events.ArgoNotationEvent;
  */
 class NotationNameImpl
     implements NotationName {
+    
+    private InitNotation notation=new InitNotation();
 
     /**
      * Logger.
@@ -72,7 +74,6 @@ class NotationNameImpl
 
     private String name;
     private String version;
-    private Icon icon;
 
     /** The one and only list of notations available
      * in the running ArgoUML application. */
@@ -118,7 +119,7 @@ class NotationNameImpl
     protected NotationNameImpl(String myName, String myVersion, Icon myIcon) {
         name = myName;
         version = myVersion;
-        icon = myIcon;
+        setIcon(myIcon);
     }
 
     /**
@@ -163,7 +164,7 @@ class NotationNameImpl
      * @see org.argouml.notation.NotationName#getIcon()
      */
     public Icon getIcon() {
-        return icon;
+        return notation.getIcon();
     }
 
     /*
@@ -283,6 +284,10 @@ class NotationNameImpl
      */
     static NotationName getNotation(String k1, String k2) {
         return findNotation(getNotationNameString(k1, k2));
+    }
+
+    public void setIcon(Icon icon) {
+        this.notation.setIcon(icon);
     }
 
 }

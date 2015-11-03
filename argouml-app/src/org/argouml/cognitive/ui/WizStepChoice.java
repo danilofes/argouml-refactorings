@@ -63,7 +63,7 @@ import org.argouml.swingext.SpacerPanel;
 
 public class WizStepChoice extends WizStep {
     private JTextArea instructions = new JTextArea();
-    private List<String> choices = new ArrayList<String>();
+    private ActionOpenDecisions decisions = new ActionOpenDecisions();
     private int selectedIndex = -1;
 
 
@@ -76,7 +76,7 @@ public class WizStepChoice extends WizStep {
      */
     public WizStepChoice(Wizard w, String instr, List<String> ch) {
 	// store wizard?
-	choices = ch;
+	setChoices(ch);
 
 	instructions.setText(instr);
 	instructions.setWrapStyleWord(true);
@@ -169,9 +169,9 @@ public class WizStepChoice extends WizStep {
 		selectedIndex = -1;
 		return;
 	    }
-	    int size = choices.size();
+	    int size = getChoices().size();
 	    for (int i = 0; i < size; i++) {
-		String s = choices.get(i);
+		String s = getChoices().get(i);
 		if (s.equals(cmd)) {
                     selectedIndex = i;
                 }
@@ -179,6 +179,14 @@ public class WizStepChoice extends WizStep {
 	    getWizard().doAction();
 	    enableButtons();
 	}
+    }
+
+    public List<String> getChoices() {
+        return this.decisions.getChoices();
+    }
+
+    public void setChoices(List<String> choices) {
+        this.decisions.setChoices(choices);
     }
 
     /**

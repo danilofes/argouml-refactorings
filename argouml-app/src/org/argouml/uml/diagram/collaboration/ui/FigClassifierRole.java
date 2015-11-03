@@ -76,12 +76,7 @@ public class FigClassifierRole extends FigNodeModelElement {
      * The minimum padding top and bottom.
      */
     private static final int PADDING = 5;
-
-    /**
-     * The fig that is used for the complete classifier role.
-     * Identical in size to {@link FigNodeModelElement#bigPort}.<p>
-     */
-    private FigRect cover;
+    private ActionAddClassifierRole role = new ActionAddClassifierRole();
 
     /**
      * Construct a FigClassifierRole.
@@ -112,8 +107,8 @@ public class FigClassifierRole extends FigNodeModelElement {
      */
     private void initClassifierRoleFigs() {
         // The cover. 
-        cover = new FigRect(X0, Y0, DEFAULT_WIDTH, DEFAULT_HEIGHT, LINE_COLOR,
-                FILL_COLOR);
+        setCover(new FigRect(X0, Y0, DEFAULT_WIDTH, DEFAULT_HEIGHT, LINE_COLOR,
+                FILL_COLOR));
 
         // The stereotype. Width is the same as the cover, height is its default
         // (since the font is not yet set). The text should be centered.
@@ -142,7 +137,7 @@ public class FigClassifierRole extends FigNodeModelElement {
         // add Figs to the FigNode in back-to-front order
 
         addFig(getBigPort());
-        addFig(cover);
+        addFig(getCover());
         addFig(getStereotypeFig());
         addFig(getNameFig());
     }
@@ -180,7 +175,7 @@ public class FigClassifierRole extends FigNodeModelElement {
         Iterator it = figClone.getFigs().iterator();
 
         figClone.setBigPort((FigRect) it.next());
-        figClone.cover   = (FigRect) it.next();
+        figClone.setCover((FigRect) it.next());
         it.next();
         figClone.setNameFig((FigText) it.next());
 
@@ -231,7 +226,7 @@ public class FigClassifierRole extends FigNodeModelElement {
      */
     @Override
     public void setLineColor(Color col) {
-        cover.setLineColor(col);
+        getCover().setLineColor(col);
     }
 
     /*
@@ -239,7 +234,7 @@ public class FigClassifierRole extends FigNodeModelElement {
      */
     @Override
     public Color getLineColor() {
-        return cover.getLineColor();
+        return getCover().getLineColor();
     }
 
     /*
@@ -247,7 +242,7 @@ public class FigClassifierRole extends FigNodeModelElement {
      */
     @Override
     public void setFillColor(Color col) {
-        cover.setFillColor(col);
+        getCover().setFillColor(col);
     }
 
     /*
@@ -255,7 +250,7 @@ public class FigClassifierRole extends FigNodeModelElement {
      */
     @Override
     public Color getFillColor() {
-        return cover.getFillColor();
+        return getCover().getFillColor();
     }
 
     /*
@@ -263,13 +258,13 @@ public class FigClassifierRole extends FigNodeModelElement {
      */
     @Override
     public void setFilled(boolean f) {
-        cover.setFilled(f);
+        getCover().setFilled(f);
     }
 
 
     @Override
     public boolean isFilled() {
-        return cover.isFilled();
+        return getCover().isFilled();
     }
 
     /*
@@ -277,7 +272,7 @@ public class FigClassifierRole extends FigNodeModelElement {
      */
     @Override
     public void setLineWidth(int w) {
-        cover.setLineWidth(w);
+        getCover().setLineWidth(w);
     }
 
     /*
@@ -285,7 +280,7 @@ public class FigClassifierRole extends FigNodeModelElement {
      */
     @Override
     public int getLineWidth() {
-        return cover.getLineWidth();
+        return getCover().getLineWidth();
     }
 
 
@@ -373,7 +368,7 @@ public class FigClassifierRole extends FigNodeModelElement {
         // Set the bounds of the bigPort and cover
 
         getBigPort().setBounds(x, y, newW, newH);
-        cover.setBounds(x, y, newW, newH);
+        getCover().setBounds(x, y, newW, newH);
 
         // Record the changes in the instance variables of our parent, tell GEF
         // and trigger the edges to reconsider themselves.
@@ -405,6 +400,14 @@ public class FigClassifierRole extends FigNodeModelElement {
     @Override
     public Selection makeSelection() {
         return new SelectionClassifierRole(this);
+    }
+
+    public FigRect getCover() {
+        return role.getCover();
+    }
+
+    public void setCover(FigRect cover) {
+        this.role.setCover(cover);
     }
 
 }

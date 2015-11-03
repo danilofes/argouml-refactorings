@@ -75,6 +75,11 @@ public class SelectionComment extends SelectionNodeClarifiers2 {
     };
 
     /**
+     * Flag to indicate that a refresh is going on.
+     */
+    private boolean refreshTransaction;
+    
+    /**
      * Construct a new SelectionComment for the given Fig.
      *
      * @param f the given Fig
@@ -116,6 +121,14 @@ public class SelectionComment extends SelectionNodeClarifiers2 {
          */
 //        return null;
         return Model.getCoreFactory().createComment();
+    }
+
+    public boolean isRefreshTransaction() {
+        return refreshTransaction;
+    }
+
+    public void setRefreshTransaction(boolean refreshTransaction) {
+        this.refreshTransaction = refreshTransaction;
     }
 
 }

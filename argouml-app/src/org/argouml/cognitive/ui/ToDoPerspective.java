@@ -67,11 +67,8 @@ public abstract class ToDoPerspective extends TreeModelComposite {
      */
     private boolean flat;
 
-    /**
-     * todoList specific.
-     */
-    private List<ToDoItem> flatChildren;
-
+    private GoListToDecisionsToItems items;
+    
     /**
      * The constructor.
      *
@@ -80,7 +77,7 @@ public abstract class ToDoPerspective extends TreeModelComposite {
     public ToDoPerspective(String name) {
 
         super(name);
-        flatChildren = new ArrayList<ToDoItem>();
+        setFlatChildren(new ArrayList<ToDoItem>());
     }
 
     ////////////////////////////////////////////////////////////////
@@ -96,7 +93,7 @@ public abstract class ToDoPerspective extends TreeModelComposite {
     @Override
     public Object getChild(Object parent, int index) {
         if (flat && parent == getRoot()) {
-            return flatChildren.get(index);
+            return getFlatChildren().get(index);
         }
         return super.getChild(parent,  index);
     }
@@ -107,7 +104,7 @@ public abstract class ToDoPerspective extends TreeModelComposite {
     @Override
     public int getChildCount(Object parent) {
         if (flat && parent == getRoot()) {
-            return flatChildren.size();
+            return getFlatChildren().size();
         }
         return super.getChildCount(parent);
     }
@@ -119,7 +116,7 @@ public abstract class ToDoPerspective extends TreeModelComposite {
     @Override
     public int getIndexOfChild(Object parent, Object child) {
         if (flat && parent == getRoot()) {
-            return flatChildren.indexOf(child);
+            return getFlatChildren().indexOf(child);
         }
         return super.getIndexOfChild(parent, child);
     }
@@ -152,7 +149,7 @@ public abstract class ToDoPerspective extends TreeModelComposite {
      * TodoList specific.
      */
     public void calcFlatChildren() {
-        flatChildren.clear();
+        getFlatChildren().clear();
         addFlatChildren(getRoot());
     }
 
@@ -168,14 +165,22 @@ public abstract class ToDoPerspective extends TreeModelComposite {
         LOG.log(Level.FINE, "addFlatChildren");
         // hack for to do items only, should check isLeaf(node), but that
         // includes empty folders. Really I need alwaysLeaf(node).
-        if ((node instanceof ToDoItem) && !flatChildren.contains(node)) {
-            flatChildren.add((ToDoItem) node);
+        if ((node instanceof ToDoItem) && !getFlatChildren().contains(node)) {
+            getFlatChildren().add((ToDoItem) node);
 	}
 
         int nKids = getChildCount(node);
         for (int i = 0; i < nKids; i++) {
             addFlatChildren(getChild(node, i));
         }
+    }
+
+    public List<ToDoItem> getFlatChildren() {
+        return this.items.getFlatChildren();
+    }
+
+    public void setFlatChildren(List<ToDoItem> flatChildren) {
+        this.items.setFlatChildren(flatChildren);
     }
 
 }

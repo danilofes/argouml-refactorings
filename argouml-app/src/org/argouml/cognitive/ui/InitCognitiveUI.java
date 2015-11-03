@@ -40,17 +40,24 @@ package org.argouml.cognitive.ui;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Hashtable;
 import java.util.List;
+
+import javax.swing.JSlider;
 
 import org.argouml.application.api.AbstractArgoJPanel;
 import org.argouml.application.api.GUISettingsTabInterface;
 import org.argouml.application.api.InitSubsystem;
+import org.argouml.cognitive.Goal;
 
 /**
  *
  * @author Michiel
  */
 public class InitCognitiveUI implements InitSubsystem {
+    
+    private Hashtable<JSlider, Goal> slidersToGoals = 
+            new Hashtable<JSlider, Goal>();
 
     public void init() {
         // Do nothing
@@ -69,6 +76,14 @@ public class InitCognitiveUI implements InitSubsystem {
 
     public List<GUISettingsTabInterface> getSettingsTabs() {
         return Collections.emptyList();
+    }
+
+    public Hashtable<JSlider, Goal> getSlidersToGoals() {
+        return slidersToGoals;
+    }
+
+    public void setSlidersToGoals(Hashtable<JSlider, Goal> slidersToGoals) {
+        this.slidersToGoals = slidersToGoals;
     }
 
 }

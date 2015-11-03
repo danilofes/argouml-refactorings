@@ -59,6 +59,10 @@ public class GoListToDecisionsToItems extends AbstractGoList2 {
     ////////////////////////////////////////////////////////////////
     // TreeModel implementation
 
+    /**
+     * todoList specific.
+     */
+    private List<ToDoItem> flatChildren;
 
     /*
      * @see javax.swing.tree.TreeModel#getChild(java.lang.Object, int)
@@ -190,5 +194,11 @@ public class GoListToDecisionsToItems extends AbstractGoList2 {
         return Designer.theDesigner().getDecisionModel().getDecisionList();
     }
 
+    public List<ToDoItem> getFlatChildren() {
+        return flatChildren;
+    }
 
+    public void setFlatChildren(List<ToDoItem> flatChildren) {
+        this.flatChildren = flatChildren;
+    }
 }

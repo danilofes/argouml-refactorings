@@ -50,6 +50,11 @@ import javax.swing.JComboBox;
 public class PerspectiveComboBox
     extends JComboBox
     implements PerspectiveManagerListener {
+    
+    /**
+     * Prevents target event cycles between this and the TargetManager.
+     */
+    private boolean updatingSelection;
 
     /** Creates a new instance of PerspectiveCombobox */
     public PerspectiveComboBox() {
@@ -72,5 +77,13 @@ public class PerspectiveComboBox
      */
     public void removePerspective(Object perspective) {
         removeItem(perspective);
+    }
+
+    public boolean isUpdatingSelection() {
+        return updatingSelection;
+    }
+
+    public void setUpdatingSelection(boolean updatingSelection) {
+        this.updatingSelection = updatingSelection;
     }
 }

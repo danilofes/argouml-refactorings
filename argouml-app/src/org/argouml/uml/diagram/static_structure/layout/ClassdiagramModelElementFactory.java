@@ -58,6 +58,17 @@ import org.tigris.gef.presentation.FigNode;
 */
 public class ClassdiagramModelElementFactory
 {
+    /**
+     * The 'weight' of this node. This is a computed
+     * attribute that is used during the horizontal placement process. It's
+     * based on the position of the 'uplinked' objects. The actual purpose is to
+     * minimize the number of link crossings in the diagram. Since we don't
+     * compute the actual number of link crossings, we look where our uplinked
+     * objects are, and then try to place our object in a way, that we can
+     * expect to have a minimal number of crossings.
+     */
+    private float weight = ClassdiagramNode.NOWEIGHT;
+    
     private static final Logger LOG =
         Logger.getLogger(ClassdiagramModelElementFactory.class.getName());
 
@@ -92,5 +103,13 @@ public class ClassdiagramModelElementFactory
                 "Do not know how to deal with: {0}\nUsing standard layout",
                 f.getClass().getName());
         return null;
+    }
+
+    public float getWeight() {
+        return weight;
+    }
+
+    public void setWeight(float weight) {
+        this.weight = weight;
     }
 }

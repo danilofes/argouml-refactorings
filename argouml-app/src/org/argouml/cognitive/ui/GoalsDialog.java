@@ -69,11 +69,9 @@ public class GoalsDialog extends ArgoDialog implements ChangeListener {
     private static final int DIALOG_WIDTH = 320;
     private static final int DIALOG_HEIGHT = 400;
 
+    private InitCognitiveUI initCog=new InitCognitiveUI();
 
     private JPanel mainPanel = new JPanel();
-
-    private Hashtable<JSlider, Goal> slidersToGoals = 
-        new Hashtable<JSlider, Goal>();
 
     private Hashtable<JSlider, JLabel> slidersToDigits = 
         new Hashtable<JSlider, JLabel>();
@@ -168,7 +166,7 @@ public class GoalsDialog extends ArgoDialog implements ChangeListener {
 	    decSlide.setSize(smallSize);
 	    decSlide.setPreferredSize(smallSize);
 
-	    slidersToGoals.put(decSlide, goal);
+	    getSlidersToGoals().put(decSlide, goal);
 	    slidersToDigits.put(decSlide, valueLabel);
 
 	    c.gridx = 0;
@@ -200,7 +198,7 @@ public class GoalsDialog extends ArgoDialog implements ChangeListener {
      */
     public void stateChanged(ChangeEvent ce) {
 	JSlider srcSlider = (JSlider) ce.getSource();
-	Goal goal = slidersToGoals.get(srcSlider);
+	Goal goal = getSlidersToGoals().get(srcSlider);
 	JLabel valLab = slidersToDigits.get(srcSlider);
 	int pri = srcSlider.getValue();
 	goal.setPriority(pri);
@@ -209,6 +207,15 @@ public class GoalsDialog extends ArgoDialog implements ChangeListener {
 	} else {
 	    valLab.setText("    " + pri);
 	}
+    }
+
+    public Hashtable<JSlider, Goal> getSlidersToGoals() {
+        return initCog.getSlidersToGoals();
+    }
+
+
+    public void setSlidersToGoals(Hashtable<JSlider, Goal> slidersToGoals) {
+        this.initCog.setSlidersToGoals(slidersToGoals);
     }
 
     /**

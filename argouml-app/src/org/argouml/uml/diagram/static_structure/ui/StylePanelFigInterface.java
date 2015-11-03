@@ -57,10 +57,7 @@ public class StylePanelFigInterface extends StylePanelFigNodeModelElement {
 
     private JCheckBox operCheckBox = new JCheckBox("Operations");
 
-    /**
-     * Flag to indicate that a refresh is going on.
-     */
-    private boolean refreshTransaction;
+    SelectionComment comment = new SelectionComment(null);
 
     /**
      * The constructor.
@@ -80,12 +77,12 @@ public class StylePanelFigInterface extends StylePanelFigNodeModelElement {
      * @see org.argouml.ui.TabTarget#refresh()
      */
     public void refresh() {
-        refreshTransaction = true;
+        setRefreshTransaction(true);
         super.refresh();
         FigInterface ti = (FigInterface) getPanelTarget();
         operCheckBox.setSelected(
                 ti.isCompartmentVisible(Model.getMetaTypes().getOperation()));
-        refreshTransaction = false;
+        setRefreshTransaction(false);
     }
 
     ////////////////////////////////////////////////////////////////
@@ -95,7 +92,7 @@ public class StylePanelFigInterface extends StylePanelFigNodeModelElement {
      * @see java.awt.event.ItemListener#itemStateChanged(java.awt.event.ItemEvent)
      */
     public void itemStateChanged(ItemEvent e) {
-        if (!refreshTransaction) {
+        if (!isRefreshTransaction()) {
             Object src = e.getSource();
 
             if (src == operCheckBox) {
@@ -106,6 +103,14 @@ public class StylePanelFigInterface extends StylePanelFigNodeModelElement {
                 super.itemStateChanged(e);
             }
         }
+    }
+
+    public boolean isRefreshTransaction() {
+        return comment.isRefreshTransaction();
+    }
+
+    public void setRefreshTransaction(boolean refreshTransaction) {
+        this.comment.setRefreshTransaction(refreshTransaction);
     }
 
     /**

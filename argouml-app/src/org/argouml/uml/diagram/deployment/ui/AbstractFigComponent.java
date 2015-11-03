@@ -75,15 +75,15 @@ public abstract class AbstractFigComponent extends FigNodeModelElement {
     private static final int DEFAULT_WIDTH = 120;
     private static final int DEFAULT_HEIGHT = 80;
     private FigRect cover;
-    private FigRect upperRect;
+    UMLDeploymentDiagram diagram=new UMLDeploymentDiagram();
     private FigRect lowerRect;
 
     private void initFigs() {
         cover = new FigRect(BX, 10, DEFAULT_WIDTH, DEFAULT_HEIGHT, LINE_COLOR,
                 FILL_COLOR);
-        upperRect = new FigRect(0, 2 * FINGER_HEIGHT, 
+        setUpperRect(new FigRect(0, 2 * FINGER_HEIGHT, 
                 FINGER_WIDTH, FINGER_HEIGHT,
-                LINE_COLOR, FILL_COLOR);
+                LINE_COLOR, FILL_COLOR));
         lowerRect = new FigRect(0, 5 * FINGER_HEIGHT, 
                 FINGER_WIDTH, FINGER_HEIGHT,
                 LINE_COLOR, FILL_COLOR);
@@ -96,7 +96,7 @@ public abstract class AbstractFigComponent extends FigNodeModelElement {
         addFig(cover);
         addFig(getStereotypeFig());
         addFig(getNameFig());
-        addFig(upperRect);
+        addFig(getUpperRect());
         addFig(lowerRect);
     }
     
@@ -121,7 +121,7 @@ public abstract class AbstractFigComponent extends FigNodeModelElement {
         figClone.cover = (FigRect) it.next();
         it.next();
         figClone.setNameFig((FigText) it.next());
-        figClone.upperRect = (FigRect) it.next();
+        figClone.setUpperRect((FigRect) it.next());
         figClone.lowerRect = (FigRect) it.next();
     
         return figClone;
@@ -158,7 +158,7 @@ public abstract class AbstractFigComponent extends FigNodeModelElement {
         getStereotypeFig().setLineWidth(0);
         getNameFig().setFilled(false);
         getNameFig().setLineWidth(0);
-        upperRect.setLineColor(c);
+        getUpperRect().setLineColor(c);
         lowerRect.setLineColor(c);
     }
 
@@ -189,7 +189,7 @@ public abstract class AbstractFigComponent extends FigNodeModelElement {
         Dimension nameDim = getNameFig().getMinimumSize();
 
         int halfHeight = FINGER_HEIGHT / 2;
-        upperRect.setBounds(x, y + h / 3 - halfHeight, FINGER_WIDTH,
+        getUpperRect().setBounds(x, y + h / 3 - halfHeight, FINGER_WIDTH,
                 FINGER_HEIGHT);
         lowerRect.setBounds(x, y + 2 * h / 3 - halfHeight, FINGER_WIDTH,
                 FINGER_HEIGHT);
@@ -225,6 +225,14 @@ public abstract class AbstractFigComponent extends FigNodeModelElement {
     @Override
     public void setHandleBox(int x, int y, int w, int h) {
         setBounds(x - BX, y, w + BX, h);
+    }
+
+    public FigRect getUpperRect() {
+        return diagram.getUpperRect();
+    }
+
+    public void setUpperRect(FigRect upperRect) {
+        this.diagram.setUpperRect(upperRect);
     }
 
 }

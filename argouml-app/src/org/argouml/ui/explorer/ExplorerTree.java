@@ -91,10 +91,7 @@ public class ExplorerTree extends DisplayTextTree {
      */
     private Image bgImage = null;
 
-    /**
-     * Prevents target event cycles between this and the TargetManager.
-     */
-    private boolean updatingSelection;
+    PerspectiveComboBox comboBox =new PerspectiveComboBox();
 
     /**
      * Prevents target event cycles between this and the TargetManager for tree
@@ -408,6 +405,14 @@ public class ExplorerTree extends DisplayTextTree {
         }
     }
 
+    public boolean isUpdatingSelection() {
+        return comboBox.isUpdatingSelection();
+    }
+
+    public void setUpdatingSelection(boolean updatingSelection) {
+        this.comboBox.setUpdatingSelection(updatingSelection);
+    }
+
     /**
      * Manages selecting the item to show in Argo's other views based on the
      * highlighted row.
@@ -507,14 +512,14 @@ public class ExplorerTree extends DisplayTextTree {
          */
         private void setTargets(Object[] targets) {
 
-            if (!updatingSelection) {
-                updatingSelection = true;
+            if (!isUpdatingSelection()) {
+                setUpdatingSelection(true);
                 if (targets.length <= 0) {
                     clearSelection();
                 } else {
                     setSelection(targets);
                 }
-                updatingSelection = false;
+                setUpdatingSelection(false);
             }
         }
 
@@ -523,14 +528,14 @@ public class ExplorerTree extends DisplayTextTree {
          * org.argouml.ui.targetmanager.TargetEvent)
          */
         public void targetAdded(TargetEvent e) {
-            if (!updatingSelection) {
-                updatingSelection = true;
+            if (!isUpdatingSelection()) {
+                setUpdatingSelection(true);
                 Object[] targets = e.getAddedTargets();
 
                 updatingSelectionViaTreeSelection = true;
                 addTargetsInternal(targets);
                 updatingSelectionViaTreeSelection = false;
-                updatingSelection = false;
+                setUpdatingSelection(false);
             }
             // setTargets(e.getNewTargets());
         }
@@ -540,8 +545,8 @@ public class ExplorerTree extends DisplayTextTree {
          * org.argouml.ui.targetmanager.TargetEvent)
          */
         public void targetRemoved(TargetEvent e) {
-            if (!updatingSelection) {
-                updatingSelection = true;
+            if (!isUpdatingSelection()) {
+                setUpdatingSelection(true);
 
                 Object[] targets = e.getRemovedTargets();
 
@@ -565,7 +570,7 @@ public class ExplorerTree extends DisplayTextTree {
                 if (getSelectionCount() > 0) {
                     scrollRowToVisible(getSelectionRows()[0]);
                 }
-                updatingSelection = false;
+                setUpdatingSelection(false);
             }
             // setTargets(e.getNewTargets());
         }

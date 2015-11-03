@@ -58,7 +58,7 @@ public class GoListToGoalsToItems extends AbstractGoList2 {
 
     ////////////////////////////////////////////////////////////////
     // TreeModel implementation
-
+    private WizDescription description = new WizDescription();
 
     /*
      * @see javax.swing.tree.TreeModel#getChild(java.lang.Object, int)
@@ -172,6 +172,14 @@ public class GoListToGoalsToItems extends AbstractGoList2 {
      */
     public List<Goal> getGoalList() {
         return Designer.theDesigner().getGoalModel().getGoalList();
+    }
+
+    public WizDescription getDescription() {
+        return description;
+    }
+
+    public void setDescription(WizDescription description) {
+        this.description = description;
     }
     
 }

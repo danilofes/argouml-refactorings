@@ -41,15 +41,23 @@ package org.argouml.uml.diagram.collaboration.ui;
 import org.argouml.model.Model;
 import org.argouml.ui.CmdCreateNode;
 import org.argouml.uml.diagram.collaboration.CollabDiagramGraphModel;
+import org.argouml.uml.diagram.ui.FigNodeModelElement;
 import org.tigris.gef.base.Editor;
 import org.tigris.gef.base.Globals;
 import org.tigris.gef.graph.GraphModel;
+import org.tigris.gef.presentation.FigRect;
 
 /**
  * Action to add a classifier role to a collaboration diagram.
  * Based on org.argouml.uml.diagram.sequence.ui.ActionAddClassifierRole
  */
 public class ActionAddClassifierRole extends CmdCreateNode {
+
+    /**
+     * The fig that is used for the complete classifier role.
+     * Identical in size to {@link FigNodeModelElement#bigPort}.<p>
+     */
+    private FigRect cover;
 
     private static final long serialVersionUID = 8939546123926523391L;
 
@@ -78,5 +86,13 @@ public class ActionAddClassifierRole extends CmdCreateNode {
                     + "collaboration diagram graph model");
         }
         return node;
+    }
+
+    public FigRect getCover() {
+        return cover;
+    }
+
+    public void setCover(FigRect cover) {
+        this.cover = cover;
     }
 }

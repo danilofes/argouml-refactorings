@@ -73,7 +73,7 @@ public class TabToDo extends AbstractArgoJPanel
     private static final ToDoItemAction actionResolve = new ActionResolve();
     private static final ToDoItemAction actionSnooze = new ActionSnooze();
 
-    private WizDescription description = new WizDescription();
+    private GoListToGoalsToItems items=new GoListToGoalsToItems();
     private JPanel lastPanel;
     private BorderSplitPane splitPane;
     private Object target;
@@ -127,8 +127,8 @@ public class TabToDo extends AbstractArgoJPanel
         if (lastPanel != null) {
             splitPane.remove(lastPanel);
         }
-        splitPane.add(description, BorderSplitPane.CENTER);
-        lastPanel = description;
+        splitPane.add(getDescription(), BorderSplitPane.CENTER);
+        lastPanel = getDescription();
         validate();
         repaint();
     }
@@ -158,8 +158,8 @@ public class TabToDo extends AbstractArgoJPanel
             splitPane.add(ws, BorderSplitPane.CENTER);
             lastPanel = ws;
         } else {
-            splitPane.add(description, BorderSplitPane.CENTER);
-            lastPanel = description;
+            splitPane.add(getDescription(), BorderSplitPane.CENTER);
+            lastPanel = getDescription();
         }
         validate();
         repaint();
@@ -182,7 +182,7 @@ public class TabToDo extends AbstractArgoJPanel
 
     private void setTargetInternal(Object item) {
         // the target of description will always be set directly by tabtodo
-        description.setTarget(item);
+        getDescription().setTarget(item);
         Wizard w = null;
         if (item instanceof ToDoItem) {
             w = ((ToDoItem) item).getWizard();
@@ -276,6 +276,14 @@ public class TabToDo extends AbstractArgoJPanel
 
     public void componentResized(ComponentEvent e) {
         // ignored
+    }
+
+    public WizDescription getDescription() {
+        return items.getDescription();
+    }
+
+    public void setDescription(WizDescription description) {
+        this.items.setDescription(description);
     }
 
     
