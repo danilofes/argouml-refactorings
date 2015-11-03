@@ -1202,6 +1202,10 @@ public class ProjectImpl implements java.io.Serializable, Project {
                         .lookForRegisteredProfile(name);
             }
         }
+        extracted(m, profile);
+    }
+
+    private void extracted(Object m, Profile profile) {
         if (profile != null) {
             getProfileConfiguration().addProfile(profile, m);
         }

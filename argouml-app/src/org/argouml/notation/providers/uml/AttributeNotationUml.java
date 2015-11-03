@@ -431,6 +431,22 @@ public class AttributeNotationUml extends AttributeNotation {
         //      throw pre;
         // }
 
+        extracted(multiplicity, name, properties, stereotype, type, value,
+                visibility);
+
+        dealWithDerived(attribute, derived);
+        dealWithVisibility(attribute, visibility);
+        dealWithName(attribute, name);
+        dealWithType(attribute, type);
+        dealWithValue(attribute, value);
+        dealWithMultiplicity(attribute, multiplicity, multindex);
+        dealWithProperties(attribute, properties);
+        StereotypeUtility.dealWithStereotypes(attribute, stereotype, true);
+    }
+
+    private void extracted(StringBuilder multiplicity, String name,
+            List<String> properties, StringBuilder stereotype, String type,
+            StringBuilder value, String visibility) {
         if (LOG.isLoggable(Level.FINE)) {
             LOG.log(Level.FINE, "ParseAttribute [name: " + name
                     + " visibility: " + visibility
@@ -445,15 +461,6 @@ public class AttributeNotationUml extends AttributeNotation {
                 }
             }
         }
-
-        dealWithDerived(attribute, derived);
-        dealWithVisibility(attribute, visibility);
-        dealWithName(attribute, name);
-        dealWithType(attribute, type);
-        dealWithValue(attribute, value);
-        dealWithMultiplicity(attribute, multiplicity, multindex);
-        dealWithProperties(attribute, properties);
-        StereotypeUtility.dealWithStereotypes(attribute, stereotype, true);
     }
 
     private void dealWithDerived(Object umlObject, boolean derived) {

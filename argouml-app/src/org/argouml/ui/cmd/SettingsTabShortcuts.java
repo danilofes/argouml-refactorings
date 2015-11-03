@@ -590,6 +590,10 @@ class SettingsTabShortcuts extends JPanel implements
          */
         @Override
         public Class<?> getColumnClass(int col) {
+            return extracted(col);
+        }
+
+        private Class<?> extracted(int col) {
             switch (col) {
             case 0:
                 return String.class;

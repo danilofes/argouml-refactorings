@@ -282,6 +282,11 @@ public class TabChecklist extends AbstractArgoJPanel
      * @see java.awt.event.ComponentListener#componentHidden(java.awt.event.ComponentEvent)
      */
     public void componentHidden(ComponentEvent e) {
+        extracted();
+    }
+
+
+    private void extracted() {
         // Stop updating model when we're not visible
         setTargetInternal(null);
     }

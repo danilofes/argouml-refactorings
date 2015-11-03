@@ -93,12 +93,16 @@ public abstract class AttributeNotation extends NotationProvider {
                 && ("stereotype".equals(pce.getPropertyName())
                         || ("taggedValue".equals(pce.getPropertyName()))
                         || ("type".equals(pce.getPropertyName())))) {
-            if (pce instanceof AddAssociationEvent) {
-                addElementListener(pce.getNewValue());
-            }
-            if (pce instanceof RemoveAssociationEvent) {
-                removeElementListener(pce.getOldValue());
-            }
+            extracted(pce);
+        }
+    }
+
+    private void extracted(PropertyChangeEvent pce) {
+        if (pce instanceof AddAssociationEvent) {
+            addElementListener(pce.getNewValue());
+        }
+        if (pce instanceof RemoveAssociationEvent) {
+            removeElementListener(pce.getOldValue());
         }
     }
 }

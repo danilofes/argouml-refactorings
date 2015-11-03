@@ -131,6 +131,10 @@ public final class ExplorerEventAdaptor
      */
     @Deprecated
     public void structureChanged() {
+        extracted();
+    }
+
+    private void extracted() {
         if (treeModel == null) {
             return;
         }

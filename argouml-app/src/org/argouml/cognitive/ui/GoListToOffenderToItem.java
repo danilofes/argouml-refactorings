@@ -107,6 +107,10 @@ public class GoListToOffenderToItem extends AbstractGoList2 {
 //            return false;
 //        }
         
+        return extracted(node);
+    }
+
+    private boolean extracted(Object node) {
         List<ToDoItem> itemList = 
             Designer.theDesigner().getToDoList().getToDoItemList();
         synchronized (itemList) {

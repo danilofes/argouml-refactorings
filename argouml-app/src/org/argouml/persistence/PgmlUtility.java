@@ -110,14 +110,18 @@ public final class PgmlUtility {
         List contents = lay.getContents();
         int size = contents.size();
         List list = new ArrayList(size);
+        extracted(contents, size, list);
+        getEdges(diagram, lay.getContentsEdgesOnly(), list);
+        return list;
+    }
+
+    private static void extracted(List contents, int size, List list) {
         for (int i = 0; i < size; i++) {
             Object o = contents.get(i);
             if (!(o instanceof FigEdge)) {
                 list.add(o);
             }
         }
-        getEdges(diagram, lay.getContentsEdgesOnly(), list);
-        return list;
     }
     
     private static void getEdges(Diagram diagram, 

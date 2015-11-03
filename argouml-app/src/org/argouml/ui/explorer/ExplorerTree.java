@@ -508,14 +508,18 @@ public class ExplorerTree extends DisplayTextTree {
         private void setTargets(Object[] targets) {
 
             if (!updatingSelection) {
-                updatingSelection = true;
-                if (targets.length <= 0) {
-                    clearSelection();
-                } else {
-                    setSelection(targets);
-                }
-                updatingSelection = false;
+                extracted(targets);
             }
+        }
+
+        private void extracted(Object[] targets) {
+            updatingSelection = true;
+            if (targets.length <= 0) {
+                clearSelection();
+            } else {
+                setSelection(targets);
+            }
+            updatingSelection = false;
         }
 
         /*

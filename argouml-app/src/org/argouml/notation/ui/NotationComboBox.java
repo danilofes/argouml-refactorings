@@ -88,6 +88,10 @@ public class NotationComboBox
      */
     public NotationComboBox() {
         super();
+        extracted();
+    }
+
+    private void extracted() {
         setEditable(false);
         setMaximumRowCount(6);
 
