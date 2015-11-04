@@ -49,6 +49,7 @@ import org.argouml.notation.InitNotation;
 import org.argouml.notation.providers.uml.InitNotationUml;
 import org.argouml.profile.init.InitProfileSubsystem;
 import org.argouml.uml.diagram.DiagramSettings;
+import org.argouml.uml.diagram.ui.FigEdgeModelElement;
 
 /**
  * Tests whether Figs in state.ui are clonable,
@@ -185,8 +186,8 @@ public class TestFigClonable extends TestCase {
      */
     public void testTransitionClonable() {
         Object t = Model.getStateMachinesFactory().createTransition();
-	FigTransition fig = new FigTransition(t, settings);
-	FigTransition figClone = (FigTransition) fig.clone();
+	FigEdgeModelElement fig = new FigTransition(t, settings);
+	FigEdgeModelElement figClone = (FigEdgeModelElement) fig.clone();
         assertNotNull(figClone);
     }
 

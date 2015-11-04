@@ -47,6 +47,14 @@ public abstract class SelectionClassifierBox extends
     private static Icon addIcon = 
         ResourceLoaderWrapper.lookupIconResource("Add");
 
+    protected static String instructions[] = {"Add an interface",
+         "Add a realization",
+         null,
+         null,
+         null,
+         "Move object(s)",
+        };
+
     private class Button {
         int handle;
         Icon icon;

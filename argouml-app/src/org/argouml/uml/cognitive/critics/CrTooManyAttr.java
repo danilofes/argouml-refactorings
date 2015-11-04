@@ -54,11 +54,6 @@ import org.argouml.uml.cognitive.UMLDecision;
 public class CrTooManyAttr extends AbstractCrTooMany {
     
     /**
-     * The initial threshold.
-     */
-    private static final int ATTRIBUTES_THRESHOLD = 7;
-
-    /**
      * The constructor.
      *
      */

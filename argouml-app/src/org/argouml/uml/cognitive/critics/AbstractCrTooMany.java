@@ -50,6 +50,10 @@ import org.argouml.cognitive.ToDoItem;
  */
 public abstract class AbstractCrTooMany extends CrUML {
     
+    /**
+     * The initial threshold.
+     */
+    protected static final int ATTRIBUTES_THRESHOLD = 7;
     private int criticThreshold;
 
     /**

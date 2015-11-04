@@ -73,6 +73,7 @@ public abstract class FigState extends FigStateVertex {
     protected static final int SPACE_BOTTOM = 6;
 
     protected static final int MARGIN = 2;
+    protected static final int WIDTH = 90;
 
     protected NotationProvider notationProviderBody;
 
