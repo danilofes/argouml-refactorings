@@ -51,9 +51,6 @@ import org.tigris.gef.presentation.Fig;
  */
 public class SelectionComponent extends SelectionNodeClarifiers2 {
 
-    private static Icon dep =
-            ResourceLoaderWrapper.lookupIconResource("Dependency");
-
     private static Icon depRight =
             ResourceLoaderWrapper.lookupIconResource("DependencyRight");
 

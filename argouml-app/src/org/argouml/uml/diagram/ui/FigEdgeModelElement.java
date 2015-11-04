@@ -197,6 +197,13 @@ public abstract class FigEdgeModelElement
     private DiagramSettings settings;
 
     /**
+     * If <code>dashed</code> is true, then the transition represents
+     * "object flow".
+     * If the line is solid, then it represents "control flow".
+     */
+    protected boolean dashed;
+
+    /**
      * Construct a new FigEdge. This method creates the name element that holds
      * the name of the model element and adds itself as a listener. Also a
      * stereotype is constructed.

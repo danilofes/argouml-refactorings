@@ -66,11 +66,6 @@ class ExtensionMechanismsFactoryMDRImpl extends
         AbstractUmlModelFactoryMDR implements ExtensionMechanismsFactory {
 
     /**
-     * The model implementation.
-     */
-    private MDRModelImplementation modelImpl;
-
-    /**
      * The extension mechanism helper.
      */
     private ExtensionMechanismsHelper extensionHelper;

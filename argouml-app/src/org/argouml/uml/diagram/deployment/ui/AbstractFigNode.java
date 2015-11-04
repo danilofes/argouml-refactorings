@@ -81,7 +81,6 @@ public abstract class AbstractFigNode extends FigNodeModelElement {
      */
     protected static final int DEPTH = 20;
     private FigCube cover;
-    private static final int DEFAULT_X = 10;
     private static final int DEFAULT_Y = 10;
     private static final int DEFAULT_WIDTH = 200;
     private static final int DEFAULT_HEIGHT = 180;

@@ -82,16 +82,6 @@ public class SelectionClass extends SelectionClassifierBox {
      selfassoc,
     };
     
-    // TODO: I18N required
-    private static String instructions[] = 
-    {"Add a superclass",
-     "Add a subclass",
-     "Add an associated class",
-     "Add an associated class",
-     "Add a self association",
-     "Move object(s)",
-    };
-
     private static Object edgeType[] = 
     {Model.getMetaTypes().getGeneralization(),
      Model.getMetaTypes().getGeneralization(),

@@ -185,7 +185,7 @@ class SimpleStateTransformer implements Transformer {
 
         private void makeTransition(DiagramSettings settings, Layer lay,
                 Object transUml) {
-            FigTransition transFig = new FigTransition(transUml, settings);
+            FigEdgeModelElement transFig = new FigTransition(transUml, settings);
             setPorts(lay, transFig);
             lay.add(transFig);
             transFig.computeRoute();

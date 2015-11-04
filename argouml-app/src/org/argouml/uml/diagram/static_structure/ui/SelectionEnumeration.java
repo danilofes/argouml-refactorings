@@ -48,16 +48,6 @@ import org.tigris.gef.presentation.Fig;
  */
 class SelectionEnumeration extends SelectionDataType {
 
-    // TODO: I18N
-    private static String[] instructions =
-    {"Add a super-enumeration",
-     "Add a sub-enumeration",
-     null,
-     null,
-     null,
-     "Move object(s)",
-    };
-    
     /**
      * @param f the given fi
      */

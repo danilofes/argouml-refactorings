@@ -53,6 +53,11 @@ public abstract class AbstractUmlModelFactoryMDR implements
         AbstractModelFactory {
 
     /**
+     * The model implementation.
+     */
+    protected MDRModelImplementation modelImpl;
+
+    /**
      * Default constructor.
      */
     protected AbstractUmlModelFactoryMDR() {

@@ -54,6 +54,8 @@ public abstract class GenericUmlObjectTestFixture extends TestCase {
 
     private Object entity;
 
+    protected Object namespace;
+
     /**
      * Constructor for GenericObjectFixture.
      *
