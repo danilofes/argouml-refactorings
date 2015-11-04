@@ -54,6 +54,7 @@ import org.argouml.model.CollaborationDiagram;
 import org.argouml.model.Model;
 import org.argouml.uml.diagram.DiagramElement;
 import org.argouml.uml.diagram.DiagramSettings;
+import org.argouml.uml.diagram.UmlDiagramRenderer;
 import org.argouml.uml.diagram.collaboration.CollabDiagramGraphModel;
 import org.argouml.uml.diagram.static_structure.ui.FigComment;
 import org.argouml.uml.diagram.ui.ActionAddAssociationRole;
@@ -185,7 +186,7 @@ public class UMLCollaborationDiagram extends UMLDiagram implements Collaboration
         gm.setCollaboration(handle);
         LayerPerspective lay =
             new LayerPerspectiveMutable(Model.getFacade().getName(handle), gm);
-        CollabDiagramRenderer rend = new CollabDiagramRenderer(); // singleton
+        UmlDiagramRenderer rend = new CollabDiagramRenderer(); // singleton
         lay.setGraphNodeRenderer(rend);
         lay.setGraphEdgeRenderer(rend);
         setLayer(lay);

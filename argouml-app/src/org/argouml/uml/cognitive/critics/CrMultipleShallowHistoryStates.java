@@ -125,29 +125,6 @@ public class CrMultipleShallowHistoryStates extends CrUML {
         return new UMLToDoItem(this, offs, dsgr);
     }
 
-    /**
-     * @param ps the design material
-     * @return the offenders
-     */
-    protected ListSet computeOffenders(Object ps) {
-        ListSet offs = new ListSet(ps);
-        Object cs = Model.getFacade().getContainer(ps);
-        if (cs == null) {
-            LOG.log(Level.FINE, "null parent in still valid");
-            return offs;
-        }
-        Collection peers = Model.getFacade().getSubvertices(cs);
-        for (Object sv : peers) {
-            if (Model.getFacade().isAPseudostate(sv)
-                    && Model.getFacade().equalsPseudostateKind(
-                            Model.getFacade().getKind(sv),
-                            Model.getPseudostateKind().getShallowHistory())) {
-                offs.add(sv);
-            }
-        }
-        return offs;
-    }
-
     /*
      * @see org.argouml.cognitive.Poster#stillValid(
      *      org.argouml.cognitive.ToDoItem, org.argouml.cognitive.Designer)

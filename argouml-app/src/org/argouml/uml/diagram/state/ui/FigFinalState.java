@@ -52,6 +52,7 @@ import org.tigris.gef.base.Globals;
 import org.tigris.gef.base.Selection;
 import org.tigris.gef.presentation.Fig;
 import org.tigris.gef.presentation.FigCircle;
+import org.tigris.gef.presentation.FigText;
 
 /**
  * Class to display graphics for a UML FinalState in a diagram.
@@ -298,6 +299,30 @@ public class FigFinalState extends FigStateVertex {
         calcBounds(); //_x = x; _y = y; _w = w; _h = h;
         updateEdges();
         firePropChange("bounds", oldBounds, getBounds());
+    }
+
+    @Override
+    public Fig getHead() {
+        // TODO: Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public void setHead(FigCircle figCircle) {
+        // TODO: Auto-generated method stub
+        
+    }
+
+    @Override
+    public void setBound(FigText figText) {
+        // TODO: Auto-generated method stub
+        
+    }
+
+    @Override
+    public FigText getBound() {
+        // TODO: Auto-generated method stub
+        return null;
     }
 
 }

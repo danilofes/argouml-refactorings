@@ -52,6 +52,7 @@ import org.argouml.model.Model;
 import org.argouml.uml.diagram.DiagramSettings;
 import org.argouml.uml.diagram.state.ui.FigStateVertex;
 import org.tigris.gef.presentation.Fig;
+import org.tigris.gef.presentation.FigCircle;
 import org.tigris.gef.presentation.FigLine;
 import org.tigris.gef.presentation.FigRRect;
 import org.tigris.gef.presentation.FigText;
@@ -105,7 +106,7 @@ public class FigSubactivityState extends FigStateVertex {
         return frr;
     }
 
-    private void initFigs() {
+    protected void initFigs() {
         cover = new FigRRect(X, Y, W, H, LINE_COLOR, FILL_COLOR);
         cover.setCornerRadius(getHeight() / 2);
 
@@ -309,6 +310,30 @@ public class FigSubactivityState extends FigStateVertex {
             s = "";
         }
         getNameFig().setText(s);
+    }
+
+    @Override
+    public Fig getHead() {
+        // TODO: Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public void setHead(FigCircle figCircle) {
+        // TODO: Auto-generated method stub
+        
+    }
+
+    @Override
+    public void setBound(FigText figText) {
+        // TODO: Auto-generated method stub
+        
+    }
+
+    @Override
+    public FigText getBound() {
+        // TODO: Auto-generated method stub
+        return null;
     }
 
 }

@@ -44,6 +44,8 @@ import java.awt.Rectangle;
 import java.util.Iterator;
 
 import org.argouml.uml.diagram.DiagramSettings;
+import org.tigris.gef.presentation.Fig;
+import org.tigris.gef.presentation.FigCircle;
 import org.tigris.gef.presentation.FigLine;
 import org.tigris.gef.presentation.FigRRect;
 import org.tigris.gef.presentation.FigRect;
@@ -257,6 +259,30 @@ public class FigSimpleState extends FigState {
     @Override
     protected int getInitialY() {
         return 0;
+    }
+
+    @Override
+    public Fig getHead() {
+        // TODO: Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public void setHead(FigCircle figCircle) {
+        // TODO: Auto-generated method stub
+        
+    }
+
+    @Override
+    public void setBound(FigText figText) {
+        // TODO: Auto-generated method stub
+        
+    }
+
+    @Override
+    public FigText getBound() {
+        // TODO: Auto-generated method stub
+        return null;
     }
 
 } 

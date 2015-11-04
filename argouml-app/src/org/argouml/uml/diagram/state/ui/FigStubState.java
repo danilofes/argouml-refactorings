@@ -53,6 +53,7 @@ import org.argouml.uml.diagram.DiagramSettings;
 import org.argouml.uml.diagram.ui.SelectionMoveClarifiers;
 import org.tigris.gef.base.Selection;
 import org.tigris.gef.presentation.Fig;
+import org.tigris.gef.presentation.FigCircle;
 import org.tigris.gef.presentation.FigLine;
 import org.tigris.gef.presentation.FigRect;
 import org.tigris.gef.presentation.FigText;
@@ -101,7 +102,7 @@ public class FigStubState extends FigStateVertex {
         return fr;
     }
 
-    private void initFigs() {
+    protected void initFigs() {
         facade = Model.getFacade();
         stateMHelper = Model.getStateMachinesHelper();
 
@@ -476,6 +477,30 @@ public class FigStubState extends FigStateVertex {
         super.updateFont();
         Font f = getSettings().getFont(Font.PLAIN);
         referenceFig.setFont(f);
+    }
+
+    @Override
+    public Fig getHead() {
+        // TODO: Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public void setHead(FigCircle figCircle) {
+        // TODO: Auto-generated method stub
+        
+    }
+
+    @Override
+    public void setBound(FigText figText) {
+        // TODO: Auto-generated method stub
+        
+    }
+
+    @Override
+    public FigText getBound() {
+        // TODO: Auto-generated method stub
+        return null;
     }
 
 }

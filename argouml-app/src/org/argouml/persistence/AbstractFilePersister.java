@@ -39,11 +39,15 @@
 
 package org.argouml.persistence;
 
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.io.Writer;
+import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Level;
@@ -51,7 +55,14 @@ import java.util.logging.Logger;
 
 import javax.swing.event.EventListenerList;
 import javax.swing.filechooser.FileFilter;
+import javax.xml.transform.Result;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.stream.StreamResult;
+import javax.xml.transform.stream.StreamSource;
 
+import org.argouml.application.api.Argo;
 import org.argouml.configuration.Configuration;
 import org.argouml.kernel.ProfileConfiguration;
 import org.argouml.kernel.Project;
@@ -425,6 +436,59 @@ public abstract class AbstractFilePersister extends FileFilter
         }
         return null;
     }
+
+    /**
+     * Transform a string of XML data according to the service required.
+     *
+     * @param file The XML file to be transformed
+     * @param version the version of the persistence format the XML is to be
+     *            transformed to.
+     * @return the transformed XML file
+     * @throws OpenException on XSLT transformation error or file read
+     */
+    public final File transform(File file, int version)
+        throws OpenException {
+        
+            try {
+                String upgradeFilesPath = "/org/argouml/persistence/upgrades/";
+                String upgradeFile = "upgrade" + version + ".xsl";
+        
+                String xsltFileName = upgradeFilesPath + upgradeFile;
+                URL xsltUrl = UmlFilePersister.class.getResource(xsltFileName);
+        
+                LOG.log(Level.INFO, "Resource is {0}", xsltUrl);
+        
+                // Read xsltStream into a temporary file
+                // Get url for temp file.
+                // openStream from url and wrap in StreamSource
+                StreamSource xsltStreamSource = new StreamSource(xsltUrl
+                        .openStream());
+                xsltStreamSource.setSystemId(xsltUrl.toExternalForm());
+        
+                TransformerFactory factory = TransformerFactory.newInstance();
+                Transformer transformer = factory.newTransformer(xsltStreamSource);
+        
+                File transformedFile = File.createTempFile("upgrade_" + version
+                        + "_", ".uml");
+                transformedFile.deleteOnExit();
+        
+                FileOutputStream stream = new FileOutputStream(transformedFile);
+                Writer writer = new BufferedWriter(new OutputStreamWriter(stream,
+                        Argo.getEncoding()));
+                Result result = new StreamResult(writer);
+        
+                StreamSource inputStreamSource = new StreamSource(file);
+                inputStreamSource.setSystemId(file);
+                transformer.transform(inputStreamSource, result);
+        
+                writer.close();
+                return transformedFile;
+            } catch (IOException e) {
+                throw new OpenException(e);
+            } catch (TransformerException e) {
+                throw new OpenException(e);
+            }
+        }
 
     private static MemberFilePersister newPersister(
             Class<? extends MemberFilePersister> clazz) {
