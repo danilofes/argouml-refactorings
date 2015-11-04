@@ -41,7 +41,6 @@ package org.argouml.util;
 import java.awt.Frame;
 
 import javax.swing.AbstractButton;
-import javax.swing.JPanel;
 
 import org.argouml.i18n.Translator;
 import org.tigris.swidgets.Dialog;
@@ -69,8 +68,6 @@ public class ArgoDialog extends Dialog {
     public static void setFrame(Frame f) {
         ArgoDialog.frame = f;
     }
-
-    protected JPanel configPanelNorth;
 
     /**
      * Creates a new ArgoDialog with the default optionType.

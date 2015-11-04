@@ -66,6 +66,15 @@ public class SelectionInterface extends
      null,
     };
     
+    private static String instructions[] = 
+    {"Add an interface",
+     "Add a realization",
+     null,
+     null,
+     null,
+     "Move object(s)",
+    };
+    
     /**
      * Construct a new SelectionInterface for the given Fig.
      *

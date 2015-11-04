@@ -283,8 +283,6 @@ public abstract class FigNodeModelElement
      */
     private static final int ICON_WIDTH = 16;
 
-    protected static final int DEFAULT_X = 10;
-
     /**
      * When stereotypes are shown in <code>BigIcon</code> mode the
      * <code>nameFig</code> is replaced by the one provided by the

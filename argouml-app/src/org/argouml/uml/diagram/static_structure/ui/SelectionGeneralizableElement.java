@@ -70,6 +70,16 @@ public abstract class SelectionGeneralizableElement extends
      null,
     };
 
+    private static String[] instructions = 
+    {"Add a supertype",
+     "Add a subtype",
+     null,
+     null,
+     null,
+     "Move object(s)",
+    };
+
+    
     private boolean useComposite;
 
     /**

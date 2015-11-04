@@ -80,12 +80,6 @@ import org.tigris.swidgets.Orientation;
  */
 public abstract class AbstractArgoJPanel extends JPanel
     implements Cloneable, Orientable {
-
-    /**
-     * The current target element.
-     */
-    protected Object mMmeiTarget;
-    
     /**
      * Logger.
      */

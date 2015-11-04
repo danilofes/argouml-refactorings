@@ -45,7 +45,6 @@ import java.util.logging.Logger;
 
 import javax.swing.Icon;
 
-import org.argouml.application.helpers.ResourceLoaderWrapper;
 import org.tigris.gef.base.Editor;
 import org.tigris.gef.base.Globals;
 import org.tigris.gef.base.Mode;
@@ -94,8 +93,6 @@ public abstract class SelectionNodeClarifiers2 extends SelectionButtons {
     protected static final int LOWER_LEFT = 14;
 
     private static final int OFFSET = 2;
-
-    protected static Icon dep = ResourceLoaderWrapper.lookupIconResource("Dependency");
 
     private Object newEdge = null;
 

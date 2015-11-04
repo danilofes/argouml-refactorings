@@ -76,7 +76,6 @@ import org.argouml.uml.diagram.static_structure.ui.FigInterface;
 import org.argouml.uml.diagram.static_structure.ui.FigLink;
 import org.argouml.uml.diagram.static_structure.ui.FigPackage;
 import org.argouml.uml.diagram.static_structure.ui.UMLClassDiagram;
-import org.argouml.uml.diagram.ui.FigEdgeModelElement;
 import org.argouml.uml.diagram.use_case.ui.FigActor;
 import org.argouml.uml.diagram.use_case.ui.FigExtend;
 import org.argouml.uml.diagram.use_case.ui.FigInclude;
@@ -223,7 +222,7 @@ public class TestItemUID extends TestCase {
             new FigShallowHistoryState(pss, bounds, settings);
 
         Object t = Model.getStateMachinesFactory().createTransition();
-        FigEdgeModelElement figtransition = new FigTransition(t, settings);
+        FigTransition figtransition = new FigTransition(t, settings);
         
         Object clazz = Model.getCoreFactory().createClass();
         FigClass figclass = new FigClass(clazz, bounds, settings);

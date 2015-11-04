@@ -112,6 +112,7 @@ public class PerspectiveConfigurator extends ArgoDialog {
     ////////////////////////////////////////////////////////////////
     // instance variables
 
+    private JPanel  configPanelNorth;
     private JPanel  configPanelSouth;
     private JSplitPane splitPane;
     private JTextField renameTextField;

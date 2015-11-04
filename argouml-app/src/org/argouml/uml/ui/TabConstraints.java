@@ -94,6 +94,11 @@ public class TabConstraints extends AbstractArgoJPanel
     private OCLEditor mOcleEditor;
 
     /**
+     * The current target element.
+     */
+    private Object mMmeiTarget;
+
+    /**
      * The constructor.
      */
     public TabConstraints() {
