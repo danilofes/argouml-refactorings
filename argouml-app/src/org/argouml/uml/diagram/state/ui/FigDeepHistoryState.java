@@ -41,9 +41,6 @@ package org.argouml.uml.diagram.state.ui;
 import java.awt.Rectangle;
 
 import org.argouml.uml.diagram.DiagramSettings;
-import org.tigris.gef.presentation.Fig;
-import org.tigris.gef.presentation.FigCircle;
-import org.tigris.gef.presentation.FigText;
 
 /** Class to display graphics for a UML DeepHistoryState in a diagram.
  *
@@ -68,30 +65,6 @@ public class FigDeepHistoryState extends FigHistoryState {
      */
     public String getH() {
         return "H*";
-    }
-
-    @Override
-    public Fig getHead() {
-        // TODO: Auto-generated method stub
-        return null;
-    }
-
-    @Override
-    public void setHead(FigCircle figCircle) {
-        // TODO: Auto-generated method stub
-        
-    }
-
-    @Override
-    public void setBound(FigText figText) {
-        // TODO: Auto-generated method stub
-        
-    }
-
-    @Override
-    public FigText getBound() {
-        // TODO: Auto-generated method stub
-        return null;
     }
 
 }

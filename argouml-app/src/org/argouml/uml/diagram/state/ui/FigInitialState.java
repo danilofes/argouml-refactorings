@@ -51,7 +51,6 @@ import org.argouml.uml.diagram.activity.ui.SelectionActionState;
 import org.tigris.gef.base.Selection;
 import org.tigris.gef.presentation.Fig;
 import org.tigris.gef.presentation.FigCircle;
-import org.tigris.gef.presentation.FigText;
 
 /**
  * Class to display graphics for a UML Initial State in a diagram.
@@ -87,7 +86,7 @@ public class FigInitialState extends FigStateVertex {
             new FigCircle(X, Y, STATE_WIDTH, HEIGHT, DEBUG_COLOR, DEBUG_COLOR);
     }
 
-    protected void initFigs() {
+    private void initFigs() {
         setEditable(false);
 
         head = new FigCircle(X, Y, STATE_WIDTH, HEIGHT, LINE_COLOR,
@@ -251,29 +250,5 @@ public class FigInitialState extends FigStateVertex {
         calcBounds(); //_x = x; _y = y; _w = w; _h = h;
         updateEdges();
         firePropChange("bounds", oldBounds, getBounds());
-    }
-
-    @Override
-    public Fig getHead() {
-        // TODO: Auto-generated method stub
-        return null;
-    }
-
-    @Override
-    public void setHead(FigCircle figCircle) {
-        // TODO: Auto-generated method stub
-        
-    }
-
-    @Override
-    public void setBound(FigText figText) {
-        // TODO: Auto-generated method stub
-        
-    }
-
-    @Override
-    public FigText getBound() {
-        // TODO: Auto-generated method stub
-        return null;
     }
 }

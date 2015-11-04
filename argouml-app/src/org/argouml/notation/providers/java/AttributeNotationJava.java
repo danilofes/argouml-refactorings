@@ -38,8 +38,6 @@
 
 package org.argouml.notation.providers.java;
 
-import java.text.ParseException;
-
 import org.argouml.application.events.ArgoEventPump;
 import org.argouml.application.events.ArgoEventTypes;
 import org.argouml.application.events.ArgoHelpEvent;
@@ -115,13 +113,6 @@ public class AttributeNotationJava extends AttributeNotation {
     @Override
     public String toString(Object modelElement, NotationSettings settings) {
         return toString(modelElement);
-    }
-
-    @Override
-    public void parseAttributeFig(Object owner, Object modelElement, String text)
-        throws ParseException {
-        // TODO: Auto-generated method stub
-        
     }
 
 }

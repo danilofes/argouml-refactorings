@@ -54,7 +54,6 @@ import org.argouml.ui.targetmanager.TargetManager;
 import org.argouml.uml.diagram.DiagramSettings;
 import org.argouml.uml.diagram.ui.ActionAddConcurrentRegion;
 import org.tigris.gef.presentation.Fig;
-import org.tigris.gef.presentation.FigCircle;
 import org.tigris.gef.presentation.FigLine;
 import org.tigris.gef.presentation.FigRRect;
 import org.tigris.gef.presentation.FigRect;
@@ -85,7 +84,7 @@ public class FigCompositeState extends FigState {
         updateNameText();
     }
 
-    protected void initFigs() {
+    private void initFigs() {
         cover =
             new FigRRect(getInitialX(), getInitialY(),
 			      getInitialWidth(), getInitialHeight(),
@@ -438,30 +437,6 @@ public class FigCompositeState extends FigState {
      */
     protected int getInitialY() {
         return 0;
-    }
-
-    @Override
-    public Fig getHead() {
-        // TODO: Auto-generated method stub
-        return null;
-    }
-
-    @Override
-    public void setHead(FigCircle figCircle) {
-        // TODO: Auto-generated method stub
-        
-    }
-
-    @Override
-    public void setBound(FigText figText) {
-        // TODO: Auto-generated method stub
-        
-    }
-
-    @Override
-    public FigText getBound() {
-        // TODO: Auto-generated method stub
-        return null;
     }
 
 } /* end class FigCompositeState */

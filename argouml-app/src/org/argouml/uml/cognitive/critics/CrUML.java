@@ -38,7 +38,6 @@
 
 package org.argouml.uml.cognitive.critics;
 
-import java.util.Collection;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -277,29 +276,6 @@ public class CrUML extends Critic {
         // when Argo drops support for Java versions < 1.5
         String className = getClass().getName();
         return className.substring(className.lastIndexOf('.') + 1);
-    }
-
-    /**
-     * @param ps the design material
-     * @return the offenders
-     */
-    protected ListSet computeOffenders(Object ps) {
-        ListSet offs = new ListSet(ps);
-        Object cs = Model.getFacade().getContainer(ps);
-        if (cs == null) {
-            LOG.log(Level.FINE, "null parent in still valid");
-            return offs;
-        }
-        Collection peers = Model.getFacade().getSubvertices(cs);
-        for (Object sv : peers) {
-            if (Model.getFacade().isAPseudostate(sv)
-                    && Model.getFacade().equalsPseudostateKind(
-                            Model.getFacade().getKind(sv),
-                            Model.getPseudostateKind().getShallowHistory())) {
-                offs.add(sv);
-            }
-        }
-        return offs;
     }
 
     /**

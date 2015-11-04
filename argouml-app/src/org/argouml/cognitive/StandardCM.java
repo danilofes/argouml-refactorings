@@ -86,10 +86,6 @@ class EnabledCM implements ControlMech {
     public boolean isRelevant(Critic c, Designer d) {
         return c.isEnabled();
     }
-
-    public List<ControlMech> getMechList() {
-        return null;
-    }
 } // end class EnabledCM
 
 class NotSnoozedCM implements ControlMech {
@@ -99,10 +95,6 @@ class NotSnoozedCM implements ControlMech {
     public boolean isRelevant(Critic c, Designer d) {
         return !c.snoozeOrder().getSnoozed();
     }
-
-    public List<ControlMech> getMechList() {
-        return null;
-    }
 } // end class NotSnoozedCM
 
 class DesignGoalsCM implements ControlMech {
@@ -111,10 +103,6 @@ class DesignGoalsCM implements ControlMech {
      */
     public boolean isRelevant(Critic c, Designer d) {
         return c.isRelevantToGoals(d);
-    }
-
-    public List<ControlMech> getMechList() {
-        return null;
     }
 } // end class DesignGoalsCM
 
@@ -130,10 +118,6 @@ class CurDecisionCM implements ControlMech {
     public boolean isRelevant(Critic c, Designer d) {
         return c.isRelevantToDecisions(d);
     }
-
-    public List<ControlMech> getMechList() {
-        return null;
-    }
 } // end class CurDecisionCM
 
 abstract class CompositeCM implements ControlMech {
@@ -142,8 +126,7 @@ abstract class CompositeCM implements ControlMech {
     /**
      * @return a list of the ControlMechs.
      */
-    @Override
-    public List<ControlMech> getMechList() {
+    protected List<ControlMech> getMechList() {
         return mechs;
     }
 

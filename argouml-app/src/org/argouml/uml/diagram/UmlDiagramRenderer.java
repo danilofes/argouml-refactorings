@@ -39,22 +39,13 @@
 package org.argouml.uml.diagram;
 
 import java.util.Map;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 import org.argouml.model.Model;
 import org.argouml.uml.CommentEdge;
-import org.argouml.uml.diagram.collaboration.ui.CollabDiagramRenderer;
-import org.argouml.uml.diagram.collaboration.ui.FigAssociationRole;
-import org.argouml.uml.diagram.static_structure.ui.FigEdgeNote;
 import org.argouml.uml.diagram.ui.FigCompartmentBox;
-import org.argouml.uml.diagram.ui.FigDependency;
 import org.argouml.uml.diagram.ui.FigEdgeModelElement;
-import org.argouml.uml.diagram.ui.FigGeneralization;
 import org.tigris.gef.base.Layer;
-import org.tigris.gef.base.LayerPerspective;
 import org.tigris.gef.graph.GraphEdgeRenderer;
-import org.tigris.gef.graph.GraphModel;
 import org.tigris.gef.graph.GraphNodeRenderer;
 import org.tigris.gef.presentation.Fig;
 import org.tigris.gef.presentation.FigEdge;
@@ -72,11 +63,6 @@ import org.tigris.gef.presentation.FigNode;
  */
 public abstract class UmlDiagramRenderer
     implements GraphNodeRenderer, GraphEdgeRenderer {
-    /**
-     * Logger.
-     */
-    private static final Logger LOG =
-        Logger.getLogger(UmlDiagramRenderer.class.getName());
 
     /**
      * @deprecated for 0.27.3 by tfmorris. Only used by
@@ -398,54 +384,4 @@ public abstract class UmlDiagramRenderer
 
         lay.add(newEdge);
     }
-
-    /**
-     * Return a Fig that can be used to represent the given edge,
-     * Generally the same code as for the ClassDiagram, since its
-     * very related to it.
-     *
-     * {@inheritDoc}
-     */
-    public FigEdge getFigEdgeFor(GraphModel gm, Layer lay, Object edge,
-            Map styleAttributes) {
-                LOG.log(Level.FINE, "making figedge for {0}", edge);
-            
-                if (edge == null) {
-                    throw new IllegalArgumentException("A model edge must be supplied");
-                }
-            
-                assert lay instanceof LayerPerspective;
-                ArgoDiagram diag = (ArgoDiagram) ((LayerPerspective) lay).getDiagram();
-                DiagramSettings settings = diag.getDiagramSettings();
-            
-                FigEdge newEdge = null;
-                if (Model.getFacade().isAAssociationRole(edge)
-                        || Model.getFacade().isAConnector(edge)) {
-                    Object[] associationEnds =
-                        Model.getFacade().getConnections(edge).toArray();
-                    newEdge = new FigAssociationRole(
-                            new DiagramEdgeSettings(
-                                    edge,
-                                    associationEnds[0],
-                                    associationEnds[1]),
-                                    settings);
-                    FigNode sourceFig =
-                        getFigNodeForAssociationEnd(diag, associationEnds[0]);
-                    FigNode destFig =
-                        getFigNodeForAssociationEnd(diag, associationEnds[1]);
-                    newEdge.setSourceFigNode(sourceFig);
-                    newEdge.setSourcePortFig(sourceFig);
-                    newEdge.setDestFigNode(destFig);
-                    newEdge.setDestPortFig(destFig);
-                } else if (Model.getFacade().isAGeneralization(edge)) {
-                    newEdge = new FigGeneralization(edge, settings);
-                } else if (Model.getFacade().isADependency(edge)) {
-                    newEdge = new FigDependency(edge , settings);
-                } else if (edge instanceof CommentEdge) {
-                    newEdge = new FigEdgeNote(edge, settings); // TODO -> settings
-                }
-            
-                addEdge(lay, newEdge, edge);
-                return newEdge;
-            }
 }

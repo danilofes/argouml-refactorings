@@ -57,7 +57,6 @@ import org.argouml.model.Model;
 import org.argouml.notation.InitNotation;
 import org.argouml.notation.NotationProvider;
 import org.argouml.notation.NotationSettings;
-import org.argouml.notation.providers.AttributeNotation;
 import org.argouml.notation.providers.java.InitNotationJava;
 import org.argouml.profile.ProfileFacade;
 import org.argouml.profile.init.InitProfileSubsystem;
@@ -279,7 +278,7 @@ public class TestAttributeAndOperationNotationUml extends TestCase {
         Object attrType = project.getDefaultAttributeType();
         attr = Model.getCoreFactory().buildAttribute2(cl, attrType);       
 
-        AttributeNotation anu = new AttributeNotationUml(attr); 
+        AttributeNotationUml anu = new AttributeNotationUml(attr); 
         anu.parse(attr, ATTR14);
                 
         List attrs = Model.getFacade().getAttributes(cl);
@@ -1206,7 +1205,7 @@ public class TestAttributeAndOperationNotationUml extends TestCase {
         Object attr;
         attr = Model.getCoreFactory().createAttribute();
         
-        AttributeNotation notation = new AttributeNotationUml(attr);
+        AttributeNotationUml notation = new AttributeNotationUml(attr);
         String help = notation.getParsingHelp();
         assertTrue("No help at all given", help.length() > 0);
         assertTrue("Parsing help not conform for translation", 

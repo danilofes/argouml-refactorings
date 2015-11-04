@@ -47,7 +47,6 @@ import java.util.Iterator;
 import org.argouml.uml.diagram.DiagramSettings;
 import org.tigris.gef.presentation.Fig;
 import org.tigris.gef.presentation.FigCircle;
-import org.tigris.gef.presentation.FigText;
 
 /**
  * Class to display graphics for a UML Choice State in a diagram - the circle.
@@ -84,7 +83,7 @@ public class FigBranchState extends FigStateVertex {
         return bp;
     }
 
-    protected void initFigs() {
+    private void initFigs() {
         setEditable(false);
         head = new FigCircle(X0, Y0, BWIDTH, BHEIGHT, LINE_COLOR, FILL_COLOR);
 
@@ -226,30 +225,5 @@ public class FigBranchState extends FigStateVertex {
      * The UID.
      */
     static final long serialVersionUID = 6572261327347541373L;
-
-
-    @Override
-    public Fig getHead() {
-        // TODO: Auto-generated method stub
-        return null;
-    }
-
-    @Override
-    public void setHead(FigCircle figCircle) {
-        // TODO: Auto-generated method stub
-        
-    }
-
-    @Override
-    public void setBound(FigText figText) {
-        // TODO: Auto-generated method stub
-        
-    }
-
-    @Override
-    public FigText getBound() {
-        // TODO: Auto-generated method stub
-        return null;
-    }
 
 }

@@ -38,6 +38,8 @@
 
 package org.argouml.profile.internal.ui;
 
+import java.util.Collection;
+
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JTextArea;
@@ -140,5 +142,18 @@ public class PropPanelCritic extends PropPanel {
         
         priority.setText("" + c.getPriority());
         knowledgeType.setText("" + colToString(c.getKnowledgeTypes()));
+    }
+
+    private String colToString(Collection set) {
+        String r = "";
+        int count = 0;
+        for (Object obj : set) {
+            if (count > 0) {
+                r += ", ";
+            }
+            r += obj;
+            ++count;
+        }        
+        return r;
     }
 }

@@ -40,12 +40,7 @@
 package org.argouml.notation.providers;
 
 import java.beans.PropertyChangeEvent;
-import java.text.ParseException;
 
-import org.argouml.application.events.ArgoEventPump;
-import org.argouml.application.events.ArgoEventTypes;
-import org.argouml.application.events.ArgoHelpEvent;
-import org.argouml.i18n.Translator;
 import org.argouml.model.AddAssociationEvent;
 import org.argouml.model.Model;
 import org.argouml.model.RemoveAssociationEvent;
@@ -106,23 +101,4 @@ public abstract class AttributeNotation extends NotationProvider {
             }
         }
     }
-
-    public void parse(Object modelElement, String text) {
-        try {
-            parseAttributeFig(Model.getFacade().getOwner(modelElement),
-                    modelElement, text);
-        } catch (ParseException pe) {
-            String msg = "statusmsg.bar.error.parsing.attribute";
-            Object[] args = {
-                pe.getLocalizedMessage(),
-                Integer.valueOf(pe.getErrorOffset()),
-            };
-            ArgoEventPump.fireEvent(new ArgoHelpEvent(
-                    ArgoEventTypes.HELP_CHANGED, this,
-                    Translator.messageFormat(msg, args)));
-        }
-    }
-
-    public abstract void parseAttributeFig(Object owner, Object modelElement,
-            String text) throws ParseException ;
 }

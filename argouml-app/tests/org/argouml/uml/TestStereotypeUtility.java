@@ -24,7 +24,6 @@ import org.argouml.kernel.Project;
 import org.argouml.kernel.ProjectManager;
 import org.argouml.model.InitializeModel;
 import org.argouml.model.Model;
-import org.argouml.profile.Profile;
 import org.argouml.profile.ProfileFacade;
 import org.argouml.profile.ProfileMother;
 import org.argouml.profile.UserDefinedProfile;
@@ -74,7 +73,7 @@ public class TestStereotypeUtility extends TestCase {
         ProfileMother profileMother = new ProfileMother();
         File profileFile = profileMother.createUnloadedSimpleProfile();
         profileFile.deleteOnExit();
-        Profile profile = new UserDefinedProfile(profileFile,
+        UserDefinedProfile profile = new UserDefinedProfile(profileFile,
             ProfileFacade.getManager());
         Collection profileModels = profile.getProfilePackages();
         // TODO: the following fails due to the XMI writing saving all top level

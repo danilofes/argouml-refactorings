@@ -54,11 +54,8 @@ import org.tigris.gef.base.LayerDiagram;
 import org.tigris.gef.base.LayerPerspective;
 import org.tigris.gef.base.Selection;
 import org.tigris.gef.presentation.Fig;
-import org.tigris.gef.presentation.FigCircle;
 import org.tigris.gef.presentation.FigEdge;
-import org.tigris.gef.presentation.FigGroup;
 import org.tigris.gef.presentation.FigNode;
-import org.tigris.gef.presentation.FigText;
 
 /**
  * Abstract class for a State Vertex 
@@ -194,35 +191,5 @@ public abstract class FigStateVertex extends FigNodeModelElement {
         }
         return ret;
     }
-
-    protected void initFigs() {
-        setEditable(false);
-    
-        setHead(new FigCircle(FigSynchState.X, FigSynchState.Y, WIDTH, FigSynchState.HEIGHT, LINE_COLOR, FILL_COLOR));
-    
-        setBound( new FigText(FigSynchState.X - 2, FigSynchState.Y + 2, 0, 0, true));
-        getBound().setFilled(false);
-        getBound().setLineWidth(0);
-        getBound().setTextColor(TEXT_COLOR);
-        getBound().setReturnAction(FigText.END_EDITING);
-        getBound().setTabAction(FigText.END_EDITING);
-        getBound().setJustification(FigText.JUSTIFY_CENTER);
-        getBound().setEditable(false);
-        getBound().setText("*");
-    
-        addFig(getBigPort());
-        addFig(getHead());
-        addFig(getBound());
-    
-        setBlinkPorts(false); //make port invisible unless mouse enters
-    }
-
-    public abstract Fig getHead();
-
-    public abstract void setHead(FigCircle figCircle);
-
-    public abstract void setBound(FigText figText);
-
-    public abstract FigText getBound();
 
 }

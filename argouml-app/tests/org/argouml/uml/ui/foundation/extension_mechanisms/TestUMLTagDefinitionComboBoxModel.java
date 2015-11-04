@@ -50,7 +50,6 @@ import org.argouml.kernel.TestProjectWithProfiles;
 import org.argouml.model.InitializeModel;
 import org.argouml.model.Model;
 import org.argouml.persistence.AbstractFilePersister;
-import org.argouml.profile.Profile;
 import org.argouml.profile.ProfileFacade;
 import org.argouml.profile.ProfileMother;
 import org.argouml.profile.UserDefinedProfile;
@@ -177,7 +176,7 @@ public class TestUMLTagDefinitionComboBoxModel extends TestCase {
             "testGetApplicableTagDefinitionsIssue6008");
         profileFile.deleteOnExit();
         profileFile.getParentFile().deleteOnExit();
-        Profile profile = new UserDefinedProfile(profileFile,
+        UserDefinedProfile profile = new UserDefinedProfile(profileFile,
             ProfileFacade.getManager());
         Collection profileModels = profile.getProfilePackages();
         // TODO: the following fails due to the XMI writing saving all top level

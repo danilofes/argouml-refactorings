@@ -61,7 +61,6 @@ import org.tigris.gef.base.Globals;
 import org.tigris.gef.base.Layer;
 import org.tigris.gef.base.Selection;
 import org.tigris.gef.presentation.Fig;
-import org.tigris.gef.presentation.FigCircle;
 import org.tigris.gef.presentation.FigLine;
 import org.tigris.gef.presentation.FigRect;
 import org.tigris.gef.presentation.FigText;
@@ -625,28 +624,4 @@ public class FigConcurrentRegion extends FigState
      * The UID.
      */
     private static final long serialVersionUID = -7228935179004210975L;
-
-    @Override
-    public Fig getHead() {
-        // TODO: Auto-generated method stub
-        return null;
-    }
-
-    @Override
-    public void setHead(FigCircle figCircle) {
-        // TODO: Auto-generated method stub
-        
-    }
-
-    @Override
-    public void setBound(FigText figText) {
-        // TODO: Auto-generated method stub
-        
-    }
-
-    @Override
-    public FigText getBound() {
-        // TODO: Auto-generated method stub
-        return null;
-    }
 }

@@ -45,7 +45,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 import org.argouml.cognitive.Critic;
-import org.argouml.profile.UserDefinedProfile.NullProfileManager;
 
 /**
  * Abstract class representing an ArgoUML Profile. It contains default types and
@@ -61,13 +60,6 @@ import org.argouml.profile.UserDefinedProfile.NullProfileManager;
  * @author maurelio1234
  */
 public abstract class Profile {
-
-    protected static ProfileManager getSomeProfileManager() {
-        if (ProfileFacade.isInitiated()) {
-            return ProfileFacade.getManager();
-        }
-        return new NullProfileManager();
-    }
 
     private Set<String> dependencies = new HashSet<String>();
 

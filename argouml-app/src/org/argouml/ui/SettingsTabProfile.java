@@ -376,7 +376,7 @@ public class SettingsTabProfile extends JPanel implements
             if (files != null && files.size() > 0) {
                 for (File file : files) {
                     try {
-                        Profile profile =
+                        UserDefinedProfile profile =
                             new UserDefinedProfile(file,
                                 ProfileFacade.getManager());
                         ProfileFacade.getManager().registerProfile(profile);

@@ -731,18 +731,4 @@ public abstract class PropPanel extends AbstractArgoJPanel implements
     public void componentResized(ComponentEvent e) {
         // ignored
     }
-
-
-    protected String colToString(Collection set) {
-        String r = "";
-        int count = 0;
-        for (Object obj : set) {
-            if (count > 0) {
-                r += ", ";
-            }
-            r += obj;
-            ++count;
-        }        
-        return r;
-    }
 }

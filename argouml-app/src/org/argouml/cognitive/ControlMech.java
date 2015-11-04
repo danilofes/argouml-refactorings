@@ -38,8 +38,6 @@
 
 package org.argouml.cognitive;
 
-import java.util.List;
-
 
 /**
  * A ControlMech determines when a Critic should be active.  New
@@ -61,8 +59,6 @@ public interface ControlMech  {
      * @return true f the critic is relevant for the given designer
      */
     boolean isRelevant(Critic c, Designer d);
-
-    public abstract List<ControlMech> getMechList();
 }
 
 

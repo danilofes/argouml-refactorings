@@ -58,7 +58,6 @@ import java.util.logging.Logger;
 import org.argouml.cognitive.Critic;
 import org.argouml.i18n.Translator;
 import org.argouml.moduleloader.ModuleLoader2;
-import org.argouml.profile.Profile;
 import org.argouml.profile.ProfileException;
 import org.argouml.profile.ProfileFacade;
 import org.argouml.profile.UserDefinedProfile;
@@ -161,7 +160,7 @@ public final class ProfileLoader {
                                 + file.getCanonicalPath() + "!" + modelPath);
                     }
 
-                    Profile udp = new UserDefinedProfile(entryName,
+                    UserDefinedProfile udp = new UserDefinedProfile(entryName,
                             modelURL, critics,
                             loadManifestDependenciesForProfile(attr),
                             ProfileFacade.getManager());

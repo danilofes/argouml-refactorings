@@ -61,13 +61,13 @@ import org.tigris.gef.presentation.FigText;
  */
 public class FigSynchState extends FigStateVertex {
 
-    static final int X = X0;
-    static final int Y = Y0;
-    static final int WIDTH = 25;
-    static final int HEIGHT = 25;
+    private static final int X = X0;
+    private static final int Y = Y0;
+    private static final int WIDTH = 25;
+    private static final int HEIGHT = 25;
 
-    FigText bound;
-    FigCircle head;
+    private FigText bound;
+    private FigCircle head;
 
     /**
      * Construct a new FigSynchState.
@@ -86,6 +86,28 @@ public class FigSynchState extends FigStateVertex {
     protected Fig createBigPortFig() {
         return new FigCircle(X, Y, WIDTH, HEIGHT, DEBUG_COLOR, 
                 DEBUG_COLOR);
+    }
+
+    private void initFigs() {
+        setEditable(false);
+
+        head = new FigCircle(X, Y, WIDTH, HEIGHT, LINE_COLOR, FILL_COLOR);
+
+        bound = new FigText(X - 2, Y + 2, 0, 0, true);
+        bound.setFilled(false);
+        bound.setLineWidth(0);
+        bound.setTextColor(TEXT_COLOR);
+        bound.setReturnAction(FigText.END_EDITING);
+        bound.setTabAction(FigText.END_EDITING);
+        bound.setJustification(FigText.JUSTIFY_CENTER);
+        bound.setEditable(false);
+        bound.setText("*");
+
+        addFig(getBigPort());
+        addFig(head);
+        addFig(bound);
+
+        setBlinkPorts(false); //make port invisible unless mouse enters
     }
 
     /**
@@ -233,26 +255,6 @@ public class FigSynchState extends FigStateVertex {
         super.updateFont();
         Font f = getSettings().getFontPlain();
         bound.setFont(f);
-    }
-
-    @Override
-    public Fig getHead() {
-        return head;
-    }
-
-    @Override
-    public void setHead(FigCircle figCircle) {
-        this.head = figCircle;        
-    }
-
-    @Override
-    public void setBound(FigText figText) {
-        bound = figText;        
-    }
-
-    @Override
-    public FigText getBound() {
-        return bound;
     }
 
 }
