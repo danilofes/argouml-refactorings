@@ -42,6 +42,7 @@ import java.awt.AlphaComposite;
 import java.awt.Color;
 import java.awt.GradientPaint;
 import java.awt.Graphics2D;
+import java.awt.Image;
 import java.awt.Insets;
 import java.awt.Point;
 import java.awt.Rectangle;
@@ -152,6 +153,20 @@ public class DnDExplorerTree
      * dnd source.
      */
     private DragSource dragSource;
+
+    /**
+     * Background image only displayed in UML2 mode
+     */
+    private Image bgImage = null;
+    
+
+    public Image getBgImage() {
+        return bgImage;
+    }
+
+    public void setBgImage(Image bgImage) {
+        this.bgImage = bgImage;
+    }
 
     /**
      * Creates a new instance of DnDArgoJTree.

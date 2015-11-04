@@ -36,7 +36,6 @@
 // CALIFORNIA HAS NO OBLIGATIONS TO PROVIDE MAINTENANCE, SUPPORT,
 // UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 
-
 package org.argouml.uml.cognitive.critics;
 
 import org.argouml.cognitive.ListSet;
@@ -44,10 +43,10 @@ import org.argouml.cognitive.ToDoItem;
 import org.argouml.cognitive.critics.Wizard;
 import org.argouml.model.Model;
 
-
 /**
- * UMLWizard is an abstract convenience implementation for UML Wizards,
- * which provides common methods to all its subclasses.
+ * UMLWizard is an abstract convenience implementation for UML Wizards, which
+ * provides common methods to all its subclasses.
+ * 
  * @author mkl
  * @see org.argouml.cognitive.critics.Wizard
  */
@@ -58,18 +57,20 @@ public abstract class UMLWizard extends Wizard {
      */
     private String suggestion;
 
+    private boolean started = false;
+
     /**
      * The constructor.
-     *
+     * 
      */
     public UMLWizard() {
         super();
     }
 
     /**
-     * Preset the number of steps to 1. You need to override this
-     * method, in case your Wizard requires a different number of steps.
-     * This method is a convenience implementation.
+     * Preset the number of steps to 1. You need to override this method, in
+     * case your Wizard requires a different number of steps. This method is a
+     * convenience implementation.
      * 
      * {@inheritDoc}
      */
@@ -111,7 +112,7 @@ public abstract class UMLWizard extends Wizard {
      * @param s set a new suggestion string
      */
     public void setSuggestion(String s) {
-	suggestion = s;
+        suggestion = s;
     }
 
     /**
@@ -119,5 +120,16 @@ public abstract class UMLWizard extends Wizard {
      */
     public String getSuggestion() {
         return suggestion;
+    }
+
+    public void setStarted(boolean b) {
+        this.started = b;
+    }
+
+    /**
+     * @return true if the wizard is started
+     */
+    public boolean isStarted() {
+        return started;
     }
 }

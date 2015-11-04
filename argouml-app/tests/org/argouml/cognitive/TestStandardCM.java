@@ -67,7 +67,27 @@ public class TestStandardCM extends TestCase {
      */
     public void testEnabledCM() {
 	
-	Critic critic = new Critic();
+	Critic critic = new Critic() {
+
+            /**
+             * The priority of the ToDoItem produced.
+             */
+            private int priority;
+            
+            /**
+             * @return the priority
+             */
+            public int getPriority() {
+                return priority;
+            }
+                
+            /**
+             * @param p the priority
+             */
+            public void setPriority(int p) {
+                priority = p;
+            }
+        };
 	EnabledCM cm = new EnabledCM();
 	
 	// EnabledCM isRelevant checks if the critic is enabled
@@ -91,7 +111,27 @@ public class TestStandardCM extends TestCase {
      */
     public void testNotSnoozedCM() {
 	
-	Critic critic = new Critic();
+	Critic critic = new Critic() {
+
+            /**
+             * The priority of the ToDoItem produced.
+             */
+            private int priority;
+            
+            /**
+             * @return the priority
+             */
+            public int getPriority() {
+                return priority;
+            }
+                
+            /**
+             * @param p the priority
+             */
+            public void setPriority(int p) {
+                priority = p;
+            }
+        };
 	NotSnoozedCM cm = new NotSnoozedCM();
 	
 	// NotSnoozedCM isRelevant checks if the critic is snoozed
@@ -117,7 +157,27 @@ public class TestStandardCM extends TestCase {
      */
     public void testDesignGoalsCM() {
 	
-	Critic critic = new Critic();
+	Critic critic = new Critic() {
+
+            /**
+             * The priority of the ToDoItem produced.
+             */
+            private int priority;
+            
+            /**
+             * @return the priority
+             */
+            public int getPriority() {
+                return priority;
+            }
+                
+            /**
+             * @param p the priority
+             */
+            public void setPriority(int p) {
+                priority = p;
+            }
+        };
 	DesignGoalsCM cm = new DesignGoalsCM();
 	
 	// DesignGoalsCM checks if the critic isRelevantToGoals of the Designer
@@ -132,7 +192,27 @@ public class TestStandardCM extends TestCase {
      */
     public void testCurDecisionCM() {
 	
-	Critic critic = new Critic();
+	Critic critic = new Critic() {
+
+            /**
+             * The priority of the ToDoItem produced.
+             */
+            private int priority;
+            
+            /**
+             * @return the priority
+             */
+            public int getPriority() {
+                return priority;
+            }
+                
+            /**
+             * @param p the priority
+             */
+            public void setPriority(int p) {
+                priority = p;
+            }
+        };
 	CurDecisionCM cm = new CurDecisionCM();
 	
 	// CurDecisionCM isRelevant checks to see if the critic has

@@ -47,6 +47,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.URL;
+import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.zip.ZipEntry;
@@ -159,7 +160,23 @@ class ZipFilePersister extends XmiFilePersister {
                             projectMember.getType());
 
                     MemberFilePersister persister
-                        = new ModelMemberFilePersister();
+                        = new ModelMemberFilePersister() {
+
+                            private HashMap<String, Object> uUIDRefs;
+
+                            /**
+                             * Return XMI id to object map for the most recently read XMI file.
+                             * 
+                             * @return the UUID
+                             */
+                            public HashMap<String, Object> getUUIDRefs() {
+                                return uUIDRefs;
+                            }
+
+                            public void setUUIDRefs(HashMap<String, Object> hashMap) {
+                                uUIDRefs = hashMap;
+                            }
+                        };
                     persister.save(projectMember, bufferedStream);
                 }
             }
@@ -231,7 +248,23 @@ class ZipFilePersister extends XmiFilePersister {
             is.setSystemId(file.toURI().toURL().toExternalForm());
 
             ModelMemberFilePersister modelPersister =
-                new ModelMemberFilePersister();
+                    new ModelMemberFilePersister() {
+
+                private HashMap<String, Object> uUIDRefs;
+
+                /**
+                 * Return XMI id to object map for the most recently read XMI file.
+                 * 
+                 * @return the UUID
+                 */
+                public HashMap<String, Object> getUUIDRefs() {
+                    return uUIDRefs;
+                }
+
+                public void setUUIDRefs(HashMap<String, Object> hashMap) {
+                    uUIDRefs = hashMap;
+                }
+            };
 
             modelPersister.readModels(is);
             // TODO Handle multiple top level packages

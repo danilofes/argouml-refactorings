@@ -72,15 +72,13 @@ import org.xml.sax.InputSource;
  * The file persister for the UML model.
  * @author Bob Tarling
  */
-class ModelMemberFilePersister extends MemberFilePersister
+abstract class ModelMemberFilePersister extends MemberFilePersister
     implements XmiExtensionParser {
 
     private static final Logger LOG =
         Logger.getLogger(ModelMemberFilePersister.class.getName());
 
     private Object curModel;
-    private HashMap<String, Object> uUIDRefs;
-
     private Collection elementsRead;
 
     /**
@@ -205,9 +203,7 @@ class ModelMemberFilePersister extends MemberFilePersister
      *
      * @return the UUID
      */
-    public HashMap<String, Object> getUUIDRefs() {
-        return uUIDRefs;
-    }
+    public abstract HashMap<String, Object> getUUIDRefs();
 
     ////////////////////////////////////////////////////////////////
     // main parsing methods
@@ -301,8 +297,7 @@ class ModelMemberFilePersister extends MemberFilePersister
                     // TODO: add stereotype application (eCore AnyType?)
                 }
             }
-            uUIDRefs =
-                new HashMap<String, Object>(reader.getXMIUUIDToObjectMap());
+            setUUIDRefs(new HashMap<String, Object>(reader.getXMIUUIDToObjectMap()));
         } catch (XmiException ex) {
             throw new XmiFormatException(ex);
         } catch (UmlException ex) {
@@ -312,6 +307,8 @@ class ModelMemberFilePersister extends MemberFilePersister
         }
         LOG.log(Level.INFO, "=======================================");
     }
+
+    abstract void setUUIDRefs(HashMap<String, Object> hashMap);
 
     /**
      * Create and register diagrams for activity and statemachines in the

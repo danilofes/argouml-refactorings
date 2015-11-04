@@ -48,6 +48,7 @@ import org.argouml.uml.diagram.DiagramSettings;
 import org.argouml.uml.diagram.ui.FigEdgeModelElement;
 import org.tigris.gef.base.Selection;
 import org.tigris.gef.presentation.Fig;
+import org.tigris.gef.presentation.FigCube;
 
 /**
  * Class to display graphics for a UML NodeInstance in a diagram.<p>
@@ -56,6 +57,9 @@ import org.tigris.gef.presentation.Fig;
  */
 public class FigNodeInstance extends AbstractFigNode {
     
+    private FigCube cover;
+
+
     /**
      * Construct a new FigNodeInstance.
      * 
@@ -133,5 +137,11 @@ public class FigNodeInstance extends AbstractFigNode {
             }
         }
     }
+    public FigCube getCover() {
+        return cover;
+    }
 
+    public void setCover(FigCube cover) {
+        this.cover = cover;
+    }
 }

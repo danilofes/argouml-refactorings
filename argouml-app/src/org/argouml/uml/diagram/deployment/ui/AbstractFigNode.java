@@ -80,7 +80,6 @@ public abstract class AbstractFigNode extends FigNodeModelElement {
      * break if they don't match.
      */
     protected static final int DEPTH = 20;
-    private FigCube cover;
     private static final int DEFAULT_X = 10;
     private static final int DEFAULT_Y = 10;
     private static final int DEFAULT_WIDTH = 200;
@@ -97,15 +96,15 @@ public abstract class AbstractFigNode extends FigNodeModelElement {
     }
 
     private void initFigs() {
-        cover = new FigCube(DEFAULT_X, DEFAULT_Y, DEFAULT_WIDTH,
-                DEFAULT_HEIGHT, LINE_COLOR, FILL_COLOR);
+        setCover(new FigCube(DEFAULT_X, DEFAULT_Y, DEFAULT_WIDTH,
+                DEFAULT_HEIGHT, LINE_COLOR, FILL_COLOR));
 
         getNameFig().setLineWidth(0);
         getNameFig().setFilled(false);
         getNameFig().setJustification(0);
 
         addFig(getBigPort());
-        addFig(cover);
+        addFig(getCover());
         addFig(getStereotypeFig());
         addFig(getNameFig());
     }
@@ -128,7 +127,7 @@ public abstract class AbstractFigNode extends FigNodeModelElement {
         AbstractFigNode figClone = (AbstractFigNode) super.clone();
         Iterator it = figClone.getFigs().iterator();
         figClone.setBigPort((FigRect) it.next());
-        figClone.cover = (FigCube) it.next();
+        figClone.setCover((FigCube) it.next());
         it.next();
         figClone.setNameFig((FigText) it.next());
         return figClone;
@@ -136,23 +135,23 @@ public abstract class AbstractFigNode extends FigNodeModelElement {
 
     @Override
     public void setLineColor(Color c) {
-        cover.setLineColor(c);
+        getCover().setLineColor(c);
     }
 
     @Override
     public void setLineWidth(int w) {
-        cover.setLineWidth(w);
+        getCover().setLineWidth(w);
     }
 
 
     @Override
     public boolean isFilled() {
-        return cover.isFilled();
+        return getCover().isFilled();
     }
 
     @Override
     public void setFilled(boolean f) {
-        cover.setFilled(f);
+        getCover().setFilled(f);
     }
 
     @Override
@@ -180,7 +179,7 @@ public abstract class AbstractFigNode extends FigNodeModelElement {
         }
         Rectangle oldBounds = getBounds();
         getBigPort().setBounds(x, y, w, h);
-        cover.setBounds(x, y + DEPTH, w - DEPTH, h - DEPTH);
+        getCover().setBounds(x, y + DEPTH, w - DEPTH, h - DEPTH);
 
         Dimension stereoDim = getStereotypeFig().getMinimumSize();
         Dimension nameDim = getNameFig().getMinimumSize();
@@ -284,5 +283,9 @@ public abstract class AbstractFigNode extends FigNodeModelElement {
         Point p = Geometry.ptClosestTo(xs, ys, 7, anotherPt);
         return p;
     }
+
+    public abstract FigCube getCover() ;
+
+    public abstract void setCover(FigCube cover);
 
 }

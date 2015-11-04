@@ -203,4 +203,11 @@ public class PropPanelString
         setTarget(e.getNewTarget());
     }
 
+
+    @Override
+    public int getOverLapp() {
+        // TODO: Auto-generated method stub
+        return 0;
+    }
+
 }

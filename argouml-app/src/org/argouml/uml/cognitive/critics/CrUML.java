@@ -69,6 +69,11 @@ public class CrUML extends Critic {
     private static final Logger LOG =
         Logger.getLogger(CrUML.class.getName());
 
+    /**
+     * The priority of the ToDoItem produced.
+     */
+    private int priority;
+
    /**
     * By default looks for the localized strings at the <code>critics</code>
     * Resource, but critics defined elsewhere (out of ArgoUML main tree)
@@ -282,4 +287,19 @@ public class CrUML extends Critic {
      * The UID.
      */
     private static final long serialVersionUID = 1785043010468681602L;
+    
+    /**
+     * @return the priority
+     */
+    public int getPriority() {
+        return priority;
+    }
+        
+        
+           /**
+     * @param p the priority
+     */
+    public void setPriority(int p) {
+        priority = p;
+    }
 }

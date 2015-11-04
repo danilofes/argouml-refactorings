@@ -294,6 +294,13 @@ public class TabChecklist extends AbstractArgoJPanel
         // ignored
     }
 
+
+    @Override
+    public int getOverLapp() {
+        // TODO: Auto-generated method stub
+        return 0;
+    }
+
 } /* end class TabChecklist */
 
 

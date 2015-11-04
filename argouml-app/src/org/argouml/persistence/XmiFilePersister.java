@@ -48,6 +48,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.StringReader;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -210,7 +211,23 @@ class XmiFilePersister extends AbstractFilePersister
                     LOG.log(Level.INFO, "Saving member of type: {0}",
                             projectMember.getType());
                 }
-                MemberFilePersister persister = new ModelMemberFilePersister();
+                MemberFilePersister persister = new ModelMemberFilePersister() {
+
+                    private HashMap<String, Object> uUIDRefs;
+
+                    /**
+                     * Return XMI id to object map for the most recently read XMI file.
+                     * 
+                     * @return the UUID
+                     */
+                    public HashMap<String, Object> getUUIDRefs() {
+                        return uUIDRefs;
+                    }
+
+                    public void setUUIDRefs(HashMap<String, Object> hashMap) {
+                        uUIDRefs = hashMap;
+                    }
+                };
                 persister.save(projectMember, stream);
             }
         }
@@ -267,7 +284,23 @@ class XmiFilePersister extends AbstractFilePersister
             source.setSystemId(file.toURI().toURL().toString());
 
             ModelMemberFilePersister modelPersister =
-                new ModelMemberFilePersister();
+                    new ModelMemberFilePersister() {
+
+                private HashMap<String, Object> uUIDRefs;
+
+                /**
+                 * Return XMI id to object map for the most recently read XMI file.
+                 * 
+                 * @return the UUID
+                 */
+                public HashMap<String, Object> getUUIDRefs() {
+                    return uUIDRefs;
+                }
+
+                public void setUUIDRefs(HashMap<String, Object> hashMap) {
+                    uUIDRefs = hashMap;
+                }
+            };
 
             modelPersister.readModels(source);
             Object model = modelPersister.getCurModel();

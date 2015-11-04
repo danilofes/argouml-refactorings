@@ -84,12 +84,7 @@ import org.tigris.gef.presentation.Fig;
  * @author alexb
  * @since 0.15.2
  */
-public class ExplorerTree extends DisplayTextTree {
-
-    /**
-     * Background image only displayed in UML2 mode
-     */
-    private Image bgImage = null;
+public abstract class ExplorerTree extends DisplayTextTree {
 
     /**
      * Prevents target event cycles between this and the TargetManager.
@@ -111,8 +106,8 @@ public class ExplorerTree extends DisplayTextTree {
         Project p = ProjectManager.getManager().getCurrentProject();
         this.setModel(new ExplorerTreeModel(p, this));
         if (Model.getFacade().getUmlVersion().charAt(0) == '2') {
-            bgImage = ResourceLoaderWrapper.lookupIconResource(
-                    "uml2explorerbg").getImage();
+            setBgImage(ResourceLoaderWrapper.lookupIconResource(
+                    "uml2explorerbg").getImage());
         }
         if (p != null) {
             ProjectSettings ps = p.getProjectSettings();
@@ -403,10 +398,14 @@ public class ExplorerTree extends DisplayTextTree {
 
     public void paint(Graphics g) {
         super.paint(g);
-        if (bgImage != null) {
-            g.drawImage(bgImage, 0, 40, null);
+        if (getBgImage() != null) {
+            g.drawImage(getBgImage(), 0, 40, null);
         }
     }
+
+    public abstract Image getBgImage();
+
+    public abstract void setBgImage(Image bgImage);
 
     /**
      * Manages selecting the item to show in Argo's other views based on the

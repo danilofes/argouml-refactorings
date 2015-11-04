@@ -52,6 +52,8 @@ public class TreeModelSupport extends PerspectiveSupport {
 
     /** tree model listener list. */
     private EventListenerList listenerList = new EventListenerList();
+    /** name */
+    private String name;
 
     /**
      * The constructor.
@@ -322,6 +324,21 @@ public class TreeModelSupport extends PerspectiveSupport {
                 ((TreeModelListener) listeners[i + 1]).treeStructureChanged(e);
             }
         }
+    }
+    
+
+    /**
+     * @return the name
+     */
+    public String getName() {
+        return name;
+    }
+
+    /**
+     * @param s the name
+     */
+    public void setName(String s) {
+        name = s;
     }
 
 }

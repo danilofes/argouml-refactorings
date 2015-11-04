@@ -71,7 +71,7 @@ import org.argouml.configuration.ConfigurationKey;
  *
  * @author Jason Robbins
  */
-public class Critic
+public abstract class Critic
     extends Observable
     implements Poster, Serializable {
 
@@ -185,11 +185,6 @@ public class Critic
     // instance variables
 
     /**
-     * The priority of the ToDoItem produced.
-     */
-    private int priority;
-
-    /**
      * The headline of the ToDoItem produced.
      */
     private String headline;
@@ -285,7 +280,7 @@ public class Critic
 	description = Translator.localize("misc.critic.no-description");
 	headline = Translator.messageFormat("misc.critic.default-headline",
 	        new Object[] {getClass().getName()});
-	priority = ToDoItem.MED_PRIORITY;
+	setPriority(ToDoItem.MED_PRIORITY);
     }
 
     /**
@@ -912,22 +907,18 @@ public class Critic
      * @return the priority
      */
     public int getPriority(ListSet offenders, Designer dsgr) {
-	return priority;
+	return getPriority();
     }
 
     /**
      * @param p the priority
      */
-    public void setPriority(int p) {
-        priority = p;
-    }
+    public abstract void setPriority(int p) ;
 
     /**
      * @return the priority
      */
-    public int getPriority() {
-	return priority;
-    }
+    public abstract int getPriority();
 
     /**
      * Reply the description used in feedback produced by this Critic.

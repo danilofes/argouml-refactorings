@@ -42,6 +42,7 @@ import java.awt.event.ItemEvent;
 import java.beans.PropertyChangeEvent;
 
 import javax.swing.JCheckBox;
+import javax.swing.JLabel;
 
 import org.argouml.i18n.Translator;
 import org.argouml.model.Model;
@@ -68,6 +69,9 @@ public class StylePanelFigClass extends StylePanelFigNodeModelElement {
      * Flag to indicate that a refresh is going on.
      */
     private boolean refreshTransaction;
+
+    private JLabel displayLabel = new JLabel(
+                Translator.localize("label.stylepane.display"));
 
     ////////////////////////////////////////////////////////////////
     // contructors
@@ -141,6 +145,13 @@ public class StylePanelFigClass extends StylePanelFigNodeModelElement {
                 super.itemStateChanged(e);
             }
         }
+    }
+    public JLabel getDisplayLabel() {
+        return displayLabel;
+    }
+
+    public void setDisplayLabel(JLabel displayLabel) {
+        this.displayLabel = displayLabel;
     }
 } /* end class StylePanelFigClass */
 

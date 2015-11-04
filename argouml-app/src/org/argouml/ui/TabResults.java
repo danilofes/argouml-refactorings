@@ -454,4 +454,10 @@ public class TabResults
      * The UID.
      */
     private static final long serialVersionUID = 4980167466628873068L;
+
+    @Override
+    public int getOverLapp() {
+        // TODO: Auto-generated method stub
+        return 0;
+    }
 }

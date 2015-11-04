@@ -63,7 +63,27 @@ public class TestToDoItem extends TestCase {
         String headline = "Test Headline";
         String description = "Test Description";
         String moreInfo = "http://argouml.tigris.org/test";
-        Critic critic = new Critic();
+        Critic critic = new Critic() {
+
+            /**
+             * The priority of the ToDoItem produced.
+             */
+            private int priority;
+            
+            /**
+             * @return the priority
+             */
+            public int getPriority() {
+                return priority;
+            }
+                
+            /**
+             * @param p the priority
+             */
+            public void setPriority(int p) {
+                priority = p;
+            }
+        };
         critic.setHeadline(headline);
                 
         // initialize new ToDoItem

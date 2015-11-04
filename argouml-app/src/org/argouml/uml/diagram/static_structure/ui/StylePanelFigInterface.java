@@ -41,7 +41,9 @@ package org.argouml.uml.diagram.static_structure.ui;
 import java.awt.event.ItemEvent;
 
 import javax.swing.JCheckBox;
+import javax.swing.JLabel;
 
+import org.argouml.i18n.Translator;
 import org.argouml.model.Model;
 import org.argouml.ui.StylePanelFigNodeModelElement;
 import org.argouml.uml.diagram.ui.FigCompartment;
@@ -61,6 +63,9 @@ public class StylePanelFigInterface extends StylePanelFigNodeModelElement {
      * Flag to indicate that a refresh is going on.
      */
     private boolean refreshTransaction;
+
+    private JLabel displayLabel = new JLabel(
+                Translator.localize("label.stylepane.display"));
 
     /**
      * The constructor.
@@ -112,5 +117,12 @@ public class StylePanelFigInterface extends StylePanelFigNodeModelElement {
      * The UID.
      */
     private static final long serialVersionUID = -5908351031706234211L;
+    public JLabel getDisplayLabel() {
+        return displayLabel;
+    }
+
+    public void setDisplayLabel(JLabel displayLabel) {
+        this.displayLabel = displayLabel;
+    }
 } /* end class StylePanelFigInterface */
 

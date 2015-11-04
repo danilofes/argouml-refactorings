@@ -116,6 +116,8 @@ import org.tigris.gef.presentation.FigEdge;
 public class TabStyle extends AbstractArgoJPanel implements TabFigTarget,
         PropertyChangeListener, DelayedVChangeListener {
 
+    private static final int OVERLAPP = 30;
+
     private static final Logger LOG =
         Logger.getLogger(TabStyle.class.getName());
 
@@ -544,5 +546,9 @@ public class TabStyle extends AbstractArgoJPanel implements TabFigTarget,
             }
         }
     }
-
+    
+    @Override
+    public int getOverLapp() {
+        return OVERLAPP;
+    }
 }

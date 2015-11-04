@@ -71,7 +71,7 @@ import org.argouml.util.osdep.StartBrowser;
  * @see org.argouml.cognitive.critics.Wizard
  */
 
-public class WizStep extends JPanel
+public abstract class WizStep extends JPanel
     implements TabToDoTarget, ActionListener, DocumentListener {
     ////////////////////////////////////////////////////////////////
     // constants
@@ -93,11 +93,7 @@ public class WizStep extends JPanel
         new JButton(Translator.localize("button.help"));
     private JPanel  buttonPanel = new JPanel();
 
-    /**
-     * The current target.
-     */
-    private Object target;
-
+    public abstract Object getTarget();
     /**
      * @return Returns the main Panel.
      */
@@ -167,21 +163,23 @@ public class WizStep extends JPanel
      * @param item the target item
      */
     public void setTarget(Object item) {
-	target = item;
+        setTarget2(item);
 	enableButtons();
     }
+    
+    public abstract void setTarget2(Object item);
 
     /**
      * Enable/Disable the buttons.
      */
     public void enableButtons() {
-        if (target == null) {
+        if (getTarget() == null) {
             backButton.setEnabled(false);
             nextButton.setEnabled(false);
             finishButton.setEnabled(false);
             helpButton.setEnabled(false);
-        } else if (target instanceof ToDoItem) {
-            ToDoItem tdi = (ToDoItem) target;
+        } else if (getTarget() instanceof ToDoItem) {
+            ToDoItem tdi = (ToDoItem) getTarget();
             Wizard w = getWizard();
             backButton.setEnabled(w != null ? w.canGoBack() : false);
             nextButton.setEnabled(w != null ? w.canGoNext() : false);
@@ -203,14 +201,14 @@ public class WizStep extends JPanel
      *
      * TODO: This method is never used. What is its intention? Remove it?
      */
-    public void refresh() { setTarget(target); }
+    public void refresh() { setTarget(getTarget()); }
 
     /**
      * @return the Wizard, or null
      */
     public Wizard getWizard() {
-	if (target instanceof ToDoItem) {
-	    return ((ToDoItem) target).getWizard();
+	if (getTarget() instanceof ToDoItem) {
+	    return ((ToDoItem) getTarget()).getWizard();
 	}
 	return null;
     }
@@ -254,10 +252,10 @@ public class WizStep extends JPanel
      * Called when the Help button is pressed.
      */
     public void doHelp() {
-	if (!(target instanceof ToDoItem)) {
+	if (!(getTarget() instanceof ToDoItem)) {
 	    return;
         }
-	ToDoItem item = (ToDoItem) target;
+	ToDoItem item = (ToDoItem) getTarget();
 	String urlString = item.getMoreInfoURL();
 	StartBrowser.openUrl(urlString);
     }
@@ -272,7 +270,7 @@ public class WizStep extends JPanel
 	    (TabToDo) ProjectBrowser.getInstance().getTab(TabToDo.class);
 	JPanel ws = getWizard().getCurrentPanel();
 	if (ws instanceof WizStep) {
-	    ((WizStep) ws).setTarget(target);
+	    ((WizStep) ws).setTarget(getTarget());
         }
 	ttd.showStep(ws);
     }

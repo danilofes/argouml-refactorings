@@ -43,6 +43,7 @@ import java.awt.event.MouseEvent;
 import java.util.Vector;
 
 import org.argouml.uml.diagram.DiagramSettings;
+import org.tigris.gef.presentation.FigCube;
 import org.tigris.gef.presentation.FigText;
 
 /**
@@ -52,6 +53,8 @@ import org.tigris.gef.presentation.FigText;
  */
 public class FigMNode extends AbstractFigNode {
     
+    private FigCube cover;
+
     /**
      * Construct a new FigMNode.
      * 
@@ -83,5 +86,11 @@ public class FigMNode extends AbstractFigNode {
                 buildModifierPopUp(ABSTRACT | LEAF | ROOT));
         return popUpActions;
     }
+    public FigCube getCover() {
+        return cover;
+    }
 
+    public void setCover(FigCube cover) {
+        this.cover = cover;
+    }
 }

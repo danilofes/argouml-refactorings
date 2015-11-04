@@ -100,6 +100,8 @@ public class TabDiagram
     implements TabModelTarget, GraphSelectionListener, ModeChangeListener,
     PropertyChangeListener {
 
+    private static final int OVERLAPP = 30;
+
     /**
      * Logger.
      */
@@ -486,6 +488,11 @@ public class TabDiagram
             // we can ressurect the use of this
         }
     }
+
+    @Override
+    public int getOverLapp() {
+        return OVERLAPP;
+    }
 }
 
 
@@ -618,4 +625,5 @@ class ArgoEditor extends Editor {
      * The UID.
      */
     private static final long serialVersionUID = -799007144549997407L;
+
 }

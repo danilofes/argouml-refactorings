@@ -65,6 +65,18 @@ public class WizStepChoice extends WizStep {
     private JTextArea instructions = new JTextArea();
     private List<String> choices = new ArrayList<String>();
     private int selectedIndex = -1;
+    /**
+     * The current target.
+     */
+    private Object target;
+
+    public Object getTarget() {
+        return target;
+    }
+
+    public void setTarget2(Object target) {
+        this.target = target;
+    }
 
 
     /**

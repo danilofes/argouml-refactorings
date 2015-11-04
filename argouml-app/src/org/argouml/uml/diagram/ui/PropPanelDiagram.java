@@ -123,6 +123,12 @@ public class PropPanelDiagram extends PropPanel implements TabModelTarget {
                 homeModelSelector);
     }
 
+    @Override
+    public int getOverLapp() {
+        // TODO: Auto-generated method stub
+        return 0;
+    }
+
 }
 
 class UMLDiagramHomeModelComboBoxModel extends UMLComboBoxModel2 {

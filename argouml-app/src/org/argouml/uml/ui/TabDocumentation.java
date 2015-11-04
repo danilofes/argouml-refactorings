@@ -197,5 +197,11 @@ public class TabDocumentation extends PropPanel implements TabModelTarget {
         return Model.getFacade().isAModelElement(target);
     }
 
+    @Override
+    public int getOverLapp() {
+        // TODO: Auto-generated method stub
+        return 0;
+    }
+
 }
 

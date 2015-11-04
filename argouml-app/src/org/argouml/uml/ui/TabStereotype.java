@@ -464,4 +464,10 @@ public class TabStereotype extends PropPanel implements TabModelTarget {
      * The UID.
      */
     private static final long serialVersionUID = -4741653225927138553L;
+
+    @Override
+    public int getOverLapp() {
+        // TODO: Auto-generated method stub
+        return 0;
+    }
 }

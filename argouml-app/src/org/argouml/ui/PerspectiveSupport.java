@@ -53,15 +53,12 @@ import org.argouml.i18n.Translator;
  * @author  alexb
  * @since 0.13.5, Created on 15 April 2003
  */
-public class PerspectiveSupport {
+public abstract class PerspectiveSupport {
 
     /**
      * The go rules that this Tree model uses to build child nodes.
      */
     private List<TreeModel> goRules;
-
-    /** name */
-    private String name;
 
     /** list of all possible rules in the collection Todolist specific */
     private static List<TreeModel> rules = new ArrayList<TreeModel>();
@@ -75,7 +72,7 @@ public class PerspectiveSupport {
      * @param n the name to be localized
      */
     public PerspectiveSupport(String n) {
-        name = Translator.localize(n);
+        setName(Translator.localize(n));
         goRules = new ArrayList<TreeModel>();
     }
 
@@ -129,16 +126,6 @@ public class PerspectiveSupport {
     
     // ----------- name -------------------------
 
-    /**
-     * @return the name
-     */
-    public String getName() { return name; }
-
-
-    /**
-     * @param s the name
-     */
-    public void setName(String s) { name = s; }
 
 
     /*
@@ -169,4 +156,15 @@ public class PerspectiveSupport {
     protected List<TreeModel> getGoRuleList() {
         return goRules;
     }
+
+    /**
+     * @return the name
+     */
+    public abstract String getName();
+
+
+    /**
+     * @param s the name
+     */
+    public abstract void setName(String s);
 }

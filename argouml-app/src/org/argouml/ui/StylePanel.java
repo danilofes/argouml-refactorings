@@ -69,6 +69,8 @@ public class StylePanel
     implements TabFigTarget,
                 ItemListener, DocumentListener, ListSelectionListener,
                 ActionListener {
+
+    private static final int OVERLAPP = 30;
     /**
      * Logger.
      */
@@ -229,4 +231,9 @@ public class StylePanel
      * The UID.
      */
     private static final long serialVersionUID = 2183676111107689482L;
+
+    @Override
+    public int getOverLapp() {
+        return OVERLAPP;
+    }
 } /* end class StylePanel */

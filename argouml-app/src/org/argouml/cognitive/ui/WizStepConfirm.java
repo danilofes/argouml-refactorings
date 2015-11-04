@@ -40,6 +40,7 @@ package org.argouml.cognitive.ui;
 
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+
 import javax.swing.JLabel;
 import javax.swing.JTextArea;
 import javax.swing.border.EtchedBorder;
@@ -58,6 +59,18 @@ import org.argouml.swingext.SpacerPanel;
 
 public class WizStepConfirm extends WizStep {
     private JTextArea instructions = new JTextArea();
+    /**
+     * The current target.
+     */
+    private Object target;
+
+    public Object getTarget() {
+        return target;
+    }
+
+    public void setTarget2(Object target) {
+        this.target = target;
+    }
 
     /**
      * The constructor. Since this constructor does not set the

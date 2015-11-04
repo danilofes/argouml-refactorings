@@ -41,6 +41,7 @@ package org.argouml.uml.diagram.use_case.ui;
 import java.awt.event.ItemEvent;
 
 import javax.swing.JCheckBox;
+import javax.swing.JLabel;
 
 import org.argouml.i18n.Translator;
 import org.argouml.ui.StylePanelFigNodeModelElement;
@@ -65,6 +66,9 @@ public class StylePanelFigUseCase extends StylePanelFigNodeModelElement {
      * Flag to indicate that a refresh is going on.
      */
     private boolean refreshTransaction = false;
+
+    private JLabel displayLabel = new JLabel(
+                Translator.localize("label.stylepane.display"));
 
     /**
      * Build a style panel. Just layout the relevant boxes.
@@ -119,4 +123,11 @@ public class StylePanelFigUseCase extends StylePanelFigNodeModelElement {
         }
     }
 
+    public JLabel getDisplayLabel() {
+        return displayLabel;
+    }
+
+    public void setDisplayLabel(JLabel displayLabel) {
+        this.displayLabel = displayLabel;
+    }
 } /* end class StylePanelFigUseCase */

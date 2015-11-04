@@ -38,6 +38,7 @@
 
 package org.argouml.cognitive.ui;
 
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -55,6 +56,10 @@ public class ToDoByGoal extends ToDoPerspective
     implements ToDoListListener {
     private static final Logger LOG =
         Logger.getLogger(ToDoByGoal.class.getName());
+    /**
+     * todoList specific.
+     */
+    private List<ToDoItem> flatChildren;
 
 
     /**
@@ -169,6 +174,14 @@ public class ToDoByGoal extends ToDoPerspective
      * @see org.argouml.cognitive.ToDoListListener#toDoListChanged(org.argouml.cognitive.ToDoListEvent)
      */
     public void toDoListChanged(ToDoListEvent tde) { }
+
+    public List<ToDoItem> getFlatChildren() {
+        return flatChildren;
+    }
+
+    public void setFlatChildren(List<ToDoItem> flatChildren) {
+        this.flatChildren = flatChildren;
+    }
 
 
 }

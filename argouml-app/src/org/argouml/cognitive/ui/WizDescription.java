@@ -71,8 +71,20 @@ public class WizDescription extends WizStep {
 
     ////////////////////////////////////////////////////////////////
     // instance variables
+    /**
+     * The current target.
+     */
+    private Object target;
 
     private JTextArea description = new JTextArea();
+
+    public Object getTarget() {
+        return target;
+    }
+
+    public void setTarget2(Object target) {
+        this.target = target;
+    }
 
 
     /**

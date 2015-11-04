@@ -61,7 +61,7 @@ import org.tigris.gef.ui.ColorRenderer;
  * shadow width, the path checkbox.
  *
  */
-public class StylePanelFigNodeModelElement
+public abstract class StylePanelFigNodeModelElement
     extends StylePanelFig
     implements ItemListener, FocusListener, KeyListener, 
     PropertyChangeListener {
@@ -70,9 +70,6 @@ public class StylePanelFigNodeModelElement
      * Flag to indicate that a refresh is going on.
      */
     private boolean refreshTransaction;
-
-    private JLabel displayLabel = new JLabel(
-            Translator.localize("label.stylepane.display"));
 
     private JCheckBox pathCheckBox = new JCheckBox(
             Translator.localize("label.stylepane.path"));
@@ -93,9 +90,9 @@ public class StylePanelFigNodeModelElement
         displayPane.setLayout(new FlowLayout(FlowLayout.LEFT));
         addToDisplayPane(pathCheckBox);
 
-        displayLabel.setLabelFor(displayPane);
+        getDisplayLabel().setLabelFor(displayPane);
         add(displayPane, 0); // add in front of the others
-        add(displayLabel, 0); // add the label in front of the "pane"
+        add(getDisplayLabel(), 0); // add the label in front of the "pane"
 
         //This instead of the label ???
         //displayPane.setBorder(new TitledBorder(
@@ -190,6 +187,10 @@ public class StylePanelFigNodeModelElement
             refreshTransaction = false;
         }
     }
+
+    public abstract JLabel getDisplayLabel();
+
+    public abstract void setDisplayLabel(JLabel displayLabel);
 
 }
 

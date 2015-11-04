@@ -38,12 +38,29 @@
 
 package org.argouml.persistence;
 
+import java.util.HashMap;
 
 /**
- * The file persister for the UML model.
- * TODO: This is empty.  What is its purpose? - tfm
+ * The file persister for the UML model. TODO: This is empty. What is its
+ * purpose? - tfm
+ * 
  * @author Bob Tarling
  */
-class OldModelMemberFilePersister extends ModelMemberFilePersister 
-    implements XmiExtensionParser {
+class OldModelMemberFilePersister extends ModelMemberFilePersister implements
+        XmiExtensionParser {
+
+    private HashMap<String, Object> uUIDRefs;
+
+    /**
+     * Return XMI id to object map for the most recently read XMI file.
+     * 
+     * @return the UUID
+     */
+    public HashMap<String, Object> getUUIDRefs() {
+        return uUIDRefs;
+    }
+
+    public void setUUIDRefs(HashMap<String, Object> hashMap) {
+        uUIDRefs = hashMap;
+    }
 }

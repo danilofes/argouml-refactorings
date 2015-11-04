@@ -40,6 +40,7 @@ package org.argouml.cognitive.ui;
 
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+
 import javax.swing.JLabel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
@@ -61,6 +62,18 @@ public class WizStepTextField extends WizStep {
     private JTextArea instructions = new JTextArea();
     private JLabel label = new JLabel(Translator.localize("label.value"));
     private JTextField field = new JTextField(20);
+    /**
+     * The current target.
+     */
+    private Object target;
+
+    public Object getTarget() {
+        return target;
+    }
+
+    public void setTarget2(Object target) {
+        this.target = target;
+    }
 
     /**
      * The constructor. Since this constructor does not set the necessary

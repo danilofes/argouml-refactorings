@@ -57,6 +57,10 @@ public class ToDoByOffender extends ToDoPerspective
 
     private static final Logger LOG =
         Logger.getLogger(ToDoByOffender.class.getName());
+    /**
+     * todoList specific.
+     */
+    private List<ToDoItem> flatChildren;
 
     /**
      * The constructor.
@@ -206,6 +210,14 @@ public class ToDoByOffender extends ToDoPerspective
      * @see org.argouml.cognitive.ToDoListListener#toDoListChanged(org.argouml.cognitive.ToDoListEvent)
      */
     public void toDoListChanged(ToDoListEvent tde) {
+    }
+
+    public List<ToDoItem> getFlatChildren() {
+        return flatChildren;
+    }
+
+    public void setFlatChildren(List<ToDoItem> flatChildren) {
+        this.flatChildren = flatChildren;
     }
 
 } /* end class ToDoByOffender */

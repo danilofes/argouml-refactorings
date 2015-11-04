@@ -53,7 +53,27 @@ public class TestCritic extends TestCase {
 
     protected void setUp() throws Exception {
         super.setUp();
-        cr = new Critic();
+        cr = new Critic() {
+
+            /**
+             * The priority of the ToDoItem produced.
+             */
+            private int priority;
+            
+            /**
+             * @return the priority
+             */
+            public int getPriority() {
+                return priority;
+            }
+                
+            /**
+             * @param p the priority
+             */
+            public void setPriority(int p) {
+                priority = p;
+            }
+        };
     }
 
     /**

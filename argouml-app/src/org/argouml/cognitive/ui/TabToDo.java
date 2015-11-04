@@ -278,5 +278,11 @@ public class TabToDo extends AbstractArgoJPanel
         // ignored
     }
 
+    @Override
+    public int getOverLapp() {
+        // TODO: Auto-generated method stub
+        return 0;
+    }
+
     
 }

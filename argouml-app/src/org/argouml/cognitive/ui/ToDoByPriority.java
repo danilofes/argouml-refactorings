@@ -55,6 +55,10 @@ public class ToDoByPriority extends ToDoPerspective
     implements ToDoListListener {
     private static final Logger LOG =
         Logger.getLogger(ToDoByPriority.class.getName());
+    /**
+     * todoList specific.
+     */
+    private List<ToDoItem> flatChildren;
 
     /**
      * The constructor.
@@ -182,5 +186,13 @@ public class ToDoByPriority extends ToDoPerspective
      * @see org.argouml.cognitive.ToDoListListener#toDoListChanged(org.argouml.cognitive.ToDoListEvent)
      */
     public void toDoListChanged(ToDoListEvent tde) { }
+
+    public List<ToDoItem> getFlatChildren() {
+        return flatChildren;
+    }
+
+    public void setFlatChildren(List<ToDoItem> flatChildren) {
+        this.flatChildren = flatChildren;
+    }
 
 }

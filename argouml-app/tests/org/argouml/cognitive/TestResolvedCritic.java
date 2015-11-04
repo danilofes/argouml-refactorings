@@ -76,7 +76,27 @@ public class TestResolvedCritic extends TestCase {
      */
     public void testConstructors() {
         Object testmc = Model.getCoreFactory().buildClass();
-        Critic c = new Critic();
+        Critic c = new Critic() {
+
+            /**
+             * The priority of the ToDoItem produced.
+             */
+            private int priority;
+            
+            /**
+             * @return the priority
+             */
+            public int getPriority() {
+                return priority;
+            }
+                
+            /**
+             * @param p the priority
+             */
+            public void setPriority(int p) {
+                priority = p;
+            }
+        };
         String crString = "class org.argouml.cognitive.Critic";
         ResolvedCritic rc;
         List<String> list = new ArrayList<String>();
@@ -156,7 +176,27 @@ public class TestResolvedCritic extends TestCase {
      * Test the equals() method.
      */
     public void testEquals() {
-        Critic c = new Critic();
+        Critic c = new Critic() {
+
+            /**
+             * The priority of the ToDoItem produced.
+             */
+            private int priority;
+            
+            /**
+             * @return the priority
+             */
+            public int getPriority() {
+                return priority;
+            }
+                
+            /**
+             * @param p the priority
+             */
+            public void setPriority(int p) {
+                priority = p;
+            }
+        };
         ResolvedCritic rc1, rc2;
         List<String> list = new ArrayList<String>();
         ListSet set = new ListSet();

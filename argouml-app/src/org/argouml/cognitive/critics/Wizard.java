@@ -78,8 +78,6 @@ public abstract class Wizard implements java.io.Serializable {
 
     /** True when the wizard has done everything it can. */
     private boolean finished = false;
-    private boolean started = false;
-
     private WizardItem item = null;
 
     /** Construct a new wizard to help the user repair a design flaw. */
@@ -170,11 +168,13 @@ public abstract class Wizard implements java.io.Serializable {
 	if (p != null) {
             panels.add(p);
         }
-	started = true;
+	setStarted(true);
 	if (item != null) {
             item.changed();
         }
     }
+
+    public abstract void setStarted(boolean b);
 
     /**
      * @return true if we can step back
@@ -207,9 +207,7 @@ public abstract class Wizard implements java.io.Serializable {
     /**
      * @return true if the wizard is started
      */
-    public boolean isStarted() {
-        return started;
-    }
+    public abstract boolean isStarted();
 
     /**
      * @return true if the wizard is finished
@@ -222,7 +220,7 @@ public abstract class Wizard implements java.io.Serializable {
      * Finish the wizard.
      */
     public void finish() {
-	started = true;
+	setStarted(true);
 	int numSteps = getNumSteps();
 	for (int i = step; i <= numSteps; i++) {
 	    doAction(i);

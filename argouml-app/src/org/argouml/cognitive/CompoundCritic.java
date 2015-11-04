@@ -65,6 +65,11 @@ import javax.swing.Icon;
 
 public class CompoundCritic extends Critic {
 
+    /**
+     * The priority of the ToDoItem produced.
+     */
+    private int priority;
+
 
     ////////////////////////////////////////////////////////////////
     // instance variables
@@ -337,4 +342,18 @@ public class CompoundCritic extends Critic {
         return critics.toString(); 
     }
     
+    /**
+     * @return the priority
+     */
+    public int getPriority() {
+        return priority;
+    }
+        
+        
+           /**
+     * @param p the priority
+     */
+    public void setPriority(int p) {
+        priority = p;
+    }
 }

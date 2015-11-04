@@ -59,6 +59,9 @@ public class StylePanelFigMessage extends StylePanelFigNodeModelElement {
     private JComboBox arrowField = 
         new JComboBox(FigMessage.getArrowDirections().toArray());
 
+    private JLabel displayLabel = new JLabel(
+                Translator.localize("label.stylepane.display"));
+
 
     /**
      * The constructor.
@@ -118,5 +121,12 @@ public class StylePanelFigMessage extends StylePanelFigNodeModelElement {
         }
     }
 
+    public JLabel getDisplayLabel() {
+        return displayLabel;
+    }
+
+    public void setDisplayLabel(JLabel displayLabel) {
+        this.displayLabel = displayLabel;
+    }
 }
 

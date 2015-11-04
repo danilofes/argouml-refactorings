@@ -303,4 +303,10 @@ public class TabText
      * The UID.
      */
     private static final long serialVersionUID = -1484647093166393888L;
+
+    @Override
+    public int getOverLapp() {
+        // TODO: Auto-generated method stub
+        return 0;
+    }
 } /* end class TabText */

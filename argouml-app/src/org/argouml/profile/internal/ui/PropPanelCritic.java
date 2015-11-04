@@ -156,4 +156,10 @@ public class PropPanelCritic extends PropPanel {
         }        
         return r;
     }
+
+    @Override
+    public int getOverLapp() {
+        // TODO: Auto-generated method stub
+        return 0;
+    }
 }

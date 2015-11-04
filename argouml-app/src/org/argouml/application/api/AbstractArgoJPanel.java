@@ -86,8 +86,6 @@ public abstract class AbstractArgoJPanel extends JPanel
     private static final Logger LOG =
         Logger.getLogger(AbstractArgoJPanel.class.getName());
 
-    private static final int OVERLAPP = 30;
-
     private String title = Translator.localize("tab.untitled");
 
     private Icon icon = null;
@@ -225,12 +223,12 @@ public abstract class AbstractArgoJPanel extends JPanel
 
         f.getContentPane().add(newPanel, BorderLayout.CENTER);
         Rectangle bounds = getBounds();
-        bounds.height += OVERLAPP * 2;
+        bounds.height += getOverLapp() * 2;
         f.setBounds(bounds);
 
         Point loc = new Point(0, 0);
         SwingUtilities.convertPointToScreen(loc, this);
-        loc.y -= OVERLAPP;
+        loc.y -= getOverLapp();
         f.setLocation(loc);
         f.setVisible(true);
 
@@ -241,5 +239,7 @@ public abstract class AbstractArgoJPanel extends JPanel
         return newPanel;
 
     }
+    
+    public abstract int getOverLapp();
 
 }
