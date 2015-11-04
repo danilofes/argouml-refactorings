@@ -39,6 +39,7 @@
 
 package org.argouml.uml.diagram.static_structure.ui;
 
+import java.awt.Rectangle;
 import java.awt.event.MouseEvent;
 import java.util.Collection;
 
@@ -47,6 +48,7 @@ import javax.swing.Icon;
 import org.argouml.application.helpers.ResourceLoaderWrapper;
 import org.argouml.model.Model;
 import org.argouml.uml.diagram.deployment.DeploymentDiagramGraphModel;
+import org.argouml.uml.diagram.ui.FigCompartment;
 import org.argouml.uml.diagram.ui.SelectionClassifierBox;
 import org.argouml.uml.diagram.ui.SelectionNodeClarifiers2;
 import org.tigris.gef.base.Editor;
@@ -199,6 +201,34 @@ public class SelectionClass extends SelectionClassifierBox {
     @Override
     protected Object getNewNode(int index) {
         return Model.getCoreFactory().buildClass();
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent me) {
+        for (Button button : buttons) {
+            int cx = button.fig.getX() + button.fig.getWidth() - button.icon.getIconWidth();
+            int cy = button.fig.getY();
+            int cw = button.icon.getIconWidth();
+            int ch = button.icon.getIconHeight();
+            Rectangle rect = new Rectangle(cx, cy, cw, ch);
+            if (rect.contains(me.getX(), me.getY())) {
+                onButtonClicked(button.metaType);
+                me.consume();
+                return;
+            }
+        }
+        
+        super.mouseReleased(me);
+    }
+
+    /**
+     * Adds new element to the class
+     */
+    protected void onButtonClicked(Object metaType) {
+        FigClassifierBox fcb = (FigClassifierBox) getContent();
+        FigCompartment fc = fcb.getCompartment(metaType);
+        fc.setEditOnRedraw(true);
+        fc.createModelElement();
     }
 
     /**

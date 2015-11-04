@@ -219,4 +219,17 @@ public class StylePanelFigAssociationClass
         }
     }
 
+    @Override
+    public void setTarget(Object t) {
+        Fig oldTarget = getPanelTarget();
+        if (oldTarget != null) {
+            oldTarget.removePropertyChangeListener(this);
+        }
+        super.setTarget(t);
+        Fig newTarget = getPanelTarget();
+        if (newTarget != null) {
+            newTarget.addPropertyChangeListener(this);
+        }
+    }
+
 } /* end class StylePanelFigAssociationClass */

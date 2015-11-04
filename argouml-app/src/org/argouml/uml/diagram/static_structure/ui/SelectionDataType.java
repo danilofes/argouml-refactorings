@@ -66,4 +66,9 @@ class SelectionDataType extends SelectionGeneralizableElement {
         return Model.getMetaTypes().getDataType();
     }
 
+    @Override
+    protected String getInstructions(int i) {
+        return instructions[ i - BASE];
+    }
+
 }

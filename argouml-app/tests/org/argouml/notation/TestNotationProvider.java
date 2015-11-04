@@ -38,10 +38,16 @@
 
 package org.argouml.notation;
 
+import java.beans.PropertyChangeEvent;
+import java.util.logging.Level;
+
 import junit.framework.TestCase;
 
+import org.argouml.model.AddAssociationEvent;
+import org.argouml.model.DeleteInstanceEvent;
 import org.argouml.model.InitializeModel;
 import org.argouml.model.Model;
+import org.argouml.model.RemoveAssociationEvent;
 import org.argouml.profile.init.InitProfileSubsystem;
 
 /**
@@ -94,6 +100,29 @@ public class TestNotationProvider extends TestCase
          */
         public void parse(Object modelElement, String text) {
 
+        }
+
+        public void propertyChange(PropertyChangeEvent evt) {
+            if (renderer != null) {
+                Object owner = renderer.getOwner(this);
+                if ((owner == evt.getSource())
+                        && (evt instanceof DeleteInstanceEvent)) {
+                    return;
+                }
+                if (owner != null) {
+                    if (Model.getUmlFactory().isRemoved(owner)) {
+                        LOG.log(Level.WARNING, "Encountered deleted object during delete of "
+                                + owner);
+                        return;
+                    }
+                    renderer.notationRenderingChanged(this,
+                            toString(owner, renderer.getNotationSettings(this)));
+                    if (evt instanceof AddAssociationEvent
+                            || evt instanceof RemoveAssociationEvent) {
+                        initialiseListener(owner);
+                    }
+                }
+            }
         }
 
     }

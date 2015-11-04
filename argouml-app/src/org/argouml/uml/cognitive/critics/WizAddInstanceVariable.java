@@ -112,5 +112,20 @@ public class WizAddInstanceVariable extends UMLWizard {
         }
         return null;
     }
+
+    /**
+     * @return the suggestion string
+     */
+    public String offerSuggestion() {
+        if (suggestion != null) {
+            return suggestion;
+        }
+        Object me = getModelElement();
+        if (me != null) {
+            String n = Model.getFacade().getName(me);
+            return n;
+        }
+        return "";
+    }
 }
 

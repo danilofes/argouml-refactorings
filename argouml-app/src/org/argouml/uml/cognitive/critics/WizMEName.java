@@ -63,7 +63,7 @@ public class WizMEName extends UMLWizard {
 
     private WizStepTextField step1 = null;
 
-    private String origSuggest;
+    protected String origSuggest;
 
     /**
      * The constructor.
@@ -98,15 +98,6 @@ public class WizMEName extends UMLWizard {
 	}
 	return null;
     }
-
-    /*
-     * @see org.argouml.uml.cognitive.critics.UMLWizard#setSuggestion(java.lang.String)
-     */
-    public void setSuggestion(String s) {
-        origSuggest = s;
-        super.setSuggestion(s);
-    }
-
 
     /**
      * Return false if the user has not edited the text and they were required
@@ -155,5 +146,20 @@ public class WizMEName extends UMLWizard {
      */
     protected String getInstructions() {
         return instructions;
+    }
+
+    /**
+     * @return the suggestion string
+     */
+    public String offerSuggestion() {
+        if (suggestion != null) {
+            return suggestion;
+        }
+        Object me = getModelElement();
+        if (me != null) {
+            String n = Model.getFacade().getName(me);
+            return n;
+        }
+        return "";
     }
 } /* end class WizMEName */

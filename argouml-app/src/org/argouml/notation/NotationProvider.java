@@ -45,10 +45,7 @@ import java.util.Collection;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import org.argouml.model.AddAssociationEvent;
-import org.argouml.model.DeleteInstanceEvent;
 import org.argouml.model.Model;
-import org.argouml.model.RemoveAssociationEvent;
 
 /**
  * A class that implements this abstract class manages a text
@@ -63,9 +60,9 @@ import org.argouml.model.RemoveAssociationEvent;
  */
 public abstract class NotationProvider implements PropertyChangeListener {
 
-    private static final Logger LOG =
+    protected static final Logger LOG =
         Logger.getLogger(NotationProvider.class.getName());
-    private NotationRenderer renderer;
+    protected NotationRenderer renderer;
 
     /**
      * A collection of properties of listeners registered for this notation.
@@ -165,29 +162,6 @@ public abstract class NotationProvider implements PropertyChangeListener {
         }
         cleanListener();
         initialiseListener(modelElement);
-    }
-
-    public void propertyChange(PropertyChangeEvent evt) {
-        if (renderer != null) {
-            Object owner = renderer.getOwner(this);
-            if ((owner == evt.getSource())
-                    && (evt instanceof DeleteInstanceEvent)) {
-                return;
-            }
-            if (owner != null) {
-                if (Model.getUmlFactory().isRemoved(owner)) {
-                    LOG.log(Level.WARNING, "Encountered deleted object during delete of "
-                            + owner);
-                    return;
-                }
-                renderer.notationRenderingChanged(this,
-                        toString(owner, renderer.getNotationSettings(this)));
-                if (evt instanceof AddAssociationEvent
-                        || evt instanceof RemoveAssociationEvent) {
-                    initialiseListener(owner);
-                }
-            }
-        }
     }
 
     /*

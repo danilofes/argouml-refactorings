@@ -38,6 +38,7 @@
 
 package org.argouml.uml.diagram.static_structure.ui;
 
+import java.awt.Rectangle;
 import java.awt.event.MouseEvent;
 
 import javax.swing.Icon;
@@ -45,6 +46,7 @@ import javax.swing.Icon;
 import org.argouml.application.helpers.ResourceLoaderWrapper;
 import org.argouml.model.Model;
 import org.argouml.uml.diagram.deployment.DeploymentDiagramGraphModel;
+import org.argouml.uml.diagram.ui.FigCompartment;
 import org.argouml.uml.diagram.ui.SelectionClassifierBox;
 import org.tigris.gef.base.Editor;
 import org.tigris.gef.base.Globals;
@@ -70,7 +72,7 @@ public abstract class SelectionGeneralizableElement extends
      null,
     };
 
-    private static String[] instructions = 
+    protected static String[] instructions = 
     {"Add a supertype",
      "Add a subtype",
      null,
@@ -109,11 +111,6 @@ public abstract class SelectionGeneralizableElement extends
     }
 
     @Override
-    protected String getInstructions(int i) {
-        return instructions[ i - BASE];
-    }
-    
-    @Override
     protected Object getNewEdgeType(int i) {
         if (i == TOP || i == BOTTOM) {
             return Model.getMetaTypes().getGeneralization();
@@ -138,6 +135,34 @@ public abstract class SelectionGeneralizableElement extends
     public void mouseEntered(MouseEvent me) {
         super.mouseEntered(me);
         useComposite = me.isShiftDown();
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent me) {
+        for (Button button : buttons) {
+            int cx = button.fig.getX() + button.fig.getWidth() - button.icon.getIconWidth();
+            int cy = button.fig.getY();
+            int cw = button.icon.getIconWidth();
+            int ch = button.icon.getIconHeight();
+            Rectangle rect = new Rectangle(cx, cy, cw, ch);
+            if (rect.contains(me.getX(), me.getY())) {
+                onButtonClicked(button.metaType);
+                me.consume();
+                return;
+            }
+        }
+        
+        super.mouseReleased(me);
+    }
+
+    /**
+     * Adds new element to the class
+     */
+    protected void onButtonClicked(Object metaType) {
+        FigClassifierBox fcb = (FigClassifierBox) getContent();
+        FigCompartment fc = fcb.getCompartment(metaType);
+        fc.setEditOnRedraw(true);
+        fc.createModelElement();
     }
 
 }
