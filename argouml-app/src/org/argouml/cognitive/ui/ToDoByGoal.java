@@ -170,5 +170,18 @@ public class ToDoByGoal extends ToDoPerspective
      */
     public void toDoListChanged(ToDoListEvent tde) { }
 
+    /**
+     * todoList specific.
+     *
+     * @param b true if flat
+     */
+    public void setFlat(boolean b) {
+        flat = false;
+        if (b) {
+            calcFlatChildren();
+        }
+        flat = b;
+    }
+
 
 }

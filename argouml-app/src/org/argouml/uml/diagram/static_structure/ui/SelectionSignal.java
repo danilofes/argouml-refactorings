@@ -62,4 +62,9 @@ class SelectionSignal extends SelectionGeneralizableElement {
     protected Object getNewNodeType(int index) {
         return Model.getMetaTypes().getSignal();
     }
+
+    @Override
+    protected String getInstructions(int i) {
+        return instructions[ i - BASE];
+    }
 }

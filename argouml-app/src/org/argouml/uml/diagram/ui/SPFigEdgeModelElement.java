@@ -40,6 +40,7 @@ package org.argouml.uml.diagram.ui;
 
 import java.awt.event.ItemListener;
 
+import javax.swing.JLabel;
 import javax.swing.text.Document;
 
 import org.argouml.ui.StylePanelFig;
@@ -72,6 +73,13 @@ public class SPFigEdgeModelElement extends StylePanelFig implements
         getLineLabel().setLabelFor(getLineField());
         add(getLineLabel());
         add(getLineField());
+    }
+
+    /**
+     * @return Returns the _bboxLabel.
+     */
+    protected JLabel getBBoxLabel() {
+        return bboxLabel;
     }
 
 } /* end class SPFigEdgeModelElement */

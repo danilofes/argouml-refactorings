@@ -53,7 +53,6 @@ import javax.swing.JPanel;
 import org.argouml.i18n.Translator;
 import org.argouml.ui.targetmanager.TargetManager;
 import org.argouml.uml.diagram.PathContainer;
-import org.tigris.gef.presentation.Fig;
 import org.tigris.gef.ui.ColorRenderer;
 
 /**
@@ -111,19 +110,6 @@ public class StylePanelFigNodeModelElement
      */
     public void addToDisplayPane(JCheckBox cb) {
         displayPane.add(cb);
-    }
-
-    @Override
-    public void setTarget(Object t) {
-        Fig oldTarget = getPanelTarget();
-        if (oldTarget != null) {
-            oldTarget.removePropertyChangeListener(this);
-        }
-        super.setTarget(t);
-        Fig newTarget = getPanelTarget();
-        if (newTarget != null) {
-            newTarget.addPropertyChangeListener(this);
-        }
     }
 
     /*
@@ -189,6 +175,13 @@ public class StylePanelFigNodeModelElement
             pathCheckBox.setSelected((Boolean) evt.getNewValue());
             refreshTransaction = false;
         }
+    }
+
+    /**
+     * @return Returns the _bboxLabel.
+     */
+    protected JLabel getBBoxLabel() {
+        return bboxLabel;
     }
 
 }

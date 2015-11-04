@@ -251,4 +251,19 @@ public class WizBreakCircularComp extends UMLWizard {
 	}
 	return false;
     }
+
+    /**
+     * @return the suggestion string
+     */
+    public String offerSuggestion() {
+        if (suggestion != null) {
+            return suggestion;
+        }
+        Object me = getModelElement();
+        if (me != null) {
+            String n = Model.getFacade().getName(me);
+            return n;
+        }
+        return "";
+    }
 }

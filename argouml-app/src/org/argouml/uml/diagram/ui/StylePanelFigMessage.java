@@ -45,6 +45,7 @@ import javax.swing.JLabel;
 
 import org.argouml.i18n.Translator;
 import org.argouml.ui.StylePanelFigNodeModelElement;
+import org.tigris.gef.presentation.Fig;
 
 /**
  * Stylepanel which allows to set the arrow of a message.
@@ -115,6 +116,20 @@ public class StylePanelFigMessage extends StylePanelFigNodeModelElement {
         }
         else {
             super.itemStateChanged(e);
+        }
+    }
+
+
+    @Override
+    public void setTarget(Object t) {
+        Fig oldTarget = getPanelTarget();
+        if (oldTarget != null) {
+            oldTarget.removePropertyChangeListener(this);
+        }
+        super.setTarget(t);
+        Fig newTarget = getPanelTarget();
+        if (newTarget != null) {
+            newTarget.addPropertyChangeListener(this);
         }
     }
 
