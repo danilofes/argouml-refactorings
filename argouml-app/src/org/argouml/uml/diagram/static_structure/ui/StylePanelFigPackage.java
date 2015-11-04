@@ -45,7 +45,6 @@ import javax.swing.JCheckBox;
 import org.argouml.ui.StylePanelFigNodeModelElement;
 import org.argouml.uml.diagram.StereotypeContainer;
 import org.argouml.uml.diagram.VisibilityContainer;
-import org.tigris.gef.presentation.Fig;
 
 /**
  * Stylepanel which adds a checkbox to show or hide the stereotype.<p>
@@ -112,19 +111,6 @@ public class StylePanelFigPackage extends StylePanelFigNodeModelElement {
             } else {
                 super.itemStateChanged(e);
             }
-        }
-    }
-
-    @Override
-    public void setTarget(Object t) {
-        Fig oldTarget = getPanelTarget();
-        if (oldTarget != null) {
-            oldTarget.removePropertyChangeListener(this);
-        }
-        super.setTarget(t);
-        Fig newTarget = getPanelTarget();
-        if (newTarget != null) {
-            newTarget.addPropertyChangeListener(this);
         }
     }
 

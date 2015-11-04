@@ -38,13 +38,7 @@
 
 package org.argouml.notation.providers;
 
-import java.beans.PropertyChangeEvent;
-import java.util.logging.Level;
-
-import org.argouml.model.AddAssociationEvent;
-import org.argouml.model.DeleteInstanceEvent;
 import org.argouml.model.Model;
-import org.argouml.model.RemoveAssociationEvent;
 import org.argouml.notation.NotationProvider;
 
 /**
@@ -87,29 +81,6 @@ public abstract class CallStateNotation extends NotationProvider {
                 Object classifier = Model.getFacade().getOwner(operation);
                 // and when the class changes name:
                 addElementListener(classifier, "name");
-            }
-        }
-    }
-
-    public void propertyChange(PropertyChangeEvent evt) {
-        if (renderer != null) {
-            Object owner = renderer.getOwner(this);
-            if ((owner == evt.getSource())
-                    && (evt instanceof DeleteInstanceEvent)) {
-                return;
-            }
-            if (owner != null) {
-                if (Model.getUmlFactory().isRemoved(owner)) {
-                    LOG.log(Level.WARNING, "Encountered deleted object during delete of "
-                            + owner);
-                    return;
-                }
-                renderer.notationRenderingChanged(this,
-                        toString(owner, renderer.getNotationSettings(this)));
-                if (evt instanceof AddAssociationEvent
-                        || evt instanceof RemoveAssociationEvent) {
-                    initialiseListener(owner);
-                }
             }
         }
     }

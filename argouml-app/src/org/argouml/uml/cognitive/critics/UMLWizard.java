@@ -42,6 +42,7 @@ package org.argouml.uml.cognitive.critics;
 import org.argouml.cognitive.ListSet;
 import org.argouml.cognitive.ToDoItem;
 import org.argouml.cognitive.critics.Wizard;
+import org.argouml.model.Model;
 
 
 /**
@@ -55,7 +56,7 @@ public abstract class UMLWizard extends Wizard {
     /**
      * The suggestion string.
      */
-    protected String suggestion;
+    private String suggestion;
 
     /**
      * The constructor.
@@ -92,6 +93,21 @@ public abstract class UMLWizard extends Wizard {
     }
 
     /**
+     * @return the suggestion string
+     */
+    public String offerSuggestion() {
+        if (suggestion != null) {
+            return suggestion;
+        }
+        Object me = getModelElement();
+        if (me != null) {
+            String n = Model.getFacade().getName(me);
+            return n;
+        }
+        return "";
+    }
+
+    /**
      * @param s set a new suggestion string
      */
     public void setSuggestion(String s) {
@@ -104,5 +120,4 @@ public abstract class UMLWizard extends Wizard {
     public String getSuggestion() {
         return suggestion;
     }
-
 }

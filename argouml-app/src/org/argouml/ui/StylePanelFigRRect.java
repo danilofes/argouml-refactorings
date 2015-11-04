@@ -121,11 +121,4 @@ public class StylePanelFigRRect extends StylePanelFig {
         super.insertUpdate(e);
     }
 
-    /**
-     * @return Returns the _bboxLabel.
-     */
-    protected JLabel getBBoxLabel() {
-        return bboxLabel;
-    }
-
 } /* end class StylePanelFigRRect */

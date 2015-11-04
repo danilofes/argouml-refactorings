@@ -44,7 +44,6 @@ import java.util.List;
 import javax.swing.JPanel;
 
 import org.argouml.cognitive.ui.WizStepCue;
-import org.argouml.model.Model;
 
 /**
  *  A cue card wizard presents the user with a deck of instructions.
@@ -108,21 +107,6 @@ public class WizCueCards extends UMLWizard {
     @Override
     public boolean canFinish() {
 	return getStep() == getNumSteps();
-    }
-
-    /**
-     * @return the suggestion string
-     */
-    public String offerSuggestion() {
-        if (suggestion != null) {
-            return suggestion;
-        }
-        Object me = getModelElement();
-        if (me != null) {
-            String n = Model.getFacade().getName(me);
-            return n;
-        }
-        return "";
     }
 
 

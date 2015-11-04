@@ -43,7 +43,6 @@ import javax.swing.JPanel;
 import org.argouml.cognitive.ToDoItem;
 import org.argouml.cognitive.ui.WizStepTextField;
 import org.argouml.i18n.Translator;
-import org.argouml.model.Model;
 
 /** 
  * A wizard which adjust the threshold for critics. <p>
@@ -136,20 +135,5 @@ public class WizTooMany extends UMLWizard {
             }
             break;
         }
-    }
-
-    /**
-     * @return the suggestion string
-     */
-    public String offerSuggestion() {
-        if (suggestion != null) {
-            return suggestion;
-        }
-        Object me = getModelElement();
-        if (me != null) {
-            String n = Model.getFacade().getName(me);
-            return n;
-        }
-        return "";
     }
 }

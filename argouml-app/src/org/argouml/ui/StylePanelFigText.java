@@ -335,14 +335,6 @@ public class StylePanelFigText extends StylePanelFig {
 
 
     /**
-     * @return Returns the _bboxLabel.
-     */
-    protected JLabel getBBoxLabel() {
-        return bboxLabel;
-    }
-
-
-    /**
      * The UID.
      */
     private static final long serialVersionUID = 2019248527481196634L;

@@ -175,21 +175,6 @@ public class WizNavigable extends UMLWizard {
     }
 
     /**
-     * @return the suggestion string
-     */
-    public String offerSuggestion() {
-        if (suggestion != null) {
-            return suggestion;
-        }
-        Object me = getModelElement();
-        if (me != null) {
-            String n = Model.getFacade().getName(me);
-            return n;
-        }
-        return "";
-    }
-
-    /**
      * The UID.
      */
     private static final long serialVersionUID = 2571165058454693999L;

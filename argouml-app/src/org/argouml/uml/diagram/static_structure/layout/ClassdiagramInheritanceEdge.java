@@ -38,6 +38,7 @@
 
 package org.argouml.uml.diagram.static_structure.layout;
 
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import org.tigris.gef.presentation.Fig;
@@ -48,20 +49,18 @@ import org.tigris.gef.presentation.FigEdge;
  * @author mkl
  */
 public abstract class ClassdiagramInheritanceEdge extends ClassdiagramEdge {
-    protected static final Logger LOG =
+    private static final Logger LOG =
         Logger.getLogger(ClassdiagramInheritanceEdge.class.getName());
 
     /**
      * The largest difference that we consider equivalent to zero
      */
-    protected static final int EPSILON = 5;
+    private static final int EPSILON = 5;
 
     /**
      * The figures which are connected by this edge
      */
-    protected Fig high;
-
-    protected Fig low;
+    private Fig high, low;
 
     /**
      * Offset used to distribute the lines
@@ -110,6 +109,70 @@ public abstract class ClassdiagramInheritanceEdge extends ClassdiagramEdge {
      */
     public int getDownGap() {
         return (int) (low.getLocation().getY() - getVerticalOffset());
+    }
+
+    /**
+     * @see org.argouml.uml.diagram.layout.LayoutedEdge#layout()
+     *
+     * Layout the edges in a way that they form a nice inheritance tree. Try to
+     * implement these nice zigzag lines between classes and works well when the
+     * row difference is one.
+     *
+     * @author Markus Klink
+     * @since 0.9.6
+     */
+    public void layout() {
+        // now we construct the zig zag inheritance line
+        //getUnderlyingFig()
+        Fig fig = getUnderlyingFig();
+        int centerHigh = getCenterHigh();
+        int centerLow = getCenterLow();
+
+        // the amount of the "sidestep"
+        int difference = centerHigh - centerLow;
+
+        /*
+         * If center points are "close enough" we just adjust the endpoints
+         * of the line a little bit.  Otherwise we add a jog in the middle to
+         * deal with the offset.
+         *
+         * TODO: Epsilon is currently fixed, but could probably be computed
+         * dynamically as 10% of the width of the narrowest figure or some
+         * other value which is visually not noticeable.
+         */
+        if (Math.abs(difference) < EPSILON) {
+            fig.addPoint(centerLow + (difference / 2 + (difference % 2)),
+                    (int) (low.getLocation().getY()));
+            fig.addPoint(centerHigh - (difference / 2),
+                    high.getLocation().y + high.getSize().height);
+        } else {
+            fig.addPoint(centerLow, (int) (low.getLocation().getY()));
+            LOG.log(Level.FINE,
+                    "Point: x: {0} y: {1}",
+                    new Object[]{ centerLow, low.getLocation().y});
+
+            LOG.log(Level.FINE,
+                    "Point: x: {0} y: {1}",
+                    new Object[]{(centerHigh - difference), getDownGap()});
+            getUnderlyingFig().addPoint(centerHigh - difference, getDownGap());
+
+            LOG.log(Level.FINE,
+                    "Point: x: {0} y: {1}",
+                    new Object[]{centerHigh, getDownGap()});
+            getUnderlyingFig().addPoint(centerHigh, getDownGap());
+            
+
+            LOG.log(Level.FINE,
+                    "Point x: {0} y: {1}",
+                    new Object[] {
+                        centerHigh,
+                        (high.getLocation().y + high.getSize().height)
+                    });
+            fig.addPoint(centerHigh, high.getLocation().y + high.getSize().height);            
+        }
+        fig.setFilled(false);
+        getCurrentEdge().setFig(getUnderlyingFig());
+        // currentEdge.setBetweenNearestPoints(false);
     }
 
     /**

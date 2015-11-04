@@ -224,7 +224,7 @@ public abstract class FigCompartment extends ArgoFigGroup {
     /**
      * Create a new model element for the compartment.
      */
-    public void createModelElement() {
+    protected void createModelElement() {
         Project project = getProject();
         Defaults defaults = project.getDefaults();
         Object attr =

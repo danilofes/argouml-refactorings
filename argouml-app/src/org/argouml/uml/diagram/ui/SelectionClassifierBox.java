@@ -16,6 +16,7 @@ package org.argouml.uml.diagram.ui;
 
 import java.awt.Graphics;
 import java.awt.Rectangle;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
 import javax.swing.Icon;
@@ -46,11 +47,11 @@ public abstract class SelectionClassifierBox extends
     private static Icon addIcon = 
         ResourceLoaderWrapper.lookupIconResource("Add");
 
-    public class Button {
+    private class Button {
         int handle;
-        public Icon icon;
-        public Fig fig;
-        public Object metaType;
+        Icon icon;
+        Fig fig;
+        Object metaType;
         
         public Button(
                 int handle, 
@@ -64,7 +65,7 @@ public abstract class SelectionClassifierBox extends
         }
     }
     
-    protected ArrayList<Button> buttons = new ArrayList<Button>(2);
+    private ArrayList<Button> buttons = new ArrayList<Button>(2);
     
     /**
      * @param f
@@ -112,6 +113,34 @@ public abstract class SelectionClassifierBox extends
                 h.index = LOWER_RIGHT;
             }
         }
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent me) {
+        for (Button button : buttons) {
+            int cx = button.fig.getX() + button.fig.getWidth() - button.icon.getIconWidth();
+            int cy = button.fig.getY();
+            int cw = button.icon.getIconWidth();
+            int ch = button.icon.getIconHeight();
+            Rectangle rect = new Rectangle(cx, cy, cw, ch);
+            if (rect.contains(me.getX(), me.getY())) {
+                onButtonClicked(button.metaType);
+                me.consume();
+                return;
+            }
+        }
+        
+        super.mouseReleased(me);
+    }
+    
+    /**
+     * Adds new element to the class
+     */
+    private void onButtonClicked(Object metaType) {
+        FigClassifierBox fcb = (FigClassifierBox) getContent();
+        FigCompartment fc = fcb.getCompartment(metaType);
+        fc.setEditOnRedraw(true);
+        fc.createModelElement();
     }
 
     /*

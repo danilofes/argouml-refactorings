@@ -294,11 +294,6 @@ public class WizOperName extends WizMEName {
         }
     }
 
-    public void setSuggestion(String s) {
-        origSuggest = s;
-        super.setSuggestion(s);
-    }
-
     // TODO:
     // Move to MMUtil or some other common place and merge with
     // UMLComboBoxEntry::findNamespace()

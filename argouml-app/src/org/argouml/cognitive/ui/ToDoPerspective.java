@@ -65,7 +65,7 @@ public abstract class ToDoPerspective extends TreeModelComposite {
     /**
      * todoList specific.
      */
-    protected boolean flat;
+    private boolean flat;
 
     /**
      * todoList specific.
@@ -125,6 +125,19 @@ public abstract class ToDoPerspective extends TreeModelComposite {
     }
 
     // ------------ other methods ------------
+
+    /**
+     * todoList specific.
+     *
+     * @param b true if flat
+     */
+    public void setFlat(boolean b) {
+        flat = false;
+        if (b) {
+	    calcFlatChildren();
+	}
+        flat = b;
+    }
 
     /**
      * todoList specific.

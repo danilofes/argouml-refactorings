@@ -64,9 +64,4 @@ class SelectionException extends SelectionGeneralizableElement {
     protected Object getNewNodeType(int buttonCode) {
         return Model.getMetaTypes().getException();
     }
-
-    @Override
-    protected String getInstructions(int i) {
-        return instructions[ i - BASE];
-    }
 }

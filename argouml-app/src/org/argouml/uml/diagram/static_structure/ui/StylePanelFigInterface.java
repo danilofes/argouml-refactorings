@@ -45,7 +45,6 @@ import javax.swing.JCheckBox;
 import org.argouml.model.Model;
 import org.argouml.ui.StylePanelFigNodeModelElement;
 import org.argouml.uml.diagram.ui.FigCompartment;
-import org.tigris.gef.presentation.Fig;
 
 /**
  * Stylepanel which adds an operation checkbox and depends on FigInterface.
@@ -106,19 +105,6 @@ public class StylePanelFigInterface extends StylePanelFigNodeModelElement {
             } else {
                 super.itemStateChanged(e);
             }
-        }
-    }
-
-    @Override
-    public void setTarget(Object t) {
-        Fig oldTarget = getPanelTarget();
-        if (oldTarget != null) {
-            oldTarget.removePropertyChangeListener(this);
-        }
-        super.setTarget(t);
-        Fig newTarget = getPanelTarget();
-        if (newTarget != null) {
-            newTarget.addPropertyChangeListener(this);
         }
     }
 

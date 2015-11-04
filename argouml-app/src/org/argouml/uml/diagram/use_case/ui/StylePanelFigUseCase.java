@@ -44,7 +44,6 @@ import javax.swing.JCheckBox;
 
 import org.argouml.i18n.Translator;
 import org.argouml.ui.StylePanelFigNodeModelElement;
-import org.tigris.gef.presentation.Fig;
 
 /**
  * A class to provide a style panel for use cases.<p>
@@ -117,19 +116,6 @@ public class StylePanelFigUseCase extends StylePanelFigNodeModelElement {
             } else {
                 super.itemStateChanged(e);
             }
-        }
-    }
-
-    @Override
-    public void setTarget(Object t) {
-        Fig oldTarget = getPanelTarget();
-        if (oldTarget != null) {
-            oldTarget.removePropertyChangeListener(this);
-        }
-        super.setTarget(t);
-        Fig newTarget = getPanelTarget();
-        if (newTarget != null) {
-            newTarget.addPropertyChangeListener(this);
         }
     }
 

@@ -90,7 +90,7 @@ public class StylePanelFig
     private static final String CUSTOM_ITEM =
         Translator.localize("label.stylepane.custom") + "...";
 
-    protected JLabel bboxLabel =
+    private JLabel bboxLabel =
         new JLabel(Translator.localize("label.stylepane.bounds") + ": ");
 
     private JTextField bboxField = new JTextField();
@@ -631,6 +631,13 @@ public class StylePanelFig
         if (e.getSource().equals(bboxField) && e.getKeyChar() == '\n') {
             setTargetBBox();
         }
+    }
+
+    /**
+     * @return Returns the _bboxLabel.
+     */
+    protected JLabel getBBoxLabel() {
+        return bboxLabel;
     }
 
     /**
