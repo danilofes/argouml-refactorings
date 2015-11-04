@@ -41,6 +41,7 @@ package org.argouml.model.mdr;
 import javax.jmi.reflect.InvalidObjectException;
 
 import org.argouml.model.ModelManagementFactory;
+import org.omg.uml.behavioralelements.activitygraphs.Partition;
 import org.omg.uml.foundation.core.ModelElement;
 import org.omg.uml.foundation.core.Namespace;
 import org.omg.uml.foundation.core.Stereotype;
@@ -246,6 +247,20 @@ final class ModelManagementFactoryMDRImpl extends
             throw new IllegalArgumentException();
         }
 
+    }
+
+
+    @Override
+    public void initialize2(Partition myPartition) {
+        // TODO: Auto-generated method stub
+        
+    }
+
+
+    @Override
+    public MDRModelImplementation getModelImpl() {
+        // TODO: Auto-generated method stub
+        return null;
     }
 
 }

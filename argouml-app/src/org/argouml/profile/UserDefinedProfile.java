@@ -172,7 +172,7 @@ public class UserDefinedProfile extends Profile {
         this(file, getSomeProfileManager());
     }
 
-    private static class NullProfileManager implements ProfileManager {
+    static class NullProfileManager implements ProfileManager {
 
         public void addSearchPathDirectory(String path) {
         }
@@ -303,13 +303,6 @@ public class UserDefinedProfile extends Profile {
     public UserDefinedProfile(String dn, URL url, Set<Critic> critics,
             Set<String> dependencies) throws ProfileException {
         this(dn, url, critics, dependencies, getSomeProfileManager());
-    }
-
-    private static ProfileManager getSomeProfileManager() {
-        if (ProfileFacade.isInitiated()) {
-            return ProfileFacade.getManager();
-        }
-        return new NullProfileManager();
     }
 
     /**

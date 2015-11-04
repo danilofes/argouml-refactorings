@@ -667,7 +667,7 @@ class GetterSetterManagerImpl extends GetterSetterManager {
     }
 
 
-    private class ChangeabilityGetterSetter extends OptionGetterSetter {
+    class ChangeabilityGetterSetter extends OptionGetterSetter {
 
         /**
          * Identifier for addonly changeability.
@@ -701,17 +701,6 @@ class GetterSetterManagerImpl extends GetterSetterManager {
                 return FROZEN;
             } else {
                 return CHANGEABLE;
-            }
-        }
-
-        public void set(Object modelElement, Object value) {
-            if (value.equals(CHANGEABLE)) {
-                Model.getCoreHelper().setReadOnly(modelElement, false);
-            } else if (value.equals(ADDONLY)) {
-                Model.getCoreHelper().setChangeability(
-                        modelElement, Model.getChangeableKind().getAddOnly());
-            } else {
-                Model.getCoreHelper().setReadOnly(modelElement, true);
             }
         }
     }

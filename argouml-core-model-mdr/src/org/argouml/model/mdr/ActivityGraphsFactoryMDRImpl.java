@@ -127,12 +127,7 @@ class ActivityGraphsFactoryMDRImpl extends AbstractUmlModelFactoryMDR
     }
 
 
-    public Partition createPartition() {
-        Partition myPartition = modelImpl.getUmlPackage().getActivityGraphs().
-            getPartition().createPartition();
-        super.initialize(myPartition);
-        return myPartition;
-    }
+    
 
 
     public SubactivityState createSubactivityState() {
@@ -280,6 +275,18 @@ class ActivityGraphsFactoryMDRImpl extends AbstractUmlModelFactoryMDR
         if (!(elem instanceof SubactivityState)) {
             throw new IllegalArgumentException();
         }
+    }
+
+
+    @Override
+    public void initialize2(Partition myPartition) {
+        super.initialize(myPartition);
+    }
+
+
+    @Override
+    public MDRModelImplementation getModelImpl() {
+        return modelImpl;
     }
 
 }

@@ -45,6 +45,7 @@ import java.util.Iterator;
 import org.argouml.model.CoreHelper;
 import org.argouml.model.ExtensionMechanismsFactory;
 import org.argouml.model.ExtensionMechanismsHelper;
+import org.omg.uml.behavioralelements.activitygraphs.Partition;
 import org.omg.uml.foundation.core.ModelElement;
 import org.omg.uml.foundation.core.Namespace;
 import org.omg.uml.foundation.core.Stereotype;
@@ -440,5 +441,17 @@ class ExtensionMechanismsFactoryMDRImpl extends
                 source.getMultiplicity());
         target.setMultiplicity(modelImpl.getDataTypesFactoryInternal()
                 .createMultiplicityInternal(srcMult));
+    }
+
+    @Override
+    public void initialize2(Partition myPartition) {
+        // TODO: Auto-generated method stub
+        
+    }
+
+    @Override
+    public MDRModelImplementation getModelImpl() {
+        // TODO: Auto-generated method stub
+        return null;
     }    
 }

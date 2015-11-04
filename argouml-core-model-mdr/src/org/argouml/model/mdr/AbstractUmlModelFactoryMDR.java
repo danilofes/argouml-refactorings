@@ -39,6 +39,7 @@
 package org.argouml.model.mdr;
 
 import org.argouml.model.AbstractModelFactory;
+import org.omg.uml.behavioralelements.activitygraphs.Partition;
 
 
 /**
@@ -67,4 +68,15 @@ public abstract class AbstractUmlModelFactoryMDR implements
     protected void initialize(Object o) {
         // No initialization currently
     }
+    
+    public Partition createPartition() {
+        Partition myPartition = getModelImpl().getUmlPackage().getActivityGraphs().
+            getPartition().createPartition();
+        initialize2(myPartition);
+        return myPartition;
+    }
+
+    public abstract void initialize2(Partition myPartition);
+
+    public  abstract MDRModelImplementation getModelImpl();
 }

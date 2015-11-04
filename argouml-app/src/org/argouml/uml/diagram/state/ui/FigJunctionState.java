@@ -47,7 +47,9 @@ import java.util.Iterator;
 import org.argouml.uml.diagram.DiagramSettings;
 import org.tigris.gef.base.Geometry;
 import org.tigris.gef.presentation.Fig;
+import org.tigris.gef.presentation.FigCircle;
 import org.tigris.gef.presentation.FigDiamond;
+import org.tigris.gef.presentation.FigText;
 
 /**
  * Class to display graphics for a UML Junction State
@@ -84,7 +86,7 @@ public class FigJunctionState extends FigStateVertex {
                 DEBUG_COLOR, DEBUG_COLOR);
     }
 
-    private void initFigs() {
+    protected void initFigs() {
         setEditable(false);
         head = new FigDiamond(X, Y, WIDTH, HEIGHT, false, 
                 LINE_COLOR, FILL_COLOR);
@@ -233,4 +235,29 @@ public class FigJunctionState extends FigStateVertex {
      * The UID.
      */
     private static final long serialVersionUID = -5845934640541945686L;
+
+
+    @Override
+    public Fig getHead() {
+        // TODO: Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public void setHead(FigCircle figCircle) {
+        // TODO: Auto-generated method stub
+        
+    }
+
+    @Override
+    public void setBound(FigText figText) {
+        // TODO: Auto-generated method stub
+        
+    }
+
+    @Override
+    public FigText getBound() {
+        // TODO: Auto-generated method stub
+        return null;
+    }
 }

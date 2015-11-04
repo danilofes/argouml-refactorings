@@ -45,9 +45,6 @@ import java.util.NoSuchElementException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import org.argouml.application.events.ArgoEventPump;
-import org.argouml.application.events.ArgoEventTypes;
-import org.argouml.application.events.ArgoHelpEvent;
 import org.argouml.i18n.Translator;
 import org.argouml.kernel.Project;
 import org.argouml.kernel.ProjectManager;
@@ -79,25 +76,6 @@ public class AttributeNotationUml extends AttributeNotation {
      */
     public AttributeNotationUml(Object attribute) {
         super(attribute);
-    }
-
-    /*
-     * @see org.argouml.notation.providers.NotationProvider#parse(java.lang.Object, java.lang.String)
-     */
-    public void parse(Object modelElement, String text) {
-        try {
-            parseAttributeFig(Model.getFacade().getOwner(modelElement),
-                    modelElement, text);
-        } catch (ParseException pe) {
-            String msg = "statusmsg.bar.error.parsing.attribute";
-            Object[] args = {
-                pe.getLocalizedMessage(),
-                Integer.valueOf(pe.getErrorOffset()),
-            };
-            ArgoEventPump.fireEvent(new ArgoHelpEvent(
-                    ArgoEventTypes.HELP_CHANGED, this,
-                    Translator.messageFormat(msg, args)));
-        }
     }
 
     /**

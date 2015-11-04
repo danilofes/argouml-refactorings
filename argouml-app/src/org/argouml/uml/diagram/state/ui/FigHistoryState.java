@@ -88,7 +88,7 @@ public abstract class FigHistoryState extends FigStateVertex {
                 DEBUG_COLOR);
     }
 
-    private void initFigs() {
+    protected void initFigs() {
         setEditable(false);
         head = new FigCircle(X, Y, WIDTH, HEIGHT, LINE_COLOR, FILL_COLOR);
         h = new FigText(X, Y, WIDTH - 10, HEIGHT - 10);

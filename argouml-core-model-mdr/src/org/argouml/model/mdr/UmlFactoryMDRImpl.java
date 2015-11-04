@@ -1702,4 +1702,16 @@ class UmlFactoryMDRImpl extends AbstractUmlModelFactoryMDR implements
         return topLevelPackages;
     }
 
+    @Override
+    public void initialize2(Partition myPartition) {
+        // TODO: Auto-generated method stub
+        
+    }
+
+    @Override
+    public MDRModelImplementation getModelImpl() {
+        // TODO: Auto-generated method stub
+        return null;
+    }
+
 }

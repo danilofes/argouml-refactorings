@@ -45,6 +45,7 @@ import org.argouml.model.CommonBehaviorFactory;
 import org.argouml.model.Model;
 import org.omg.uml.UmlPackage;
 import org.omg.uml.behavioralelements.activitygraphs.ActionState;
+import org.omg.uml.behavioralelements.activitygraphs.Partition;
 import org.omg.uml.behavioralelements.collaborations.CollaborationInstanceSet;
 import org.omg.uml.behavioralelements.collaborations.InteractionInstanceSet;
 import org.omg.uml.behavioralelements.collaborations.Message;
@@ -726,6 +727,20 @@ class CommonBehaviorFactoryMDRImpl extends AbstractUmlModelFactoryMDR
         if (!(elem instanceof UninterpretedAction)) {
             throw new IllegalArgumentException("elem: " + elem);
         }
+    }
+
+
+    @Override
+    public void initialize2(Partition myPartition) {
+        // TODO: Auto-generated method stub
+        
+    }
+
+
+    @Override
+    public MDRModelImplementation getModelImpl() {
+        // TODO: Auto-generated method stub
+        return null;
     }
     
 }

@@ -19,7 +19,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.argouml.core.propertypanels.model.GetterSetterManagerImpl.ChangeabilityGetterSetter;
 import org.argouml.kernel.Command;
+import org.argouml.model.Model;
 
 public abstract class GetterSetterManager {
     
@@ -94,6 +96,17 @@ public abstract class GetterSetterManager {
         protected Collection getOptions(Object modelElement, Collection<Class<?>> types) {
             return options;
         }
+
+	public void set(Object modelElement, Object value) {
+	    if (value.equals(ChangeabilityGetterSetter.CHANGEABLE)) {
+	        Model.getCoreHelper().setReadOnly(modelElement, false);
+	    } else if (value.equals(ChangeabilityGetterSetter.ADDONLY)) {
+	        Model.getCoreHelper().setChangeability(
+	                modelElement, Model.getChangeableKind().getAddOnly());
+	    } else {
+	        Model.getCoreHelper().setReadOnly(modelElement, true);
+	    }
+	}
     }
     
     

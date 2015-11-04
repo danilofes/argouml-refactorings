@@ -47,6 +47,7 @@ import javax.jmi.reflect.InvalidObjectException;
 import org.argouml.model.CollaborationsFactory;
 import org.argouml.model.InvalidElementException;
 import org.argouml.model.Model;
+import org.omg.uml.behavioralelements.activitygraphs.Partition;
 import org.omg.uml.behavioralelements.collaborations.AssociationEndRole;
 import org.omg.uml.behavioralelements.collaborations.AssociationRole;
 import org.omg.uml.behavioralelements.collaborations.ClassifierRole;
@@ -580,6 +581,18 @@ class CollaborationsFactoryMDRImpl extends AbstractUmlModelFactoryMDR
         if (i != null && i.getMessage().size() == 1) {
             modelImpl.getUmlFactory().delete(i);
         }
+    }
+
+    @Override
+    public void initialize2(Partition myPartition) {
+        // TODO: Auto-generated method stub
+        
+    }
+
+    @Override
+    public MDRModelImplementation getModelImpl() {
+        // TODO: Auto-generated method stub
+        return null;
     }
 
 }

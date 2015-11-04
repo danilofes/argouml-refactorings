@@ -44,6 +44,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import org.argouml.model.StateMachinesFactory;
+import org.omg.uml.behavioralelements.activitygraphs.Partition;
 import org.omg.uml.behavioralelements.statemachines.CallEvent;
 import org.omg.uml.behavioralelements.statemachines.ChangeEvent;
 import org.omg.uml.behavioralelements.statemachines.CompositeState;
@@ -750,6 +751,18 @@ class StateMachinesFactoryMDRImpl extends AbstractUmlModelFactoryMDR
         }
 
         // The effect will get deleted automatically by MDR, unlike the Guard.
+    }
+
+    @Override
+    public void initialize2(Partition myPartition) {
+        // TODO: Auto-generated method stub
+        
+    }
+
+    @Override
+    public MDRModelImplementation getModelImpl() {
+        // TODO: Auto-generated method stub
+        return null;
     }
 
 }

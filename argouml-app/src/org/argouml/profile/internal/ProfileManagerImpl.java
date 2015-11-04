@@ -146,7 +146,7 @@ public class ProfileManagerImpl implements ProfileManager {
             public boolean check(File file) {
                 boolean found = findUserDefinedProfile(file) != null;
                 if (!found) {
-                    UserDefinedProfile udp = null;
+                    Profile udp = null;
                     try {
                         udp = new UserDefinedProfile(file, profileManager);
                         registerProfileInternal(udp);

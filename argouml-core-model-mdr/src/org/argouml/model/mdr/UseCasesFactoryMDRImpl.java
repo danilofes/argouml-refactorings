@@ -42,6 +42,7 @@ import java.util.Collection;
 import java.util.Iterator;
 
 import org.argouml.model.UseCasesFactory;
+import org.omg.uml.behavioralelements.activitygraphs.Partition;
 import org.omg.uml.behavioralelements.usecases.Actor;
 import org.omg.uml.behavioralelements.usecases.Extend;
 import org.omg.uml.behavioralelements.usecases.ExtensionPoint;
@@ -309,5 +310,19 @@ class UseCasesFactoryMDRImpl extends AbstractUmlModelFactoryMDR
         if (!(elem instanceof UseCaseInstance)) {
             throw new IllegalArgumentException();
         }
+    }
+
+
+    @Override
+    public void initialize2(Partition myPartition) {
+        // TODO: Auto-generated method stub
+        
+    }
+
+
+    @Override
+    public MDRModelImplementation getModelImpl() {
+        // TODO: Auto-generated method stub
+        return null;
     }
 }

@@ -88,7 +88,7 @@ public final class PersistenceManager {
     private UmlFilePersister quickViewDump;
     private XmiFilePersister xmiPersister;
     private XmiFilePersister xmlPersister;
-    private UmlFilePersister umlPersister;
+    private AbstractFilePersister umlPersister;
     private ZipFilePersister zipPersister;
 
     private AbstractFilePersister savePersister;

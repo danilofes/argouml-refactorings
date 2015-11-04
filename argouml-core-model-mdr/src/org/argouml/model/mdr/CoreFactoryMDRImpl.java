@@ -56,6 +56,7 @@ import org.argouml.model.ModelCommand;
 import org.argouml.model.ModelManagementHelper;
 import org.argouml.model.NotImplementedException;
 import org.omg.uml.behavioralelements.activitygraphs.ObjectFlowState;
+import org.omg.uml.behavioralelements.activitygraphs.Partition;
 import org.omg.uml.behavioralelements.commonbehavior.Reception;
 import org.omg.uml.behavioralelements.commonbehavior.Signal;
 import org.omg.uml.behavioralelements.statemachines.Event;
@@ -2368,6 +2369,18 @@ class CoreFactoryMDRImpl extends AbstractUmlModelFactoryMDR implements
         target.setOwnerScope(source.getOwnerScope());
 
         doCopyModelElement(source, target);
+    }
+
+    @Override
+    public void initialize2(Partition myPartition) {
+        // TODO: Auto-generated method stub
+        
+    }
+
+    @Override
+    public MDRModelImplementation getModelImpl() {
+        // TODO: Auto-generated method stub
+        return null;
     }
 
 }

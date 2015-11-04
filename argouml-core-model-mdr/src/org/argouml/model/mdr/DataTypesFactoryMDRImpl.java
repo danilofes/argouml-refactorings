@@ -46,6 +46,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import org.argouml.model.DataTypesFactory;
+import org.omg.uml.behavioralelements.activitygraphs.Partition;
 import org.omg.uml.foundation.datatypes.ActionExpression;
 import org.omg.uml.foundation.datatypes.ArgListsExpression;
 import org.omg.uml.foundation.datatypes.BooleanExpression;
@@ -307,5 +308,19 @@ class DataTypesFactoryMDRImpl extends AbstractUmlModelFactoryMDR
             throw new IllegalArgumentException("illegal range bound : "
                     + (b == null ? "null" : b));
         }
+    }
+
+
+    @Override
+    public void initialize2(Partition myPartition) {
+        // TODO: Auto-generated method stub
+        
+    }
+
+
+    @Override
+    public MDRModelImplementation getModelImpl() {
+        // TODO: Auto-generated method stub
+        return null;
     }
 }

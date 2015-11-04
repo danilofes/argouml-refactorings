@@ -45,7 +45,9 @@ import java.util.Iterator;
 
 import org.argouml.uml.diagram.DiagramSettings;
 import org.tigris.gef.presentation.Fig;
+import org.tigris.gef.presentation.FigCircle;
 import org.tigris.gef.presentation.FigRect;
+import org.tigris.gef.presentation.FigText;
 
 /**
  * Class to display graphics for a UML Join State in a diagram.
@@ -81,7 +83,7 @@ public class FigJoinState extends FigStateVertex {
                 DEBUG_COLOR);
     }
 
-    private void initFigs() {
+    protected void initFigs() {
         setEditable(false);
         head = new FigRect(X, Y, STATE_WIDTH, HEIGHT, LINE_COLOR,
                 SOLID_FILL_COLOR);
@@ -198,5 +200,30 @@ public class FigJoinState extends FigStateVertex {
      * The UID.
      */
     static final long serialVersionUID = 2075803883819230367L;
+
+
+    @Override
+    public Fig getHead() {
+        // TODO: Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public void setHead(FigCircle figCircle) {
+        // TODO: Auto-generated method stub
+        
+    }
+
+    @Override
+    public void setBound(FigText figText) {
+        // TODO: Auto-generated method stub
+        
+    }
+
+    @Override
+    public FigText getBound() {
+        // TODO: Auto-generated method stub
+        return null;
+    }
 
 }
